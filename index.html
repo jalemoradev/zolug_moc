@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>zolug — Prototipos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-page:#0d0c13; --bg-surface:#14121c; --bg-elevated:#1a1922;
+    --border-subtle:#201e2a; --border-default:#2a2740;
+    --text-primary:#ffffff; --text-muted:#a2a9ad;
+    --accent:#7474ef; --logo:#955dcd;
+    --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--bg-page); color:var(--text-primary);
+    font-family:var(--font); -webkit-font-smoothing:antialiased; min-height:100vh; }
+  .wrap{ max-width:960px; margin:0 auto; padding:clamp(32px,6vw,72px) clamp(20px,5vw,40px); }
+
+  .brand{ display:flex; align-items:center; gap:12px; margin-bottom:34px; }
+  .brand .mark{ height:26px; color:var(--logo); display:flex; }
+  .brand .mark svg{ height:26px; } .brand .mark svg path{ fill:currentColor; }
+  .brand .wm{ font-weight:600; font-size:18px; letter-spacing:.2em; }
+
+  h1{ margin:0 0 8px; font-size:clamp(24px,4vw,30px); font-weight:600; letter-spacing:-.02em; }
+  .sub{ margin:0 0 36px; color:var(--text-muted); font-size:15px; }
+
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+  .card{ display:block; text-decoration:none; color:inherit; background:var(--bg-surface);
+    border:1px solid var(--border-subtle); border-radius:14px; padding:22px 22px 20px;
+    transition:border-color .18s, transform .18s; }
+  .card:hover{ border-color:var(--accent); transform:translateY(-2px); }
+  .card .ic{ width:42px; height:42px; border-radius:11px; background:var(--bg-elevated);
+    border:1px solid var(--border-subtle); display:grid; place-items:center; color:var(--accent); margin-bottom:16px; }
+  .card h2{ margin:0 0 6px; font-size:17px; font-weight:600; }
+  .card p{ margin:0 0 14px; font-size:13.5px; color:var(--text-muted); line-height:1.55; }
+  .card .path{ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:11.5px;
+    color:var(--accent); word-break:break-all; }
+  .card .tags{ margin-top:12px; display:flex; gap:6px; flex-wrap:wrap; }
+  .tag{ font-size:11px; color:var(--text-muted); background:var(--bg-elevated);
+    border:1px solid var(--border-subtle); border-radius:6px; padding:3px 8px; }
+
+  footer{ margin-top:44px; padding-top:22px; border-top:1px solid var(--border-subtle);
+    color:var(--text-muted); font-size:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">
+    <span class="mark"><svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><path d="M70.86,14.15,53.22,37.21c-3,3.77-2,9.31,3.73,9.31H70.86v5.95A7.46,7.46,0,0,1,63.47,60H33.56a6.8,6.8,0,0,1-6.73-6.87V46.61l18.92-27c2.38-3.17,1.08-7.76-3.75-7.76H26.83V7.53A7.46,7.46,0,0,1,34.21,0H64.13a6.8,6.8,0,0,1,6.73,6.87Z"/><path d="M98,15.38H75.07L56.73,39.61a2,2,0,0,0,1.59,3.2h23L99.61,18.62A2,2,0,0,0,98,15.38Z"/><path d="M40.17,15.38H18L.39,39.61A2,2,0,0,0,2,42.81H25L41.77,18.62A2,2,0,0,0,40.17,15.38Z"/></svg></span>
+    <span class="wm">ZOLUG</span>
+  </div>
+
+  <h1>Prototipos</h1>
+  <p class="sub">Directorio de los mockups del proyecto. Haga clic para abrir cada uno.</p>
+
+  <div class="grid" id="grid"></div>
+
+  <footer>zolug · mockups en HTML · tema oscuro (base y auth) · dashboard con oscuro y claro</footer>
+</div>
+
+<script>
+  const ICONS = {
+    "palette":'<circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>',
+    "lock":'<circle cx="12" cy="16" r="1"/><rect x="3" y="10" width="18" height="12" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/>',
+    "layout":'<rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>'
+  };
+  function svg(n){ return '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ICONS[n]+'</svg>'; }
+
+  const ITEMS = [
+    { icon:"palette", title:"Guía visual", path:"mockup/base.html",
+      desc:"Paleta (oscuro + claro), tipografía Inter, iconos Lucide, logo y sistema shadcn.",
+      tags:["Tema oscuro","Tokens"] },
+    { icon:"lock", title:"Autenticación", path:"mockup/modules/auth/auth.html",
+      desc:"Login y recuperación de contraseña en 3 pasos, interactivo.",
+      tags:["Tema oscuro","Login"] },
+    { icon:"layout", title:"Dashboard (layout)", path:"mockup/layout/dashboard.html",
+      desc:"App-shell: header, rail de opciones y contenido vacío. Switch de tema.",
+      tags:["Oscuro + claro","App-shell"] },
+  ];
+
+  const grid = document.getElementById("grid");
+  for (const it of ITEMS){
+    const a = document.createElement("a");
+    a.className = "card"; a.href = it.path;
+    a.innerHTML =
+      '<div class="ic">'+svg(it.icon)+'</div>' +
+      '<h2>'+it.title+'</h2>' +
+      '<p>'+it.desc+'</p>' +
+      '<div class="path">'+it.path+'</div>' +
+      '<div class="tags">'+it.tags.map(t=>'<span class="tag">'+t+'</span>').join('')+'</div>';
+    grid.appendChild(a);
+  }
+</script>
+</body>
+</html>
