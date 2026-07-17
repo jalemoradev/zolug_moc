@@ -164,14 +164,50 @@
   .sizes .s{ display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--color-text-primary); }
   .sizes .s span{ color:var(--color-text-muted); font-size:11px; font-variant-numeric:tabular-nums; }
 
+  /* --- marca / logo --- */
+  .logo-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; }
+  .logo-tile{ background:var(--color-bg-elevated); border:1px solid var(--color-border-subtle);
+    border-radius:12px; padding:0; overflow:hidden; }
+  .logo-stage{ display:flex; align-items:center; justify-content:center;
+    min-height:120px; padding:28px 20px; background:var(--color-bg-surface);
+    border-bottom:1px solid var(--color-border-subtle); }
+  .logo-ink path{ fill:currentColor; }
+  .logo-stage .logo-ink{ color:var(--color-text-primary); }
+  .logo-tile .cap{ padding:14px 18px; }
+  .logo-tile .cap .fn{ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:12px; color:var(--color-accent-on-dark); word-break:break-all; }
+  .logo-tile .cap .role{ font-size:13px; color:var(--color-text-primary); margin-top:6px; }
+  .logo-tile .cap .dim{ font-size:11px; color:var(--color-text-muted); margin-top:4px; font-variant-numeric:tabular-nums; }
+
+  .recolor{ display:flex; gap:14px; flex-wrap:wrap; margin-top:16px; }
+  .recolor .chip{ flex:1 1 150px; border-radius:10px; border:1px solid var(--color-border-subtle);
+    min-height:84px; display:flex; align-items:center; justify-content:center; }
+  .recolor .chip svg{ height:34px; }
+  .chip-white{ background:var(--color-bg-elevated); color:var(--color-text-primary); }
+  .chip-accent{ background:var(--color-bg-elevated); color:var(--color-accent-on-dark); }
+  .chip-onlight{ background:#f2ecf3; color:#0d0c13; }
+  .recolor .lbl{ display:block; font-size:11px; color:var(--color-text-muted); text-align:center; margin-top:8px; }
+
+  /* --- componentes / shadcn --- */
+  .stack-card{ background:var(--color-bg-surface); border:1px solid var(--color-border-subtle);
+    border-radius:12px; padding:24px; }
+  .stack-card h3{ margin:0 0 4px; font-size:18px; font-weight:600; letter-spacing:-0.01em; }
+  .stack-card .link{ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:13px; }
+  .stack-card p{ margin:12px 0 0; font-size:13.5px; color:var(--color-text-muted); max-width:74ch; }
+  .why{ list-style:none; margin:16px 0 0; padding:0; display:grid; gap:8px; }
+  .why li{ font-size:13.5px; color:var(--color-text-muted); padding-left:20px; position:relative; }
+  .why li::before{ content:""; position:absolute; left:0; top:8px; width:8px; height:8px;
+    border-radius:2px; background:var(--color-accent-on-dark); }
+  .why b{ color:var(--color-text-primary); font-weight:600; }
+
   footer{ margin-top:56px; padding-top:24px; border-top:1px solid var(--color-border-subtle); color:var(--color-text-muted); font-size:12px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>zolug — Paleta de color</h1>
-    <p>Tema oscuro · medido de la aplicación Plasma · WCAG AA · tipografía Inter</p>
+    <h1>zolug — Guía visual</h1>
+    <p>Tema oscuro · medido de la aplicación Plasma · WCAG AA · tipografía Inter · iconos Lucide · componentes shadcn/ui</p>
   </header>
 
   <!-- Profundidad por capas -->
@@ -212,6 +248,74 @@
   <div id="icons"></div>
 
   <p class="note"><strong>Este es el sistema base de UI, no el mapa final.</strong> Los iconos mostrados son los universales de cualquier panel (navegación, acciones, estados, cuenta). Los iconos <strong>de dominio</strong> —los que representen conceptos propios de la cobranza— quedan <strong>pendientes</strong>: dependen de las pantallas y del modelo de negocio, que aún no están definidos. No se eligen por adelantado para no asumir el negocio.</p>
+
+  <!-- Marca / Logo -->
+  <div class="section-label">Marca — logo (SVG, color manipulable)</div>
+  <div class="logo-grid">
+    <div class="logo-tile">
+      <div class="logo-stage">
+        <svg class="logo-ink" style="height:48px" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><path d="M70.86,14.15,53.22,37.21c-3,3.77-2,9.31,3.73,9.31H70.86v5.95A7.46,7.46,0,0,1,63.47,60H33.56a6.8,6.8,0,0,1-6.73-6.87V46.61l18.92-27c2.38-3.17,1.08-7.76-3.75-7.76H26.83V7.53A7.46,7.46,0,0,1,34.21,0H64.13a6.8,6.8,0,0,1,6.73,6.87Z"/><path d="M98,15.38H75.07L56.73,39.61a2,2,0,0,0,1.59,3.2h23L99.61,18.62A2,2,0,0,0,98,15.38Z"/><path d="M40.17,15.38H18L.39,39.61A2,2,0,0,0,2,42.81H25L41.77,18.62A2,2,0,0,0,40.17,15.38Z"/></svg>
+      </div>
+      <div class="cap">
+        <div class="fn">img/logo/logo.svg</div>
+        <div class="role">Símbolo solo (isotipo)</div>
+        <div class="dim">viewBox 100 × 60 · relación 5:3</div>
+      </div>
+    </div>
+
+    <div class="logo-tile">
+      <div class="logo-stage">
+        <svg class="logo-ink" style="height:40px" viewBox="0 0 278.4 60" xmlns="http://www.w3.org/2000/svg"><path d="M70.86,14.15,53.22,37.21c-3,3.77-2,9.31,3.73,9.31H70.86v5.95A7.46,7.46,0,0,1,63.47,60H33.56a6.8,6.8,0,0,1-6.73-6.87V46.61l18.92-27c2.38-3.17,1.08-7.76-3.75-7.76H26.83V7.53A7.46,7.46,0,0,1,34.21,0H64.13a6.8,6.8,0,0,1,6.73,6.87Z"/><path d="M98,15.38H75.07L56.73,39.61a2,2,0,0,0,1.59,3.2h23L99.61,18.62A2,2,0,0,0,98,15.38Z"/><path d="M40.17,15.38H18L.39,39.61A2,2,0,0,0,2,42.81H25L41.77,18.62A2,2,0,0,0,40.17,15.38Z"/><path d="M117.29,45.44V38.35l17.49-22.3q1.78-2.31,3.84-4.58l4.16-4.59,1,3.46q-3,.12-5.92.15c-2,0-4,0-5.92,0H117.59V1.79h34.6V8.88L135,30.94q-1.85,2.34-3.93,4.7c-1.39,1.57-2.79,3.14-4.22,4.7l-1-3.45c2-.08,4.05-.13,6.08-.15s4,0,6.07,0H152.3v8.73Z"/><path d="M172.69,46.11a17.37,17.37,0,0,1-8.62-2,14.15,14.15,0,0,1-5.7-5.75,17.85,17.85,0,0,1-2-8.69,17.79,17.79,0,0,1,2-8.66,14.32,14.32,0,0,1,5.7-5.77,19.15,19.15,0,0,1,17.28,0A14.28,14.28,0,0,1,187,21a17.9,17.9,0,0,1,2,8.66,18,18,0,0,1-2,8.69,14.1,14.1,0,0,1-5.68,5.75A17.47,17.47,0,0,1,172.69,46.11Zm0-7.94a5.1,5.1,0,0,0,3.23-1,6.77,6.77,0,0,0,2.09-3,12.52,12.52,0,0,0,.75-4.56A12.56,12.56,0,0,0,178,25a6.65,6.65,0,0,0-2.09-2.93,5.52,5.52,0,0,0-6.42,0A6.38,6.38,0,0,0,167.39,25a12.79,12.79,0,0,0-.73,4.6,12.75,12.75,0,0,0,.73,4.56,6.61,6.61,0,0,0,2.09,3A5.11,5.11,0,0,0,172.69,38.17Z"/><path d="M204,1.79V45.44H193.88V1.79Z"/><path d="M221.12,46a11.24,11.24,0,0,1-5.86-1.48,9.79,9.79,0,0,1-3.79-4.24,14.8,14.8,0,0,1-1.34-6.53V13.68H220.3V31.73A6.11,6.11,0,0,0,221.66,36a4.85,4.85,0,0,0,3.8,1.51,5.61,5.61,0,0,0,2.84-.69,4.64,4.64,0,0,0,1.87-2.06,7.61,7.61,0,0,0,.68-3.37V13.68H241V45.44H231.2l-.09-8.29h1a14.94,14.94,0,0,1-4,6.43A10,10,0,0,1,221.12,46Z"/><path d="M262.31,58.21A21.82,21.82,0,0,1,254.56,57a12.1,12.1,0,0,1-5-3.36,10.36,10.36,0,0,1-2.35-5l9.31-.79a3.61,3.61,0,0,0,1,1.66,5.35,5.35,0,0,0,1.95,1.12,8.37,8.37,0,0,0,2.79.41,6.26,6.26,0,0,0,4.52-1.49,6,6,0,0,0,1.55-4.51V39.87H268a8.42,8.42,0,0,1-1.95,2.83,8.28,8.28,0,0,1-3,1.8,11.8,11.8,0,0,1-3.94.62,12.35,12.35,0,0,1-11.56-7.24,19.24,19.24,0,0,1-1.71-8.49,19.83,19.83,0,0,1,1.76-8.76,13.32,13.32,0,0,1,4.74-5.57,12.07,12.07,0,0,1,6.71-1.93,10.5,10.5,0,0,1,4,.71,9.74,9.74,0,0,1,3,1.95,10.21,10.21,0,0,1,2.08,2.81h.15V13.68h10v30.5a14.39,14.39,0,0,1-2,7.91,11.81,11.81,0,0,1-5.61,4.61A21.84,21.84,0,0,1,262.31,58.21Zm-.06-20.8a5.63,5.63,0,0,0,3.34-1,6.32,6.32,0,0,0,2.19-2.81,11.24,11.24,0,0,0,.77-4.35,11.38,11.38,0,0,0-.77-4.37,6.5,6.5,0,0,0-2.19-2.85,5.51,5.51,0,0,0-3.34-1,5.27,5.27,0,0,0-3.26,1,6.24,6.24,0,0,0-2.08,2.85,12,12,0,0,0-.72,4.37,12,12,0,0,0,.72,4.38,6,6,0,0,0,2.08,2.8A5.51,5.51,0,0,0,262.25,37.41Z"/></svg>
+      </div>
+      <div class="cap">
+        <div class="fn">img/logo/logo_text.svg</div>
+        <div class="role">Símbolo + texto (logotipo completo)</div>
+        <div class="dim">viewBox 278.4 × 60 · relación ≈ 4.6:1</div>
+      </div>
+    </div>
+
+    <div class="logo-tile">
+      <div class="logo-stage">
+        <svg class="logo-ink" style="height:36px" viewBox="0 0 161.1 56.43" xmlns="http://www.w3.org/2000/svg"><path d="M0,43.65V36.56L17.49,14.27Q19.27,12,21.33,9.68T25.49,5.1l1,3.46q-3,.11-5.91.14l-5.92,0H.29V0h34.6V7.09L17.72,29.15c-1.23,1.56-2.53,3.13-3.92,4.7S11,37,9.58,38.56l-1-3.46c2-.08,4.06-.13,6.08-.15s4.05,0,6.08,0H35v8.73Z"/><path d="M55.4,44.33a17.51,17.51,0,0,1-8.63-2,14.36,14.36,0,0,1-5.7-5.76,18,18,0,0,1-2-8.69,17.86,17.86,0,0,1,2-8.65,14.41,14.41,0,0,1,5.7-5.78,17.41,17.41,0,0,1,8.63-2.06,17.47,17.47,0,0,1,8.66,2.06,14.3,14.3,0,0,1,5.68,5.78,17.86,17.86,0,0,1,2,8.65,18,18,0,0,1-2,8.69,14.25,14.25,0,0,1-5.68,5.76A17.58,17.58,0,0,1,55.4,44.33Zm0-7.94a5.11,5.11,0,0,0,3.22-1,6.74,6.74,0,0,0,2.1-3,12.52,12.52,0,0,0,.75-4.56,12.59,12.59,0,0,0-.75-4.6,6.64,6.64,0,0,0-2.1-2.93,5.16,5.16,0,0,0-3.22-1,5.22,5.22,0,0,0-3.19,1,6.43,6.43,0,0,0-2.11,2.93,12.83,12.83,0,0,0-.73,4.6,12.75,12.75,0,0,0,.73,4.56,6.57,6.57,0,0,0,2.09,3A5.17,5.17,0,0,0,55.4,36.39Z"/><path d="M86.75,0V43.65H76.58V0Z"/><path d="M103.83,44.21A11.12,11.12,0,0,1,98,42.73a9.75,9.75,0,0,1-3.79-4.23A14.88,14.88,0,0,1,92.84,32V11.9H103v18a6.1,6.1,0,0,0,1.36,4.24,4.86,4.86,0,0,0,3.79,1.5A5.72,5.72,0,0,0,111,35a4.67,4.67,0,0,0,1.87-2.07,7.61,7.61,0,0,0,.68-3.37V11.9h10.16V43.65h-9.81l-.09-8.29h1a14.86,14.86,0,0,1-4,6.43A10,10,0,0,1,103.83,44.21Z"/><path d="M145,56.43a21.77,21.77,0,0,1-7.75-1.22,12.18,12.18,0,0,1-5-3.35,10.46,10.46,0,0,1-2.36-5l9.32-.79a3.67,3.67,0,0,0,1,1.66,5.45,5.45,0,0,0,1.95,1.13,8.7,8.7,0,0,0,2.8.41,6.23,6.23,0,0,0,4.51-1.5,6,6,0,0,0,1.56-4.51V38.09h-.36a8.46,8.46,0,0,1-1.94,2.82,8.3,8.3,0,0,1-3,1.81,11.85,11.85,0,0,1-3.94.61A12.71,12.71,0,0,1,135,41.47a12.57,12.57,0,0,1-4.72-5.38,19.24,19.24,0,0,1-1.71-8.49,20,20,0,0,1,1.75-8.76,13.4,13.4,0,0,1,4.75-5.57,12.07,12.07,0,0,1,6.71-1.93,10.54,10.54,0,0,1,4,.72,9.54,9.54,0,0,1,3,1.94,10.11,10.11,0,0,1,2.08,2.82h.15V11.9h10V42.39a14.37,14.37,0,0,1-2,7.91,12,12,0,0,1-5.61,4.62A22,22,0,0,1,145,56.43ZM145,35.63a5.66,5.66,0,0,0,3.34-1,6.24,6.24,0,0,0,2.18-2.81,11,11,0,0,0,.78-4.35,11.14,11.14,0,0,0-.78-4.36,6.44,6.44,0,0,0-2.18-2.86,5.6,5.6,0,0,0-3.34-1,5.37,5.37,0,0,0-3.27,1,6.34,6.34,0,0,0-2.08,2.86,12.18,12.18,0,0,0-.71,4.36,12.18,12.18,0,0,0,.71,4.38,6.11,6.11,0,0,0,2.08,2.8A5.54,5.54,0,0,0,145,35.63Z"/></svg>
+      </div>
+      <div class="cap">
+        <div class="fn">img/logo/text.svg</div>
+        <div class="role">Solo texto (imagotipo / wordmark)</div>
+        <div class="dim">viewBox 161.1 × 56.43 · relación ≈ 2.85:1</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="icon-group-label">El mismo símbolo, recoloreado — el SVG hereda el color del contexto</div>
+  <div class="recolor">
+    <div>
+      <div class="chip chip-white"><svg class="logo-ink" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><path d="M70.86,14.15,53.22,37.21c-3,3.77-2,9.31,3.73,9.31H70.86v5.95A7.46,7.46,0,0,1,63.47,60H33.56a6.8,6.8,0,0,1-6.73-6.87V46.61l18.92-27c2.38-3.17,1.08-7.76-3.75-7.76H26.83V7.53A7.46,7.46,0,0,1,34.21,0H64.13a6.8,6.8,0,0,1,6.73,6.87Z"/><path d="M98,15.38H75.07L56.73,39.61a2,2,0,0,0,1.59,3.2h23L99.61,18.62A2,2,0,0,0,98,15.38Z"/><path d="M40.17,15.38H18L.39,39.61A2,2,0,0,0,2,42.81H25L41.77,18.62A2,2,0,0,0,40.17,15.38Z"/></svg></div>
+      <span class="lbl">text/primary sobre oscuro</span>
+    </div>
+    <div>
+      <div class="chip chip-accent"><svg class="logo-ink" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><path d="M70.86,14.15,53.22,37.21c-3,3.77-2,9.31,3.73,9.31H70.86v5.95A7.46,7.46,0,0,1,63.47,60H33.56a6.8,6.8,0,0,1-6.73-6.87V46.61l18.92-27c2.38-3.17,1.08-7.76-3.75-7.76H26.83V7.53A7.46,7.46,0,0,1,34.21,0H64.13a6.8,6.8,0,0,1,6.73,6.87Z"/><path d="M98,15.38H75.07L56.73,39.61a2,2,0,0,0,1.59,3.2h23L99.61,18.62A2,2,0,0,0,98,15.38Z"/><path d="M40.17,15.38H18L.39,39.61A2,2,0,0,0,2,42.81H25L41.77,18.62A2,2,0,0,0,40.17,15.38Z"/></svg></div>
+      <span class="lbl">accent/on-dark</span>
+    </div>
+    <div>
+      <div class="chip chip-onlight"><svg class="logo-ink" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><path d="M70.86,14.15,53.22,37.21c-3,3.77-2,9.31,3.73,9.31H70.86v5.95A7.46,7.46,0,0,1,63.47,60H33.56a6.8,6.8,0,0,1-6.73-6.87V46.61l18.92-27c2.38-3.17,1.08-7.76-3.75-7.76H26.83V7.53A7.46,7.46,0,0,1,34.21,0H64.13a6.8,6.8,0,0,1,6.73,6.87Z"/><path d="M98,15.38H75.07L56.73,39.61a2,2,0,0,0,1.59,3.2h23L99.61,18.62A2,2,0,0,0,98,15.38Z"/><path d="M40.17,15.38H18L.39,39.61A2,2,0,0,0,2,42.81H25L41.77,18.62A2,2,0,0,0,40.17,15.38Z"/></svg></div>
+      <span class="lbl">color original #0d0c13 sobre claro</span>
+    </div>
+  </div>
+  <p class="note"><strong>Cómo se manipula el color:</strong> los tres SVG traen el color incrustado como <code>.cls-1{fill:#0d0c13}</code>. Ese valor es exactamente <strong>bg/page</strong>, así que sobre el tema oscuro el logo queda invisible tal cual viene. Para controlarlo desde el código, reemplace ese <code>fill</code> por <code>currentColor</code>: el SVG heredará el <code>color</code> CSS de su contenedor (aquí se ve en blanco, en acento y en su color original sobre claro). Como componente React se importa el SVG y se colorea con la clase de texto (p. ej. <code>text-white</code> o el token de acento). <strong>Los archivos fuente no se han modificado</strong> — si quiere, los convierto a <code>currentColor</code> de una vez.</p>
+
+  <!-- Componentes / shadcn -->
+  <div class="section-label">Componentes — sistema del proyecto</div>
+  <div class="stack-card">
+    <h3>shadcn/ui</h3>
+    <a class="link url" href="https://ui.shadcn.com" target="_blank" rel="noopener" style="color:var(--color-accent-on-dark);text-decoration:none">ui.shadcn.com</a>
+    <p>Este proyecto usa <b style="color:var(--color-text-primary)">shadcn/ui</b> como sistema de componentes. No es una dependencia que se instala: son componentes que se copian al repositorio (sobre Radix UI + Tailwind), así que el equipo controla y adapta cada uno.</p>
+    <ul class="why">
+      <li><b>Encaja con estos tokens:</b> shadcn se tesea con variables CSS — las <code>--color-*</code> de esta guía se mapean directo a su tema (background, foreground, primary, border…).</li>
+      <li><b>Accesible por dentro:</b> se apoya en Radix UI (primitivas headless), lo que sostiene el objetivo WCAG AA.</li>
+      <li><b>Mismo stack:</b> Tailwind + React + Vite, sin capas de estilo que peleen con la paleta.</li>
+    </ul>
+    <p style="margin-top:14px">Pendiente al configurar el proyecto: mapear los tokens de esta guía al tema de shadcn. No se hace aquí — este documento es la referencia visual, no la configuración.</p>
+  </div>
 
   <!-- CSS variables -->
   <div class="section-label">Tokens en CSS — listos para Tailwind / React + Vite</div>

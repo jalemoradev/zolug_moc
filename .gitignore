@@ -28,3 +28,7 @@
 !/docs/specs/**
 /.claude/metrics.jsonl
 /.claude/metrics.jsonl.*
+
+# AI Framework runtime files (auto-added)
+/.claude/*
+!/.claude/rules/
