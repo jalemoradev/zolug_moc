@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>zolug — Paleta de color</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* --- zolug · tokens de color (tema oscuro) --- */
+    /* Medidos de la aplicación Plasma. WCAG AA verificado. */
+    --color-bg-page:        #0d0c13;
+    --color-bg-surface:     #14121c;
+    --color-bg-elevated:    #1a1922;
+    --color-border-subtle:  #201e2a;
+    --color-border-default: #2a2740;
+    --color-text-primary:   #ffffff;
+    --color-text-muted:     #a2a9ad;
+    --color-accent-solid:   #5a58c2; /* fondo de botón — texto blanco 5.82:1 */
+    --color-accent-on-dark: #7474ef; /* acento como texto/icono — 5.08:1 */
+    --color-accent-logo-ref:#955dcd; /* color real del logo — referencia, NO AA como texto */
+    --color-feedback-error: #dc424a;
+
+    --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --radius-card: 12px;
+    --radius-panel: 16px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    margin:0;
+    background:var(--color-bg-page);
+    color:var(--color-text-primary);
+    font-family:var(--font-sans);
+    font-feature-settings:"tnum" 1; /* numerales tabulares para cifras */
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:1180px; margin:0 auto; padding:clamp(28px,5vw,64px); }
+
+  header h1{
+    margin:0 0 10px;
+    font-weight:600;
+    font-size:clamp(26px,4vw,34px);
+    letter-spacing:-0.02em;
+    text-wrap:balance;
+  }
+  header p{ margin:0; color:var(--color-text-muted); font-size:15px; }
+
+  .section-label{
+    color:var(--color-text-muted);
+    font-size:13px;
+    font-weight:500;
+    margin:44px 0 16px;
+  }
+
+  /* --- demo de profundidad por capas --- */
+  .panel{
+    background:var(--color-bg-surface);
+    border:1px solid var(--color-border-default);
+    border-radius:var(--radius-panel);
+    padding:clamp(20px,3vw,28px);
+  }
+  .panel > .tag{ margin-bottom:16px; }
+  .tag{ color:var(--color-text-muted); font-size:12px; }
+  .card-elevated{
+    background:var(--color-bg-elevated);
+    border:1px solid var(--color-border-subtle);
+    border-radius:var(--radius-card);
+    padding:20px;
+  }
+  .card-elevated h3{ margin:8px 0 8px; font-weight:600; font-size:18px; letter-spacing:-0.01em; }
+  .card-elevated p{ margin:0 0 16px; color:var(--color-text-muted); font-size:14px; max-width:65ch; }
+  .actions{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+  .btn{
+    appearance:none; border:0; cursor:pointer;
+    background:var(--color-accent-solid);
+    color:var(--color-text-primary);
+    font-family:inherit; font-size:14px; font-weight:500;
+    padding:10px 18px; border-radius:8px;
+    transition:filter .18s ease;
+  }
+  .btn:hover{ filter:brightness(1.12); }
+  .btn:focus-visible{ outline:2px solid var(--color-accent-on-dark); outline-offset:2px; }
+  .link{ color:var(--color-accent-on-dark); font-size:14px; font-weight:500; text-decoration:none; }
+  .link:hover{ text-decoration:underline; }
+
+  /* --- grilla de tokens --- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+    gap:20px;
+  }
+  .swatch-card{
+    background:var(--color-bg-surface);
+    border:1px solid var(--color-border-subtle);
+    border-radius:var(--radius-card);
+    padding:20px;
+  }
+  .swatch{
+    height:84px; border-radius:8px;
+    border:1px solid var(--color-border-default);
+    margin-bottom:14px;
+  }
+  .swatch-card .name{ font-weight:500; font-size:16px; }
+  .swatch-card .hex{
+    color:var(--color-text-muted); font-size:13px;
+    letter-spacing:.02em; margin-top:6px; font-variant-numeric:tabular-nums;
+  }
+  .swatch-card .meta{ color:var(--color-text-muted); font-size:12px; margin-top:6px; }
+  .badge-warn{ color:var(--color-feedback-error); }
+
+  /* --- bloque de código copiable --- */
+  pre{
+    background:var(--color-bg-surface);
+    border:1px solid var(--color-border-subtle);
+    border-radius:var(--radius-card);
+    padding:20px 22px;
+    overflow-x:auto;
+    color:var(--color-text-muted);
+    font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size:13px; line-height:1.7;
+  }
+  pre .tok{ color:var(--color-accent-on-dark); }
+  .note{ color:var(--color-text-muted); font-size:13px; margin:12px 0 0; max-width:70ch; }
+  .note strong{ color:var(--color-text-primary); font-weight:600; }
+  footer{ margin-top:56px; padding-top:24px; border-top:1px solid var(--color-border-subtle); color:var(--color-text-muted); font-size:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>zolug — Paleta de color</h1>
+    <p>Tema oscuro · medido de la aplicación Plasma · WCAG AA · tipografía Inter</p>
+  </header>
+
+  <!-- Profundidad por capas -->
+  <div class="section-label">Profundidad por capas — así se construyen los paneles</div>
+  <div class="panel">
+    <div class="tag">bg/surface · panel</div>
+    <div class="card-elevated">
+      <div class="tag">bg/elevated · tarjeta / nodo</div>
+      <h3>Cartera en mora</h3>
+      <p>Texto principal en blanco sobre superficie elevada, con una segunda línea en texto secundario para jerarquía.</p>
+      <div class="actions">
+        <button class="btn" type="button">Registrar gestión</button>
+        <a class="link" href="#" onclick="return false">Ver detalle</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tokens -->
+  <div class="section-label">Tokens</div>
+  <div class="grid" id="grid"></div>
+
+  <!-- CSS variables -->
+  <div class="section-label">Tokens en CSS — listos para Tailwind / React + Vite</div>
+  <pre id="cssout"></pre>
+  <p class="note"><strong>Pendiente, sin inventar:</strong> los colores de gráficas y las píldoras de estado (verde / rojo / amarillo / naranja) de Plasma no se pudieron medir con precisión desde las capturas (antialiasing) y no hay acceso al CSS de la app. Se definirán con valores exactos cuando se conozcan. <strong>accent/logo-ref</strong> es el color real del logo de Plasma; se incluye como referencia pero no cumple AA como texto (4.38:1), por eso la interfaz usa <strong>accent/on-dark</strong>.</p>
+
+  <footer>zolug · design tokens v1 · tema oscuro único · generado para desarrollo directo en HTML/React</footer>
+</div>
+
+<script>
+  // Fuente única de verdad: los tokens con su rol y contraste medido.
+  const TOKENS = [
+    ["bg/page",         "#0D0C13", "Fondo de página",        "base"],
+    ["bg/surface",      "#14121C", "Panel",                  "base"],
+    ["bg/elevated",     "#1A1922", "Tarjeta / nodo",         "base"],
+    ["border/subtle",   "#201E2A", "Separador tenue",        "—"],
+    ["border/default",  "#2A2740", "Borde",                  "—"],
+    ["text/primary",    "#FFFFFF", "Texto principal",        "19.46:1 · AA"],
+    ["text/muted",      "#A2A9AD", "Texto secundario",       "8.17:1 · AA"],
+    ["accent/solid",    "#5A58C2", "Acento · fondo botón",   "blanco 5.82:1 · AA"],
+    ["accent/on-dark",  "#7474EF", "Acento · texto/icono",   "5.08:1 · AA"],
+    ["accent/logo-ref", "#955DCD", "Logo Plasma · referencia","4.38:1 · NO AA"],
+    ["feedback/error",  "#DC424A", "Error",                  "4.56:1 · AA"],
+  ];
+
+  const grid = document.getElementById("grid");
+  for (const [name, hex, rol, nota] of TOKENS){
+    const noAA = nota.includes("NO AA");
+    const card = document.createElement("div");
+    card.className = "swatch-card";
+    card.innerHTML =
+      '<div class="swatch" style="background:'+hex+'"></div>' +
+      '<div class="name">'+name+'</div>' +
+      '<div class="hex">'+hex+'</div>' +
+      '<div class="meta'+(noAA?' badge-warn':'')+'">'+rol+'  ·  '+nota+'</div>';
+    grid.appendChild(card);
+  }
+
+  // Genera el bloque de variables CSS a partir de la misma fuente.
+  const varName = n => "--color-" + n.replace("/", "-");
+  const lines = TOKENS.map(([n,hex]) =>
+    '  <span class="tok">'+varName(n)+'</span>: '+hex.toLowerCase()+';'
+  ).join("\n");
+  document.getElementById("cssout").innerHTML = ":root{\n" + lines + "\n}";
+</script>
+</body>
+</html>
