@@ -127,6 +127,43 @@
   pre .tok{ color:var(--color-accent-on-dark); }
   .note{ color:var(--color-text-muted); font-size:13px; margin:12px 0 0; max-width:70ch; }
   .note strong{ color:var(--color-text-primary); font-weight:600; }
+
+  /* --- sistema de iconos --- */
+  .spec{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:14px 32px;
+    background:var(--color-bg-surface);
+    border:1px solid var(--color-border-subtle);
+    border-radius:var(--radius-card);
+    padding:22px 24px;
+    margin-bottom:20px;
+  }
+  .spec div{ font-size:13px; }
+  .spec dt{ color:var(--color-text-muted); font-size:12px; margin-bottom:3px; }
+  .spec dd{ margin:0; color:var(--color-text-primary); font-variant-numeric:tabular-nums; }
+  .spec code{ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:12px; color:var(--color-accent-on-dark); }
+
+  .icon-group-label{ color:var(--color-text-muted); font-size:12px; font-weight:500; margin:22px 0 12px; }
+  .icon-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(116px,1fr));
+    gap:12px;
+  }
+  .icon-tile{
+    background:var(--color-bg-elevated);
+    border:1px solid var(--color-border-subtle);
+    border-radius:10px;
+    padding:16px 10px 12px;
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    text-align:center;
+  }
+  .icon-tile svg{ width:24px; height:24px; color:var(--color-text-primary); display:block; }
+  .icon-tile .id{ color:var(--color-text-muted); font-size:11px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; word-break:break-word; }
+  .sizes{ display:flex; align-items:flex-end; gap:24px; background:var(--color-bg-elevated); border:1px solid var(--color-border-subtle); border-radius:10px; padding:20px 24px; }
+  .sizes .s{ display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--color-text-primary); }
+  .sizes .s span{ color:var(--color-text-muted); font-size:11px; font-variant-numeric:tabular-nums; }
+
   footer{ margin-top:56px; padding-top:24px; border-top:1px solid var(--color-border-subtle); color:var(--color-text-muted); font-size:12px; }
 </style>
 </head>
@@ -155,6 +192,26 @@
   <!-- Tokens -->
   <div class="section-label">Tokens</div>
   <div class="grid" id="grid"></div>
+
+  <!-- Iconos -->
+  <div class="section-label">Iconos — Lucide (outline / light)</div>
+  <dl class="spec">
+    <div><dt>Librería</dt><dd>Lucide · open source (ISC) · v1.25.0</dd></div>
+    <div><dt>Estilo</dt><dd>Outline / line — sin rellenos sólidos</dd></div>
+    <div><dt>Grosor de trazo</dt><dd>stroke-width 2</dd></div>
+    <div><dt>Rejilla / viewBox</dt><dd>0 0 24 24 · esquinas round</dd></div>
+    <div><dt>Color</dt><dd><code>currentColor</code> → hereda text/primary o accent/on-dark</dd></div>
+    <div><dt>Tamaños</dt><dd>16 · 20 · 24 px</dd></div>
+    <div><dt>En producción</dt><dd><code>import { Menu } from 'lucide-react'</code></dd></div>
+    <div><dt>En este documento</dt><dd>SVG incrustados (offline) desde lucide-static</dd></div>
+  </dl>
+
+  <div class="icon-group-label">Tamaños — mismo icono, tres escalas</div>
+  <div class="sizes" id="sizes"></div>
+
+  <div id="icons"></div>
+
+  <p class="note"><strong>Este es el sistema base de UI, no el mapa final.</strong> Los iconos mostrados son los universales de cualquier panel (navegación, acciones, estados, cuenta). Los iconos <strong>de dominio</strong> —los que representen conceptos propios de la cobranza— quedan <strong>pendientes</strong>: dependen de las pantallas y del modelo de negocio, que aún no están definidos. No se eligen por adelantado para no asumir el negocio.</p>
 
   <!-- CSS variables -->
   <div class="section-label">Tokens en CSS — listos para Tailwind / React + Vite</div>
@@ -199,6 +256,74 @@
     '  <span class="tok">'+varName(n)+'</span>: '+hex.toLowerCase()+';'
   ).join("\n");
   document.getElementById("cssout").innerHTML = ":root{\n" + lines + "\n}";
+
+  // --- Iconos: contenido SVG real de Lucide v1.25.0 (incrustado, offline) ---
+  const ICONS = {
+"bar-chart-3":'<path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',
+"bell":'<path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/>',
+"check":'<path d="M20 6 9 17l-5-5"/>',
+"chevron-down":'<path d="m6 9 6 6 6-6"/>',
+"chevron-right":'<path d="m9 18 6-6-6-6"/>',
+"circle-check":'<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+"circle-x":'<circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/>',
+"clock":'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+"download":'<path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/>',
+"external-link":'<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+"file-text":'<path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+"filter":'<path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"/>',
+"info":'<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>',
+"layout-dashboard":'<rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>',
+"list":'<path d="M3 5h.01"/><path d="M3 12h.01"/><path d="M3 19h.01"/><path d="M8 5h13"/><path d="M8 12h13"/><path d="M8 19h13"/>',
+"log-out":'<path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>',
+"menu":'<path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/>',
+"more-horizontal":'<circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>',
+"pencil":'<path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/>',
+"plus":'<path d="M5 12h14"/><path d="M12 5v14"/>',
+"refresh-cw":'<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>',
+"search":'<path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>',
+"settings":'<path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/>',
+"table":'<path d="M12 3v18"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/>',
+"trash-2":'<path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
+"triangle-alert":'<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+"upload":'<path d="M12 3v12"/><path d="m17 8-5-5-5 5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>',
+"user":'<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+"x":'<path d="M18 6 6 18"/><path d="m6 6 12 12"/>'
+  };
+
+  function svg(name, size){
+    return '<svg xmlns="http://www.w3.org/2000/svg" width="'+size+'" height="'+size+
+      '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '+
+      'stroke-linecap="round" stroke-linejoin="round">'+ICONS[name]+'</svg>';
+  }
+
+  // Grupos por FUNCIÓN DE INTERFAZ (no por negocio).
+  const GROUPS = {
+    "Navegación":        ["menu","search","filter","layout-dashboard","list","table","chevron-down","chevron-right"],
+    "Acciones":          ["plus","pencil","trash-2","download","upload","refresh-cw","more-horizontal","external-link","x"],
+    "Estados y feedback":["check","circle-check","triangle-alert","circle-x","info","clock"],
+    "Cuenta y sistema":  ["user","bell","settings","log-out","file-text","bar-chart-3"],
+  };
+
+  const iconsRoot = document.getElementById("icons");
+  for (const [label, names] of Object.entries(GROUPS)){
+    const h = document.createElement("div");
+    h.className = "icon-group-label";
+    h.textContent = label;
+    iconsRoot.appendChild(h);
+    const g = document.createElement("div");
+    g.className = "icon-grid";
+    for (const n of names){
+      const tile = document.createElement("div");
+      tile.className = "icon-tile";
+      tile.innerHTML = svg(n,24) + '<div class="id">'+n+'</div>';
+      g.appendChild(tile);
+    }
+    iconsRoot.appendChild(g);
+  }
+
+  // Demo de tamaños con un mismo icono.
+  document.getElementById("sizes").innerHTML = [16,20,24]
+    .map(s => '<div class="s">'+svg("search",s)+'<span>'+s+' px</span></div>').join("");
 </script>
 </body>
 </html>

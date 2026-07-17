@@ -2,7 +2,6 @@
 # Only framework-specific rules. Add your project rules below.
 
 /.claude
-/img
 /CLAUDE.md
 /hooks/*.db
 /hooks/__pycache__/
