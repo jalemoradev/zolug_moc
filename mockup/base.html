@@ -14,8 +14,8 @@
     --color-bg-page:        #0d0c13;
     --color-bg-surface:     #14121c;
     --color-bg-elevated:    #1a1922;
-    --color-border-subtle:  #201e2a;
-    --color-border-default: #2a2740;
+    --color-border-subtle:  #201e2a;   /* BORDE: separador tenue. Claro: #E5E1EC */
+    --color-border-default: #2a2740;   /* BORDE: borde estándar (inputs, tarjetas, paneles). Claro: #D8D3E2 */
     --color-text-primary:   #ffffff;
     --color-text-muted:     #a2a9ad;
     --color-accent-solid:   #5a58c2; /* fondo de botón — texto blanco 5.82:1 */
@@ -226,8 +226,11 @@
   </div>
 
   <!-- Tokens -->
-  <div class="section-label">Tokens</div>
+  <div class="section-label">Tokens — tema oscuro</div>
   <div class="grid" id="grid"></div>
+
+  <div class="section-label">Tokens — tema claro <span style="color:var(--color-text-muted);font-weight:400">· derivado, WCAG AA verificado</span></div>
+  <div class="grid" id="gridLight"></div>
 
   <!-- Iconos -->
   <div class="section-label">Iconos — Lucide (outline / light)</div>
@@ -355,11 +358,37 @@
   }
 
   // Genera el bloque de variables CSS a partir de la misma fuente.
+  // --- tema claro (derivado, misma familia violeta, WCAG AA verificado) ---
+  const LIGHT_TOKENS = [
+    ["bg/page",        "#F0EDF5", "Fondo de página",        "base"],
+    ["bg/surface",     "#F8F6FB", "Panel",                  "base"],
+    ["bg/elevated",    "#FFFFFF", "Tarjeta / nodo",         "base"],
+    ["border/subtle",  "#E5E1EC", "Separador tenue",        "—"],
+    ["border/default", "#D8D3E2", "Borde",                  "—"],
+    ["text/primary",   "#14121C", "Texto principal",        "16.01:1 · AA"],
+    ["text/muted",     "#605C6B", "Texto secundario",       "5.60:1 · AA"],
+    ["accent/solid",   "#5A58C2", "Acento · fondo botón",   "blanco 5.82:1 · AA"],
+    ["accent/on-dark", "#5A58C2", "Acento · texto/icono",   "5.02:1 · AA"],
+    ["feedback/error", "#C62F38", "Error",                  "4.69:1 · AA"],
+  ];
+  const gridL = document.getElementById("gridLight");
+  for (const [name, hex, rol, nota] of LIGHT_TOKENS){
+    const card = document.createElement("div");
+    card.className = "swatch-card";
+    card.innerHTML =
+      '<div class="swatch" style="background:'+hex+'"></div>' +
+      '<div class="name">'+name+'</div>' +
+      '<div class="hex">'+hex+'</div>' +
+      '<div class="meta">'+rol+'  ·  '+nota+'</div>';
+    gridL.appendChild(card);
+  }
+
   const varName = n => "--color-" + n.replace("/", "-");
-  const lines = TOKENS.map(([n,hex]) =>
-    '  <span class="tok">'+varName(n)+'</span>: '+hex.toLowerCase()+';'
-  ).join("\n");
-  document.getElementById("cssout").innerHTML = ":root{\n" + lines + "\n}";
+  const darkLines  = TOKENS.map(([n,hex]) => '  <span class="tok">'+varName(n)+'</span>: '+hex.toLowerCase()+';').join("\n");
+  const lightLines = LIGHT_TOKENS.map(([n,hex]) => '  <span class="tok">'+varName(n)+'</span>: '+hex.toLowerCase()+';').join("\n");
+  document.getElementById("cssout").innerHTML =
+    ":root{\n" + darkLines + "\n}\n\n" +
+    ':root[data-theme="light"]{\n' + lightLines + "\n}";
 
   // --- Iconos: contenido SVG real de Lucide v1.25.0 (incrustado, offline) ---
   const ICONS = {
