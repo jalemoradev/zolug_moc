@@ -8,7 +8,7 @@ Flujo de login y recuperación de contraseña.
 ## Estructura — 3 secciones (columnas)
 1. **Rail izquierdo (64px):** isotipo `logo.svg` en **blanco** arriba, "ZOLUG" vertical al medio, y la versión **V.5.3** abajo. Su propia columna, con borde a la derecha.
 2. **Formulario (centro):** logo `logo_text.svg` (isotipo + "zolug") **en blanco** + el login/recuperación.
-3. **Panel de marca (derecha):** logo de **codelab** (empresa desarrolladora) en blanco, el texto "zolug es un desarrollo de codelab", y la prueba social — 5 fotos + `+300` con la leyenda "Más de 300 personas usan los sistemas de codelab hechos a medida".
+3. **Panel de marca (derecha):** jerarquía — logo de **codelab** (blanco) → "zolug es un desarrollo de codelab" → 5 fotos `+300` → **dos cifras grandes** (`+300` personas · `+10` empresas, separadas por un divisor) → línea corta "ya trabajan con los sistemas a la medida de codelab".
 
 Divisores visibles entre las 3 secciones (`rgba(255,255,255,.16)`). En pantallas < 880px se ocultan el rail y el panel de marca; queda solo el formulario.
 
