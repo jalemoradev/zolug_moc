@@ -15,7 +15,7 @@
        1px rgba(255,255,255,.16), subido para que se distinga. Inputs/tarjetas/barras usan
        --border-default (#2a2740). Tema oscuro únicamente. */
     --text-primary:#ffffff; --text-muted:#a2a9ad;
-    --accent-solid:#5a58c2; --accent-on-dark:#7474ef; --error:#dc424a; --ok:#4ea36f;
+    --accent-solid:#5a58c2; --accent-on-dark:#7474ef; --error:#df5158; --ok:#4ea36f;
     --btn-light:#ededf0;
     --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   }
@@ -36,9 +36,10 @@
     justify-content:space-between; padding:22px 0; background:#0b0a10; border-right:1px solid rgba(255,255,255,.16); }
   .pane-rail .rail-logo{ color:#ffffff; display:flex; }   /* logo arriba, en blanco */
   .pane-rail .rail-logo svg{ height:30px; width:auto; }
+  /* #797787 = 4.51:1 sobre #0b0a10. Antes #4b4a54 (2.26:1) — era texto ilegible. */
   .vword{ writing-mode:vertical-rl; transform:rotate(180deg);   /* texto ZOLUG al medio */
-    letter-spacing:.32em; font-size:12px; font-weight:600; color:#4b4a54; }
-  .rail-ver{ font-size:11px; font-weight:500; letter-spacing:.06em; color:#4b4a54; font-variant-numeric:tabular-nums; } /* versión abajo */
+    letter-spacing:.32em; font-size:12px; font-weight:600; color:#797787; }
+  .rail-ver{ font-size:11px; font-weight:500; letter-spacing:.06em; color:#797787; font-variant-numeric:tabular-nums; } /* versión abajo */
   /* logo (SVG real). Lockup del formulario en blanco; esquina en violeta #955dcd. */
   .lockup{ display:flex; color:#ffffff; }
   .lockup svg{ height:34px; width:auto; display:block; }
@@ -56,8 +57,11 @@
     width:100%; height:46px; background:var(--bg-elevated); color:var(--text-primary);
     border:1px solid var(--border-default); border-radius:10px; padding:0 14px;
     font-family:inherit; font-size:14.5px; outline:none; transition:border-color .15s, box-shadow .15s; }
-  input::placeholder{ color:#5f5e68; }
+  input::placeholder{ color:#82818d; } /* 4.54:1 sobre bg/elevated. Antes #5f5e68 (2.73:1) */
   input:focus{ border-color:var(--accent-on-dark); box-shadow:0 0 0 3px rgba(116,116,239,.18); }
+  /* FOCO — SC 2.4.7 (AA) */
+  :where(a,button,[tabindex]):focus-visible{ outline:2px solid var(--accent-on-dark); outline-offset:2px; border-radius:6px; }
+  input:focus-visible{ outline:none; } /* el input ya marca el foco con borde + halo */
   .has-ic input{ padding-left:40px; }
   .toggle{ position:absolute; right:8px; top:50%; transform:translateY(-50%);
     background:none; border:0; color:var(--text-muted); cursor:pointer; padding:8px; border-radius:8px; display:grid; place-items:center; }
@@ -99,7 +103,9 @@
   .proof-cap b{ color:var(--text-primary); font-weight:600; }
   /* stepper */
   .bars{ display:flex; gap:10px; margin:2px 0 24px; }
-  .bars .bar{ height:6px; flex:1; border-radius:3px; background:var(--border-default); transition:background .25s; }
+  /* Las 3 barras SON el indicador de paso (no hay números). La barra apagada debe verse
+     para saber cuántos pasos faltan: #5d578e = 3.02:1. Antes border/default (1.37:1). */
+  .bars .bar{ height:6px; flex:1; border-radius:3px; background:#5d578e; transition:background .25s; }
   .bars .bar.on{ background:var(--accent-on-dark); }
   .bars .bar.done{ background:var(--ok); }
   .reqs{ list-style:none; margin:4px 0 18px; padding:0; display:grid; gap:7px; }

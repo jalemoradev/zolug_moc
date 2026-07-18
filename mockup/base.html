@@ -21,7 +21,7 @@
     --color-accent-solid:   #5a58c2; /* fondo de botón — texto blanco 5.82:1 */
     --color-accent-on-dark: #7474ef; /* acento como texto/icono — 5.08:1 */
     --color-accent-logo-ref:#955dcd; /* color real del logo — referencia, NO AA como texto */
-    --color-feedback-error: #dc424a;
+    --color-feedback-error: #df5158; /* 4.52:1 sobre bg/elevated — el peor fondo. Antes #dc424a (4.08, fallaba) */
 
     --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --radius-card: 12px;
@@ -84,7 +84,9 @@
     transition:filter .18s ease;
   }
   .btn:hover{ filter:brightness(1.12); }
-  .btn:focus-visible{ outline:2px solid var(--color-accent-on-dark); outline-offset:2px; }
+  /* FOCO — SC 2.4.7 (AA): todo elemento operable con teclado debe mostrar dónde está el foco. */
+  :where(a,button,input,select,textarea,[tabindex]):focus-visible{
+    outline:2px solid var(--color-accent-on-dark); outline-offset:2px; border-radius:4px; }
   .link{ color:var(--color-accent-on-dark); font-size:14px; font-weight:500; text-decoration:none; }
   .link:hover{ text-decoration:underline; }
 
@@ -323,25 +325,28 @@
   <!-- CSS variables -->
   <div class="section-label">Tokens en CSS — listos para Tailwind / React + Vite</div>
   <pre id="cssout"></pre>
-  <p class="note"><strong>Pendiente, sin inventar:</strong> los colores de gráficas y las píldoras de estado (verde / rojo / amarillo / naranja) de Plasma no se pudieron medir con precisión desde las capturas (antialiasing) y no hay acceso al CSS de la app. Se definirán con valores exactos cuando se conozcan. <strong>accent/logo-ref</strong> es el color real del logo de Plasma; se incluye como referencia pero no cumple AA como texto (4.38:1), por eso la interfaz usa <strong>accent/on-dark</strong>.</p>
+  <p class="note"><strong>Pendiente, sin inventar:</strong> los colores de gráficas y las píldoras de estado (verde / rojo / amarillo / naranja) de Plasma no se pudieron medir con precisión desde las capturas (antialiasing) y no hay acceso al CSS de la app. Se definirán con valores exactos cuando se conozcan. <strong>accent/logo-ref</strong> es el color real del logo de Plasma; se incluye como referencia pero no cumple AA como texto (3.92:1 sobre bg/elevated), por eso la interfaz usa <strong>accent/on-dark</strong>.</p>
+  <p class="note"><strong>Cómo se miden estos ratios:</strong> siempre contra el <strong>peor fondo</strong> de cada tema — bg/elevated en oscuro, bg/page en claro. Medir solo contra el fondo de página oculta fallas sobre paneles y tarjetas, que es justo donde vive la mayoría del texto. Verificado con la fórmula normativa de <a class="link" href="https://www.w3.org/TR/WCAG21/#dfn-contrast-ratio" target="_blank" rel="noopener">WCAG 2.1</a> (umbral de linealización 0.04045, vigente desde mayo 2021).</p>
 
   <footer>zolug · design tokens v1 · tema oscuro único · generado para desarrollo directo en HTML/React</footer>
 </div>
 
 <script>
   // Fuente única de verdad: los tokens con su rol y contraste medido.
+  // Los ratios son el PEOR CASO: medidos contra bg/elevated (#1A1922), el fondo más claro
+  // de los tres. Antes se medían solo contra bg/page y eso ocultaba fallas sobre paneles.
   const TOKENS = [
     ["bg/page",         "#0D0C13", "Fondo de página",        "base"],
     ["bg/surface",      "#14121C", "Panel",                  "base"],
     ["bg/elevated",     "#1A1922", "Tarjeta / nodo",         "base"],
     ["border/subtle",   "#201E2A", "Separador tenue",        "—"],
     ["border/default",  "#2A2740", "Borde",                  "—"],
-    ["text/primary",    "#FFFFFF", "Texto principal",        "19.46:1 · AA"],
-    ["text/muted",      "#A2A9AD", "Texto secundario",       "8.17:1 · AA"],
+    ["text/primary",    "#FFFFFF", "Texto principal",        "17.41:1 · AA"],
+    ["text/muted",      "#A2A9AD", "Texto secundario",       "7.31:1 · AA"],
     ["accent/solid",    "#5A58C2", "Acento · fondo botón",   "blanco 5.82:1 · AA"],
-    ["accent/on-dark",  "#7474EF", "Acento · texto/icono",   "5.08:1 · AA"],
-    ["accent/logo-ref", "#955DCD", "Logo Plasma · referencia","4.38:1 · NO AA"],
-    ["feedback/error",  "#DC424A", "Error",                  "4.56:1 · AA"],
+    ["accent/on-dark",  "#7474EF", "Acento · texto/icono",   "4.55:1 · AA"],
+    ["accent/logo-ref", "#955DCD", "Logo Plasma · referencia","3.92:1 · NO AA"],
+    ["feedback/error",  "#DF5158", "Error",                  "4.52:1 · AA"],
   ];
 
   const grid = document.getElementById("grid");
@@ -359,6 +364,8 @@
 
   // Genera el bloque de variables CSS a partir de la misma fuente.
   // --- tema claro (derivado, misma familia violeta, WCAG AA verificado) ---
+  // Peor caso = bg/page (#F0EDF5), el fondo más oscuro de los tres. Sobre surface y
+  // elevated todos los ratios suben, así que estas cifras son el piso garantizado.
   const LIGHT_TOKENS = [
     ["bg/page",        "#F0EDF5", "Fondo de página",        "base"],
     ["bg/surface",     "#F8F6FB", "Panel",                  "base"],

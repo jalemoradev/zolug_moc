@@ -32,3 +32,4 @@
 # AI Framework runtime files (auto-added)
 /.claude/*
 !/.claude/rules/
+.brainstorm/
