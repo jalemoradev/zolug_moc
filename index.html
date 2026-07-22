@@ -66,7 +66,9 @@
   const ICONS = {
     "palette":'<circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>',
     "lock":'<circle cx="12" cy="16" r="1"/><rect x="3" y="10" width="18" height="12" rx="2"/><path d="M7 10V7a5 5 0 0 1 10 0v3"/>',
-    "layout":'<rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>'
+    "layout":'<rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>',
+    "users":'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/>',
+    "id-card":'<path d="M16 10h2"/><path d="M16 14h2"/><path d="M6.17 15a3 3 0 0 1 5.66 0"/><circle cx="9" cy="11" r="2"/><rect x="2" y="5" width="20" height="14" rx="2"/>'
   };
   function svg(n){ return '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+ICONS[n]+'</svg>'; }
 
@@ -80,6 +82,12 @@
     { icon:"layout", title:"Dashboard (layout)", path:"mockup/layout/dashboard.html",
       desc:"App-shell: header, rail de opciones y contenido vacío. Switch de tema.",
       tags:["Oscuro + claro","App-shell"] },
+    { icon:"users", title:"Clientes (listado)", path:"mockup/modules/clients/clients.html",
+      desc:"Lista de clientes con buscador (nombre/cédula/teléfono), tabla en contenedor y paginador. Cada fila abre el detalle.",
+      tags:["Oscuro + claro","Listado"] },
+    { icon:"id-card", title:"Detalle de cliente", path:"mockup/modules/clients/client_detali.html",
+      desc:"Ficha de la persona: contacto, ubicación, salud, trabajo y bienes; modal por dominio para registrar y marcar principal/actual.",
+      tags:["Oscuro + claro","Ficha"] },
   ];
 
   const grid = document.getElementById("grid");

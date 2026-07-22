@@ -1,0 +1,8 @@
+{
+  "task": "Lista de clientes (clients.html) — tabla con 4 columnas, patrones de base.md",
+  "timestamp": "2026-07-22T01:10:00.000Z",
+  "skills": ["ui-ux-pro-max", "impeccable"],
+  "references": ["craft.md", "product.md", "layout.md", "typeset.md"],
+  "design_system": "design-system/zolug/MASTER.md",
+  "notas": "ui-ux-pro-max --design-system (Data-Dense Dashboard, ancho completo). impeccable product register: color minimo, tabla densa, estados (loading/empty/hover/focus), fila navegable al detalle, responsive stack. Shell + base.md (cabecera 80px + boton volver). Columnas SOLO las pedidas por el usuario: tipo doc, numero doc, nombre, telefono principal. Datos de muestra = fixture (flag). NO se inventan columnas fuera de lo pedido (REGLA 0)."
+}

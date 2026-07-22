@@ -23,7 +23,35 @@
     --color-accent-logo-ref:#955dcd; /* color real del logo — referencia, NO AA como texto */
     --color-feedback-error: #df5158; /* 4.52:1 sobre bg/elevated — el peor fondo. Antes #dc424a (4.08, fallaba) */
 
+    /* --- bordes del layout (canónicos; mismos del shell dashboard.html) --- */
+    --border: rgba(255,255,255,.22); /* borde de contenedores: panel, tarjetas, tablas, secciones · CLARO: rgba(0,0,0,.32) */
+    --hair:   rgba(255,255,255,.06); /* divisores finos internos · CLARO: rgba(0,0,0,.08) */
+
     --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    /* --- escala tipográfica (independiente del tema) ---
+       6 tamaños · piso 14px · cuerpo 16px. Prohibido usar tamaños fuera de estos tokens. */
+    --fs-display-xl: 32px;  /* cifras hero / marketing */
+    --fs-display-l:  24px;  /* título de página (h1) */
+    --fs-heading:    20px;  /* título de sección / card / drawer */
+    --fs-subheading: 18px;  /* nombre destacado / subtítulo */
+    --fs-body:       16px;  /* párrafos y datos — piso de lectura */
+    --fs-label:      14px;  /* etiquetas small-caps, headers de tabla, badges */
+    --fs-caption:    14px;  /* descripción auxiliar */
+
+    --fw-regular:  400;
+    --fw-medium:   500;
+    --fw-semibold: 600;
+    --fw-bold:     700;
+
+    --lh-tight:  1.2;   /* display */
+    --lh-snug:   1.35;  /* headings / subheadings */
+    --lh-normal: 1.5;   /* cuerpo */
+
+    --ls-tight: -0.02em;  /* display */
+    --ls-snug:  -0.01em;  /* headings */
+    --ls-label:  0.05em;  /* labels en mayúsculas */
+
     --radius-card: 12px;
     --radius-panel: 16px;
   }
@@ -114,6 +142,67 @@
   }
   .swatch-card .meta{ color:var(--color-text-muted); font-size:12px; margin-top:6px; }
   .badge-warn{ color:var(--color-feedback-error); }
+
+  /* --- escala tipográfica --- */
+  .type-list{
+    background:var(--color-bg-surface);
+    border:1px solid var(--color-border-subtle);
+    border-radius:var(--radius-card);
+    overflow:hidden;
+  }
+  .type-row{
+    display:grid;
+    grid-template-columns:1fr minmax(240px, 320px);
+    gap:28px;
+    align-items:center;
+    padding:22px 26px;
+    border-bottom:1px solid var(--color-border-subtle);
+  }
+  .type-row:last-child{ border-bottom:0; }
+  .type-specimen{
+    color:var(--color-text-primary);
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-variant-numeric:tabular-nums;
+  }
+  .type-meta{ display:flex; flex-direction:column; gap:5px; }
+  .type-role{ font-size:var(--fs-body); font-weight:var(--fw-semibold); color:var(--color-text-primary); }
+  .type-token{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:12px; color:var(--color-accent-on-dark); word-break:break-all;
+  }
+  .type-specs{ font-size:12px; color:var(--color-text-muted); font-variant-numeric:tabular-nums; }
+  .type-use{ font-size:12px; color:var(--color-text-muted); }
+  @media (max-width:640px){
+    .type-row{ grid-template-columns:1fr; gap:12px; }
+    .type-specimen{ white-space:normal; }
+  }
+
+  /* --- cabecera de pantalla (page header 80px) --- */
+  .ph-demo{ border:1px solid var(--color-border-subtle); border-radius:var(--radius-card);
+    overflow:hidden; background:var(--color-bg-surface); }
+  .ph{ height:80px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:0 24px; border-bottom:1px solid var(--color-border-default); }
+  .ph-title{ margin:0; font-size:20px; font-weight:600; letter-spacing:-0.01em; }
+  .ph-desc{ margin:3px 0 0; font-size:14px; color:var(--color-text-muted); }
+  .ph-l{ display:flex; align-items:center; gap:16px; min-width:0; }
+  .ph-back{ width:40px; height:40px; flex:none; display:grid; place-items:center; border-radius:10px;
+    border:1px solid var(--color-border-default); background:var(--color-bg-elevated); color:var(--color-text-muted);
+    font-family:inherit; cursor:pointer; }
+  .ph-back svg{ width:18px; height:18px; }
+  .ph-divider{ width:1px; height:34px; background:var(--color-border-default); flex:none; }
+  .ph-r{ display:flex; gap:10px; flex:none; }
+  .ph-btn{ height:38px; padding:0 16px; border-radius:9px; border:1px solid var(--color-border-default);
+    background:var(--color-bg-elevated); color:var(--color-text-primary); font-size:14px; font-weight:500;
+    font-family:inherit; cursor:pointer; }
+  .ph-btn.primary{ background:var(--color-accent-solid); border-color:var(--color-accent-solid); color:#fff; }
+  .ph-body{ padding:20px 24px; color:var(--color-text-muted); font-size:14px; min-height:64px; }
+  @media (max-width:760px){
+    .ph{ height:auto; min-height:80px; flex-direction:column; align-items:flex-start; padding:14px 16px; }
+    .ph-r{ width:100%; }
+  }
 
   /* --- bloque de código copiable --- */
   pre{
@@ -230,9 +319,127 @@
   <!-- Tokens -->
   <div class="section-label">Tokens — tema oscuro</div>
   <div class="grid" id="grid"></div>
+  <p class="note"><strong>Regla dura — estos son los colores del modo oscuro.</strong> Los tokens de arriba <strong>son</strong> la paleta oscura de zolug (medida de Plasma, WCAG AA verificado). <strong>Toda pantalla de módulo</strong> toma sus colores oscuros de estos tokens exactos, a través de las variables del shell <code>layout/dashboard.html</code> —<code>--bg-page</code> (#0d0c13), <code>--bg-surface</code> (#14121c), <code>--bg-elevated</code> (#1a1922), <code>--text-primary</code> (#ffffff), <code>--text-muted</code> (#a2a9ad), <code>--accent-solid</code> (#5a58c2), <code>--accent-on-dark</code> (#7474ef), <code>--logo</code> (#955dcd), <code>--error</code> (#df5158)— más <code>--border</code> y <code>--hair</code> (ver Bordes). <strong>Prohibido inventar, hardcodear o sustituir</strong> un color oscuro fuera de esta paleta.</p>
 
   <div class="section-label">Tokens — tema claro <span style="color:var(--color-text-muted);font-weight:400">· derivado, WCAG AA verificado</span></div>
   <div class="grid" id="gridLight"></div>
+
+  <!-- Bordes -->
+  <div class="section-label">Bordes — tokens del layout (ambos temas)</div>
+  <div class="grid">
+    <div class="swatch-card">
+      <div class="swatch" style="background:transparent;border:2px solid var(--border)"></div>
+      <div class="name">--border</div>
+      <div class="hex">oscuro rgba(255,255,255,.22) · claro rgba(0,0,0,.32)</div>
+      <div class="meta">Borde de contenedores: panel, tarjetas, tablas, secciones — el que separa</div>
+    </div>
+    <div class="swatch-card">
+      <div class="swatch" style="background:transparent;border:2px solid var(--hair)"></div>
+      <div class="name">--hair</div>
+      <div class="hex">oscuro rgba(255,255,255,.06) · claro rgba(0,0,0,.08)</div>
+      <div class="meta">Divisores finos internos (líneas sutiles dentro de un bloque)</div>
+    </div>
+  </div>
+  <p class="note"><strong>Regla dura:</strong> toda pantalla toma sus bordes de <code>--border</code> (contenedores) y <code>--hair</code> (divisores internos), en los dos temas. Prohibido inventar o hardcodear otro color de borde.</p>
+
+  <!-- Estructura de pantalla -->
+  <div class="section-label">Estructura de pantalla — ancho completo + cabecera 80px <span style="color:var(--color-text-muted);font-weight:400">· CRM · responsive hasta tablet</span></div>
+  <div class="ph-demo">
+    <header class="ph">
+      <div class="ph-l">
+        <button class="ph-back" aria-label="Volver" title="Volver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg></button>
+        <span class="ph-divider" aria-hidden="true"></span>
+        <div>
+          <h2 class="ph-title">Título de la pantalla</h2>
+          <p class="ph-desc">Descripción breve de lo que muestra o se hace aquí</p>
+        </div>
+      </div>
+      <div class="ph-r">
+        <button class="ph-btn">Acción secundaria</button>
+        <button class="ph-btn primary">Acción primaria</button>
+      </div>
+    </header>
+    <div class="ph-body">Contenido de la pantalla — ocupa el <strong>100% del ancho</strong>. Densidad de CRM: información clara, organizada, cada espacio aprovechado.</div>
+  </div>
+  <p class="note"><strong>Regla de toda pantalla de módulo (CRM):</strong> ocupa el <strong>100% del ancho</strong> —prohibidas las columnas centradas angostas— y arranca con esta <strong>cabecera de 80px</strong> (extremo izquierdo: <strong>botón "Volver"</strong> —flecha <code>arrow-left</code>, cuadrado 40×40, borde <code>--border</code> + fondo <code>--bg-surface</code>, separado por un hairline vertical— · izquierda: título + descripción · derecha: botones de acción), separada por un hairline. <strong>Responsive hasta tablet</strong> (~768px): la cabecera apila sus acciones y las rejillas reflujan; sin scroll horizontal. Es un <strong>call center</strong>: densidad útil y sobria, color al mínimo. Detalle en <code>base.md → Estructura de pantalla</code>.</p>
+
+  <!-- Tipografía — escala -->
+  <div class="section-label">Tipografía — escala de tamaños <span style="color:var(--color-text-muted);font-weight:400">· Inter · 6 tamaños · piso 14px · cuerpo 16px</span></div>
+  <div class="type-list">
+    <div class="type-row">
+      <div class="type-specimen" style="font-size:var(--fs-display-xl);font-weight:var(--fw-bold);line-height:var(--lh-tight);letter-spacing:var(--ls-tight)">$1.240.500</div>
+      <div class="type-meta">
+        <span class="type-role">Display XL</span>
+        <span class="type-token">--fs-display-xl</span>
+        <span class="type-specs">32px · 700 · 1.2 · −0.02em</span>
+        <span class="type-use">Cifras hero / marketing</span>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-specimen" style="font-size:var(--fs-display-l);font-weight:var(--fw-bold);line-height:var(--lh-tight);letter-spacing:var(--ls-tight)">Clientes</div>
+      <div class="type-meta">
+        <span class="type-role">Display L</span>
+        <span class="type-token">--fs-display-l</span>
+        <span class="type-specs">24px · 700 · 1.2 · −0.02em</span>
+        <span class="type-use">Título de página (h1)</span>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-specimen" style="font-size:var(--fs-heading);font-weight:var(--fw-semibold);line-height:var(--lh-snug);letter-spacing:var(--ls-snug)">Procesos jurídicos</div>
+      <div class="type-meta">
+        <span class="type-role">Heading</span>
+        <span class="type-token">--fs-heading</span>
+        <span class="type-specs">18px · 600 · 1.35 · −0.01em</span>
+        <span class="type-use">Sección / card / drawer</span>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-specimen" style="font-size:var(--fs-subheading);font-weight:var(--fw-semibold);line-height:var(--lh-snug);letter-spacing:var(--ls-snug)">Marta Lucía Restrepo</div>
+      <div class="type-meta">
+        <span class="type-role">Subheading</span>
+        <span class="type-token">--fs-subheading</span>
+        <span class="type-specs">16px · 600 · 1.35 · −0.01em</span>
+        <span class="type-use">Nombre destacado / subtítulo</span>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-specimen" style="font-size:var(--fs-body);font-weight:var(--fw-regular);line-height:var(--lh-normal)">Texto de lectura y datos del cliente.</div>
+      <div class="type-meta">
+        <span class="type-role">Body</span>
+        <span class="type-token">--fs-body</span>
+        <span class="type-specs">14px · 400 · 1.5</span>
+        <span class="type-use">Párrafos y datos — piso de lectura</span>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-specimen" style="font-size:var(--fs-body);font-weight:var(--fw-semibold);line-height:var(--lh-normal)">Valor destacado del cliente</div>
+      <div class="type-meta">
+        <span class="type-role">Body strong</span>
+        <span class="type-token">--fs-body + --fw-semibold</span>
+        <span class="type-specs">14px · 600 · 1.5</span>
+        <span class="type-use">Valor destacado dentro del cuerpo</span>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-specimen" style="font-size:var(--fs-label);font-weight:var(--fw-semibold);line-height:var(--lh-snug);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--color-text-muted)">Etiqueta · small-caps</div>
+      <div class="type-meta">
+        <span class="type-role">Label</span>
+        <span class="type-token">--fs-label</span>
+        <span class="type-specs">12px · 600 · 0.05em · MAYÚS</span>
+        <span class="type-use">Etiquetas, headers de tabla, badges</span>
+      </div>
+    </div>
+    <div class="type-row">
+      <div class="type-specimen" style="font-size:var(--fs-caption);font-weight:var(--fw-regular);line-height:var(--lh-snug);color:var(--color-text-muted)">Descripción auxiliar o texto de ayuda</div>
+      <div class="type-meta">
+        <span class="type-role">Caption</span>
+        <span class="type-token">--fs-caption</span>
+        <span class="type-specs">12px · 400</span>
+        <span class="type-use">Descripción auxiliar</span>
+      </div>
+    </div>
+  </div>
+  <p class="note"><strong>Regla dura:</strong> ningún texto por debajo de <strong>14px</strong>; el cuerpo de lectura es <strong>16px</strong>. Prohibido inventar tamaños fuera de estos 6 tokens. WCAG no fija un mínimo de píxeles —lo que exige es que el texto se pueda ampliar al 200% sin romperse (<a class="link" href="https://www.w3.org/TR/WCAG21/#resize-text" target="_blank" rel="noopener">SC 1.4.4</a>)— pero el piso de 14px y el cuerpo de 16px son la política del proyecto para baja visión, presbicia y astigmatismo. Estos tamaños <strong>no</strong> resuelven daltonismo: eso es color, no tamaño. Tamaños iguales o mayores a 18px (o 14px en negrita) cuentan como “texto grande” y bajan su umbral de contraste a 3:1.</p>
 
   <!-- Iconos -->
   <div class="section-label">Iconos — Lucide (outline / light)</div>

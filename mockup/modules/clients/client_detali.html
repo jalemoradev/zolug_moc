@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>zolug · Layout — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== tokens (de base.html · tema oscuro) ===== */
+  :root{
+    --bg-page:#0d0c13; --bg-surface:#14121c; --bg-elevated:#1a1922;
+    --text-primary:#ffffff; --text-muted:#a2a9ad;
+    --accent-solid:#5a58c2; --accent-on-dark:#7474ef; --logo:#955dcd; --error:#df5158;
+    /* bordes SUAVES — hairlines de baja opacidad, como Plasma */
+    --hair:rgba(255,255,255,.06);
+    --border:rgba(255,255,255,.22);
+    --dot:rgba(255,255,255,.04);
+    --hover:rgba(255,255,255,.04);
+    --topbar-h:50px; --rail-w:60px;
+    --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    /* escala tipográfica (de base.html · independiente del tema) */
+    --fs-display-xl:32px; --fs-display-l:24px; --fs-heading:20px; --fs-subheading:18px; --fs-body:16px; --fs-label:14px; --fs-caption:14px;
+    --fw-regular:400; --fw-medium:500; --fw-semibold:600; --fw-bold:700;
+    --lh-tight:1.2; --lh-snug:1.35; --lh-normal:1.5;
+    --ls-tight:-0.02em; --ls-snug:-0.01em; --ls-label:0.05em;
+  }
+  /* tema claro — paleta OFICIAL, sincronizada con base.html (ya no es provisional) */
+  :root[data-theme="light"]{
+    --bg-page:#f0edf5; --bg-surface:#f8f6fb; --bg-elevated:#ffffff;
+    --text-primary:#14121c; --text-muted:#605c6b;
+    --accent-solid:#5a58c2; --accent-on-dark:#5a58c2; --error:#c62f38;
+    --hair:rgba(0,0,0,.08); --border:rgba(0,0,0,.32);
+    --dot:rgba(0,0,0,.05); --hover:rgba(0,0,0,.04);
+    --logo:#14121c;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{ margin:0; background:var(--bg-page); color:var(--text-primary); font-family:var(--font);
+    -webkit-font-smoothing:antialiased; font-feature-settings:"tnum" 1; transition:background .2s,color .2s; }
+  button{ font-family:inherit; }
+
+  .app{ height:100vh; display:flex; flex-direction:column; }
+
+  /* ===== TOPBAR ===== */
+  .topbar{ height:var(--topbar-h); flex:none; display:grid; grid-template-columns:1fr auto 1fr;
+    align-items:center; gap:16px; padding:0 20px; }
+  .tb-left{ justify-self:start; }
+  .tb-center{ justify-self:center; }
+  .tb-right{ justify-self:end; display:flex; align-items:center; gap:14px; }
+
+  /* logo suelto, con color de marca */
+  .logo{ display:flex; align-items:center; gap:11px; }
+  .logo .mark{ height:24px; display:flex; color:var(--logo); }
+  .logo .mark svg{ height:24px; width:auto; }
+  .logo .mark svg path{ fill:currentColor; }
+  .logo .wm{ font-weight:600; font-size:var(--fs-subheading); letter-spacing:.2em; color:var(--text-primary); }
+
+  /* usuario centro — breadcrumb: avatar / rol / nombre */
+  .crumb{ display:flex; align-items:center; gap:14px; }
+  .crumb .ava{ width:34px; height:34px; border-radius:50%; overflow:hidden; background:var(--bg-elevated); flex:none; }
+  .crumb .ava img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .crumb .sep{ color:var(--text-muted); opacity:.45; font-size:var(--fs-subheading); font-weight:300; transform:skewX(-12deg); }
+  .crumb .ci{ font-size:var(--fs-body); font-weight:500; color:var(--text-primary); white-space:nowrap; }
+
+  /* Switch sol / luna. Los iconos NO se mueven: lo que se desliza es una pastilla de
+     acento que se posa detrás del icono activo, y ese icono se invierte a oscuro.
+     Antes la perilla era un disco gris que pasaba por DEBAJO del icono fijo y chocaba
+     con él; además el gris no pertenecía a la paleta. */
+  .switch{ border:0; background:none; padding:0; cursor:pointer; }
+  .track{ position:relative; display:block; width:72px; height:36px; border-radius:999px;
+    background:var(--bg-surface); border:1px solid var(--border); }
+  .knob{ position:absolute; top:2px; left:2px; width:30px; height:30px; border-radius:50%;
+    background:var(--accent-on-dark); transition:transform .2s ease; z-index:1; }
+  :root[data-theme="dark"] .knob{ transform:translateX(36px); }
+  :root[data-theme="light"] .knob{ transform:translateX(0); }
+  .end{ position:absolute; top:50%; transform:translateY(-50%); z-index:2; display:inline-flex; }
+  .end-sun{ left:9px; } .end-moon{ right:9px; }
+  /* icono ACTIVO = sobre la pastilla, en color de fondo. INACTIVO = text-muted pleno. */
+  :root[data-theme="dark"] .end-moon{ color:var(--bg-page); }
+  :root[data-theme="dark"] .end-sun{ color:var(--text-muted); }
+  :root[data-theme="light"] .end-sun{ color:#ffffff; }
+  :root[data-theme="light"] .end-moon{ color:var(--text-muted); }
+
+  /* mismo color que el borde del main */
+  .divider{ width:1px; height:26px; background:var(--border); }
+
+  /* acciones — iconos planos */
+  .actions{ display:flex; align-items:center; gap:4px; }
+  .ic-btn{ width:40px; height:40px; border:0; background:none; color:var(--text-muted);
+    display:grid; place-items:center; cursor:pointer; border-radius:9px; position:relative; transition:.15s; }
+  .ic-btn:hover{ color:var(--text-primary); background:var(--hover); }
+  .ic-btn .dot{ position:absolute; top:9px; right:10px; width:7px; height:7px; border-radius:50%;
+    background:var(--error); border:2px solid var(--bg-page); }
+
+  /* ===== BODY ===== */
+  .body{ flex:1; display:flex; min-height:0; }
+
+  /* rail — solo las opciones (iconos) */
+  .rail{ width:var(--rail-w); flex:none;
+    display:flex; flex-direction:column; align-items:center; padding:12px 0; gap:6px; }
+  .rail-item{ width:44px; height:44px; border:0; background:none; color:var(--text-muted);
+    display:grid; place-items:center; cursor:pointer; border-radius:12px; transition:.15s; position:relative; }
+  .rail-item:hover{ background:var(--hover); color:var(--text-primary); }
+  .rail-item.active{ background:color-mix(in srgb, var(--accent-on-dark) 15%, transparent); color:var(--accent-on-dark); }
+  /* BARRA de opción activa — SC 1.4.1 (nivel A): el estado no puede distinguirse SOLO por color.
+     El icono activo y el inactivo tienen casi la misma luminancia (1.61:1), muy por debajo del
+     3:1 que eximiría. La barra es una diferencia de FORMA (está o no está), no de color.
+     Mismo mecanismo que usa la pestaña activa de la referencia (img/hero.webp). */
+  .rail-item.active::before{ content:""; position:absolute; left:-8px; top:50%;
+    transform:translateY(-50%); width:3px; height:22px; border-radius:0 3px 3px 0;
+    background:var(--accent-on-dark); }
+  .rail-logout{ margin-top:auto; }  /* cerrar sesión: al fondo del rail */
+
+  /* FOCO — SC 2.4.7 (AA). No había ninguna regla: quien navega con teclado no veía dónde estaba. */
+  :where(a,button,[tabindex]):focus-visible{ outline:2px solid var(--accent-on-dark);
+    outline-offset:2px; border-radius:10px; }
+
+  /* contenido — vacío. El borde va AQUÍ (no en header ni rail): así el header+rail
+     se leen como un solo bloque y el contenido es un panel inset con esquina redondeada. */
+  .content{ flex:1; min-width:0; overflow:auto;
+    border-top:1px solid var(--border); border-left:1px solid var(--border);
+    border-top-left-radius:18px;
+    background-color:var(--bg-page);
+    background-image:radial-gradient(circle, var(--dot) 1px, transparent 1px);
+    background-size:24px 24px; }
+
+  /* ===== CABECERA DE PANTALLA — 80px, ancho completo (base.md · Estructura de pantalla) =====
+     Título + descripción a la IZQUIERDA · botones de acción a la DERECHA · hairline inferior · sticky. */
+  .screen-head{ min-height:80px; display:flex; align-items:center; justify-content:space-between;
+    gap:16px; padding:16px 32px; border-bottom:1px solid var(--hair);
+    position:sticky; top:0; z-index:5; background:var(--bg-page); border-top-left-radius:18px; }
+  .sh-titles{ min-width:0; }
+  .sh-titles h1{ margin:0; font-size:var(--fs-display-l); font-weight:var(--fw-bold);
+    letter-spacing:var(--ls-tight); line-height:var(--lh-tight); }
+  .sh-desc{ margin-top:3px; font-size:var(--fs-label); color:var(--text-muted); line-height:var(--lh-snug); }
+  .sh-actions{ display:flex; align-items:center; gap:8px; flex:none; }
+  .sh-left{ display:flex; align-items:center; gap:16px; min-width:0; }
+  .sh-divider{ width:1px; height:34px; background:var(--border); flex:none; }
+  .sh-back{ flex:none; }
+  .btn{ height:38px; padding:0 16px; border-radius:10px; border:1px solid var(--border);
+    background:transparent; color:var(--text-primary); font-size:var(--fs-label); font-weight:var(--fw-medium);
+    display:inline-flex; align-items:center; gap:8px; cursor:pointer; white-space:nowrap; transition:.15s; }
+  .btn:hover{ background:var(--hover); }
+  .btn.primary{ background:var(--accent-solid); border-color:transparent; color:#fff; }
+  .btn.primary:hover{ filter:brightness(1.08); }
+  .btn svg{ width:16px; height:16px; }
+  @media (max-width:640px){ .screen-head{ padding:16px 20px; } .btn .txt{ display:none; } }
+
+  /* ===== Panel de identidad (de "Detalle de cliente — Tablas por dominio", tal cual) ===== */
+  .cd-body{ padding:24px; }
+  .cd-grid{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px; align-items:start; }
+  .cd-span{ grid-column:1 / -1; }
+  .cd-panel{ background:var(--bg-surface); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+  .cd-person{ display:flex; align-items:center; gap:18px; padding:18px 20px; flex-wrap:wrap; }
+  .cd-ava{ width:56px; height:56px; border-radius:50%; flex:none; display:grid; place-items:center;
+    background:var(--bg-elevated); border:1px solid var(--border);
+    font-size:var(--fs-heading); font-weight:var(--fw-semibold); letter-spacing:var(--ls-snug);
+    color:var(--text-primary); }
+  .cd-person-main{ min-width:0; flex:1; }
+  .cd-person-name{ font-size:var(--fs-subheading); font-weight:var(--fw-semibold);
+    letter-spacing:var(--ls-snug); line-height:var(--lh-snug); margin:0; }
+  .cd-person-doc{ font-size:var(--fs-caption); color:var(--text-muted); margin:3px 0 0;
+    font-variant-numeric:tabular-nums; }
+  .cd-person-doc strong{ color:var(--text-primary); font-weight:var(--fw-semibold); }
+  .cd-iconbtn{ width:40px; height:40px; display:grid; place-items:center; border-radius:10px;
+    border:1px solid var(--border); background:var(--bg-surface); color:var(--text-muted); cursor:pointer; transition:.15s; }
+  .cd-iconbtn:hover{ color:var(--text-primary); background:var(--bg-elevated); }
+  .cd-idnav{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-left:auto; }
+  /* Secciones internas de la card (divididas por línea + label) */
+  .cd-sec{ border-top:1px solid var(--hair); padding:14px 20px 18px; }
+  .cd-sec-label{ display:block; font-size:var(--fs-label); font-weight:var(--fw-semibold);
+    letter-spacing:var(--ls-label); text-transform:uppercase; color:var(--text-muted); margin-bottom:14px; }
+  /* Grilla de campos COMPARTIDA por todas las secciones → columnas alineadas entre secciones */
+  .cd-fields{ display:grid; grid-template-columns:repeat(var(--fcols,5), minmax(0,1fr)); gap:16px 24px; margin:0; }
+  .cd-fields dt{ font-size:var(--fs-label); font-weight:var(--fw-semibold); letter-spacing:var(--ls-label);
+    text-transform:uppercase; color:var(--text-muted); margin:0 0 3px; }
+  .cd-fields dd{ font-size:var(--fs-body); color:var(--text-primary); margin:0;
+    font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+  .cd-mut{ color:var(--text-muted); }
+  /* Colecciones sin "principal" (vehículos, propiedades): icono + nombre + badge de conteo, lado a lado */
+  .cd-colls{ display:flex; flex-wrap:wrap; gap:16px 40px; }
+  .cd-coll{ display:flex; align-items:center; gap:10px; }
+  .cd-coll-ic{ color:var(--text-muted); display:inline-flex; flex:none; }
+  .cd-coll-name{ font-size:var(--fs-label); font-weight:var(--fw-semibold); letter-spacing:var(--ls-label);
+    text-transform:uppercase; color:var(--text-muted); }
+  .cd-badge{ display:inline-flex; align-items:center; height:24px; padding:0 10px; border-radius:999px;
+    background:var(--hover); color:var(--text-primary); font-size:var(--fs-label); font-weight:var(--fw-semibold);
+    font-variant-numeric:tabular-nums; }
+  /* Dropdowns de la card: Créditos y Procesos jurídicos */
+  .cd-ddrow{ margin-left:auto; display:flex; gap:10px; flex-wrap:wrap; }
+  .cd-dd{ position:relative; }
+  .cd-ddbtn{ display:inline-flex; align-items:center; gap:8px; height:38px; padding:0 12px; border-radius:10px;
+    border:1px solid var(--border); background:var(--bg-surface); color:var(--text-primary);
+    font-size:var(--fs-label); font-weight:var(--fw-medium); cursor:pointer; transition:.15s; white-space:nowrap; }
+  .cd-ddbtn:hover{ background:var(--bg-elevated); }
+  .cd-ddcount{ display:inline-flex; align-items:center; height:20px; padding:0 7px; border-radius:999px;
+    background:var(--hover); font-size:var(--fs-label); font-weight:var(--fw-semibold); font-variant-numeric:tabular-nums; }
+  .cd-ddchev{ display:inline-flex; color:var(--text-muted); transition:transform .18s ease; }
+  .cd-ddbtn[aria-expanded="true"] .cd-ddchev{ transform:rotate(180deg); }
+  .cd-ddmenu{ position:absolute; top:calc(100% + 6px); right:0; min-width:280px; z-index:30;
+    background:var(--bg-elevated); border:1px solid var(--border); border-radius:12px; padding:6px;
+    display:flex; flex-direction:column; gap:2px; box-shadow:0 10px 28px rgba(0,0,0,.38); }
+  .cd-ddmenu[hidden]{ display:none; }
+  .cd-dditem{ display:flex; align-items:baseline; gap:12px; padding:10px 12px; border-radius:8px; }
+  .cd-dditem:hover{ background:var(--hover); }
+  .cd-ddrole{ font-size:var(--fs-label); font-weight:var(--fw-semibold); color:var(--text-primary); white-space:nowrap; }
+  .cd-ddsub{ font-size:var(--fs-label); color:var(--text-muted); white-space:nowrap; }
+  .cd-ddval{ font-size:var(--fs-body); color:var(--text-primary); font-variant-numeric:tabular-nums; margin-left:auto; white-space:nowrap; }
+  .cd-ddempty{ padding:16px 12px; font-size:var(--fs-label); color:var(--text-muted); text-align:center; }
+  @media (max-width:980px){ .cd-fields{ --fcols:3; } }
+  @media (max-width:620px){ .cd-fields{ --fcols:2; } }
+
+  /* ===== Modal inferior (bottom sheet) por dominio ===== */
+  .cd-coll{ border:0; background:none; font:inherit; color:inherit; cursor:pointer; }
+  .cd-coll:hover .cd-coll-name{ color:var(--text-primary); }
+  .bs-scrim{ position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:100; opacity:0; visibility:hidden;
+    transition:opacity .2s ease, visibility .2s ease; -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px); }
+  .bs-scrim.open{ opacity:1; visibility:visible; }
+  .bs{ position:fixed; left:0; right:0; bottom:0; z-index:101; width:100%; max-height:86vh;
+    background:var(--bg-surface); border-top:1px solid var(--border); border-radius:0;
+    display:flex; flex-direction:column; transform:translateY(100%); transition:transform .3s cubic-bezier(.22,1,.36,1); }
+  .bs-scrim.open .bs{ transform:translateY(0); }
+  .bs-grab{ width:44px; height:4px; border-radius:999px; background:var(--border); margin:10px auto 0; flex:none; }
+  .bs-head{ display:flex; align-items:center; gap:14px; padding:14px 28px 16px; border-bottom:1px solid var(--hair); flex:none; }
+  .bs-ic{ width:40px; height:40px; flex:none; display:grid; place-items:center; border-radius:11px;
+    background:var(--bg-elevated); border:1px solid var(--border); color:var(--accent-on-dark); }
+  .bs-ic svg{ width:20px; height:20px; }
+  .bs-titles{ display:flex; flex-direction:column; gap:1px; min-width:0; }
+  .bs-title{ margin:0; font-size:var(--fs-heading); font-weight:var(--fw-semibold); letter-spacing:var(--ls-snug); line-height:var(--lh-tight); }
+  .bs-count{ font-size:var(--fs-label); color:var(--text-muted); font-variant-numeric:tabular-nums; }
+  .bs-head-r{ margin-left:auto; display:flex; align-items:center; gap:10px; }
+  .bs-close{ width:40px; height:40px; display:grid; place-items:center; border-radius:10px; border:1px solid var(--border);
+    background:var(--bg-surface); color:var(--text-muted); cursor:pointer; transition:.15s; }
+  .bs-close:hover{ background:var(--bg-elevated); color:var(--text-primary); }
+  .bs-close svg{ width:18px; height:18px; }
+  .bs-body{ padding:16px 28px 28px; overflow:auto; flex:1; }
+  .bs-table{ width:100%; border-collapse:collapse; }
+  .bs-table th{ text-align:left; font-size:var(--fs-label); font-weight:var(--fw-semibold); letter-spacing:var(--ls-label);
+    text-transform:uppercase; color:var(--text-muted); padding:10px 14px; border-bottom:1px solid var(--border); white-space:nowrap; }
+  .bs-table td{ font-size:var(--fs-body); color:var(--text-primary); padding:11px 14px; border-bottom:1px solid var(--hair); vertical-align:middle; }
+  .bs-table tbody tr:last-child td{ border-bottom:0; }
+  .bs-table tbody tr{ transition:background .12s; }
+  .bs-table tbody tr:hover{ background:var(--hover); }
+  .bs-mut{ color:var(--text-muted); }
+  .bs-num{ font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .bs-table th.bs-c, .bs-table td.bs-c{ text-align:right; width:1%; white-space:nowrap; }
+  /* radio "principal / actual / activo / vigente" (selección única) */
+  .bs-mark{ display:inline-flex; align-items:center; gap:8px; border:0; background:none; cursor:pointer;
+    color:var(--text-muted); font:inherit; font-size:var(--fs-label); font-weight:var(--fw-medium); transition:color .15s; }
+  .bs-mark .dot{ width:18px; height:18px; border-radius:50%; border:2px solid var(--border); display:inline-grid; place-items:center; flex:none; transition:border-color .15s; }
+  .bs-mark .dot::after{ content:""; width:8px; height:8px; border-radius:50%; background:transparent; transform:scale(.2); transition:background .15s, transform .15s; }
+  .bs-mark.on{ color:var(--accent-on-dark); }
+  .bs-mark.on .dot{ border-color:var(--accent-on-dark); }
+  .bs-mark.on .dot::after{ background:var(--accent-on-dark); transform:scale(1); }
+  .bs-mark:not(.on):hover{ color:var(--text-primary); }
+  .bs-mark:not(.on):hover .dot{ border-color:var(--text-muted); }
+  /* switch "en uso" (booleano por registro) — distinto del radio */
+  .bs-switch{ position:relative; width:42px; height:24px; border-radius:999px; border:1px solid var(--border);
+    background:var(--bg-page); cursor:pointer; padding:0; flex:none; transition:background .18s, border-color .18s; }
+  .bs-switch::after{ content:""; position:absolute; top:2px; left:2px; width:18px; height:18px; border-radius:50%;
+    background:var(--text-muted); transition:transform .2s cubic-bezier(.22,1,.36,1), background .2s; }
+  .bs-switch.on{ background:var(--accent-on-dark); border-color:var(--accent-on-dark); }
+  .bs-switch.on::after{ transform:translateX(18px); background:#fff; }
+  /* estados vacío / carga */
+  .bs-empty{ padding:52px 16px; text-align:center; color:var(--text-muted); font-size:var(--fs-body); }
+  .bs-empty-ic{ display:inline-grid; place-items:center; width:56px; height:56px; border-radius:16px;
+    background:var(--bg-elevated); border:1px solid var(--border); color:var(--text-muted); margin-bottom:14px; }
+  .bs-empty-ic svg{ width:24px; height:24px; }
+  .bs-empty b{ color:var(--text-primary); font-weight:var(--fw-semibold); display:block; margin-bottom:4px; }
+  .bs-skel-row{ height:47px; border-bottom:1px solid var(--hair); display:flex; align-items:center; gap:28px; padding:0 14px; }
+  .bs-skel-row span{ height:12px; border-radius:6px; background:var(--hover); animation:bsShimmer 1.2s ease-in-out infinite; }
+  @keyframes bsShimmer{ 0%,100%{ opacity:.5; } 50%{ opacity:1; } }
+  /* form de alta */
+  .bs-form{ display:none; padding:18px; margin-bottom:16px;
+    border:1px solid var(--border); border-radius:14px; background:var(--bg-page); }
+  .bs-form.open{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px 16px; align-items:end; }
+  .bs-fld{ display:flex; flex-direction:column; gap:6px; min-width:0; }
+  .bs-fld label{ font-size:var(--fs-label); font-weight:var(--fw-semibold); letter-spacing:var(--ls-label);
+    text-transform:uppercase; color:var(--text-muted); }
+  .bs-fld input{ width:100%; height:42px; padding:0 12px; border-radius:10px; border:1px solid var(--border);
+    background:var(--bg-elevated); color:var(--text-primary); font:inherit; font-size:var(--fs-body); transition:border-color .15s; }
+  .bs-fld input:focus-visible{ outline:2px solid var(--accent-on-dark); outline-offset:1px; border-color:transparent; }
+  .bs-err{ grid-column:1 / -1; margin:0; font-size:var(--fs-label); color:var(--error); }
+  .bs-form-actions{ grid-column:1 / -1; display:flex; justify-content:flex-end; gap:10px; padding-top:2px; }
+  .bs-sub{ font-size:var(--fs-label); color:var(--text-muted); line-height:var(--lh-snug); }
+  .bs-table tbody tr.is-primary{ background:color-mix(in srgb, var(--accent-on-dark) 8%, transparent); }
+  .bs-table tbody tr.is-primary:hover{ background:color-mix(in srgb, var(--accent-on-dark) 13%, transparent); }
+  .bs-table tbody tr.is-primary td:first-child{ font-weight:var(--fw-semibold); }
+  .bs-table th.bs-cf, .bs-table td.bs-cf{ border-left:1px solid var(--hair); padding-left:20px; }
+  .bs-flash{ animation:bsFlash 1.3s ease; }
+  @keyframes bsFlash{ 0%{ background:color-mix(in srgb, var(--accent-on-dark) 22%, transparent); } 100%{ background:transparent; } }
+  @media (prefers-reduced-motion:reduce){ .bs,.bs-scrim,.bs-switch::after{ transition:none !important; } .bs-skel-row span,.bs-flash{ animation:none !important; } }
+  @media (max-width:820px){
+    .bs-body{ padding:14px 16px 20px; }
+    .bs-table thead{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+    .bs-table, .bs-table tbody, .bs-table tr, .bs-table td{ display:block; width:100%; }
+    .bs-table tbody tr{ padding:12px 4px; border-bottom:1px solid var(--border); }
+    .bs-table td{ display:grid; grid-template-columns:42% 1fr; gap:10px; padding:6px 0; border:0; align-items:center; }
+    .bs-table td::before{ content:attr(data-label); color:var(--text-muted); font-size:var(--fs-label); font-weight:var(--fw-medium); }
+    .bs-table td.bs-c{ text-align:left; width:auto; }
+  }
+  @media (max-width:1100px){ .cd-grid{ grid-template-columns:1fr; } }
+
+  @media (max-width:760px){ .user .meta{ display:none; } }
+
+  /* ===== BORDES (documentación) =====
+     --hair   → divisores finos internos (el divisor entre el switch y las acciones).
+                Oscuro rgba(255,255,255,.06) · Claro rgba(0,0,0,.08).
+     --border → borde del PANEL DE CONTENIDO (.content). Es el que SEPARA las secciones.
+                Oscuro rgba(255,255,255,.22) · Claro rgba(0,0,0,.32). Claramente visible.
+     Header (.topbar) y rail (.rail): SIN borde a propósito — se leen como un solo bloque.
+     El borde vive solo en el main: border-top + border-left + esquina sup-izq redondeada 18px.
+  */
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- ===== TOPBAR ===== -->
+  <header class="topbar">
+    <div class="tb-left">
+      <div class="logo">
+        <span class="mark"><svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg"><path d="M70.86,14.15,53.22,37.21c-3,3.77-2,9.31,3.73,9.31H70.86v5.95A7.46,7.46,0,0,1,63.47,60H33.56a6.8,6.8,0,0,1-6.73-6.87V46.61l18.92-27c2.38-3.17,1.08-7.76-3.75-7.76H26.83V7.53A7.46,7.46,0,0,1,34.21,0H64.13a6.8,6.8,0,0,1,6.73,6.87Z"/><path d="M98,15.38H75.07L56.73,39.61a2,2,0,0,0,1.59,3.2h23L99.61,18.62A2,2,0,0,0,98,15.38Z"/><path d="M40.17,15.38H18L.39,39.61A2,2,0,0,0,2,42.81H25L41.77,18.62A2,2,0,0,0,40.17,15.38Z"/></svg></span>
+        <span class="wm">ZOLUG</span>
+      </div>
+    </div>
+
+    <div class="tb-center">
+      <div class="crumb">
+        <span class="ava"><img alt="" src="data:image/jpeg;base64,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"></span>
+        <span class="sep" aria-hidden="true">/</span>
+        <span class="ci">Gestor de cobranza</span>
+        <span class="sep" aria-hidden="true">/</span>
+        <span class="ci">Ana Gómez</span>
+      </div>
+    </div>
+
+    <div class="tb-right">
+      <!-- sección 1: switch sol / luna -->
+      <button class="switch" id="themeToggle" role="switch" aria-checked="true" aria-label="Cambiar tema claro/oscuro">
+        <span class="track">
+          <span class="knob"></span>
+          <span class="end end-sun" data-i="sun" data-s="17"></span>
+          <span class="end end-moon" data-i="moon" data-s="17"></span>
+        </span>
+      </button>
+      <div class="divider"></div>
+      <!-- sección 2: notificaciones + chat -->
+      <div class="actions">
+        <button class="ic-btn" aria-label="Notificaciones"><span data-i="bell"></span><span class="dot"></span></button>
+        <button class="ic-btn" id="chatBtn" aria-label="Abrir chat"><span data-i="message-square"></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== BODY ===== -->
+  <div class="body">
+    <nav class="rail" id="rail" aria-label="Opciones">
+      <!-- SC 4.1.2 (nivel A): todo control necesita nombre programático. Los módulos del
+           negocio NO están definidos, así que los nombres son placeholders honestos.
+           Reemplazar por los nombres reales cuando se definan los módulos. -->
+      <button class="rail-item active" aria-label="Opción 1" aria-current="page"><span data-i="layout-dashboard"></span></button>
+      <button class="rail-item" aria-label="Opción 2"><span data-i="users"></span></button>
+      <button class="rail-item" aria-label="Opción 3"><span data-i="folder"></span></button>
+      <button class="rail-item" aria-label="Opción 4"><span data-i="file-text"></span></button>
+      <button class="rail-item" aria-label="Opción 5"><span data-i="bar-chart-3"></span></button>
+      <button class="rail-item" aria-label="Opción 6"><span data-i="list"></span></button>
+      <button class="rail-item rail-logout" aria-label="Cerrar sesión" title="Cerrar sesión"><span data-i="log-out"></span></button>
+    </nav>
+    <main class="content">
+      <!-- Cabecera de pantalla (80px) — título/descripción izq · acciones der -->
+      <header class="screen-head">
+        <div class="sh-left">
+          <button class="cd-iconbtn sh-back" aria-label="Volver" title="Volver"><span data-i="arrow-left" data-s="18"></span></button>
+          <span class="sh-divider" aria-hidden="true"></span>
+          <div class="sh-titles">
+            <h1>Detalle de cliente</h1>
+            <div class="sh-desc">Ficha de la persona · contacto, ubicación, laboral y salud</div>
+          </div>
+        </div>
+        <div class="sh-actions">
+          <div class="cd-ddrow">
+            <div class="cd-dd">
+              <button class="cd-ddbtn" aria-expanded="false" aria-haspopup="true">
+                Créditos <span class="cd-ddcount">2</span>
+                <span class="cd-ddchev" data-i="chevron-down" data-s="16"></span>
+              </button>
+              <div class="cd-ddmenu" hidden>
+                <div class="cd-dditem"><span class="cd-ddrole">Titular</span><span class="cd-ddsub">Bancolombia</span><span class="cd-ddval">$12.450.000</span></div>
+                <div class="cd-dditem"><span class="cd-ddrole">Codeudor</span><span class="cd-ddsub">Davivienda</span><span class="cd-ddval">$3.200.000</span></div>
+              </div>
+            </div>
+            <div class="cd-dd">
+              <button class="cd-ddbtn" aria-expanded="false" aria-haspopup="true">
+                Procesos jurídicos <span class="cd-ddcount">1</span>
+                <span class="cd-ddchev" data-i="chevron-down" data-s="16"></span>
+              </button>
+              <div class="cd-ddmenu" hidden>
+                <div class="cd-dditem"><span class="cd-ddrole">Demandado</span><span class="cd-ddsub">No. 2023-00456</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="cd-body">
+        <div class="cd-grid">
+          <section class="cd-panel cd-span">
+            <div class="cd-person">
+              <div class="cd-ava" aria-hidden="true">ML</div>
+              <div class="cd-person-main">
+                <h1 class="cd-person-name">Marta Lucía Restrepo Ossa</h1>
+                <p class="cd-person-doc"><strong>CC 43.256.789</strong></p>
+              </div>
+
+              <div class="cd-idnav">
+                <button class="cd-iconbtn" data-open="phones" aria-label="Teléfonos" title="Teléfonos"><span data-i="phone" data-s="18"></span></button>
+                <button class="cd-iconbtn" data-open="emails" aria-label="Correos" title="Correos"><span data-i="mail" data-s="18"></span></button>
+                <button class="cd-iconbtn" data-open="residences" aria-label="Residencias" title="Residencias"><span data-i="map-pin" data-s="18"></span></button>
+                <button class="cd-iconbtn" data-open="jobs" aria-label="Trabajos" title="Trabajos"><span data-i="briefcase" data-s="18"></span></button>
+                <button class="cd-iconbtn" data-open="health" aria-label="Salud (EPS)" title="Salud (EPS)"><span data-i="heart-pulse" data-s="18"></span></button>
+                <button class="cd-iconbtn" data-open="vehicles" aria-label="Vehículos" title="Vehículos"><span data-i="car" data-s="18"></span></button>
+                <button class="cd-iconbtn" data-open="properties" aria-label="Propiedades" title="Propiedades"><span data-i="home" data-s="18"></span></button>
+              </div>
+            </div>
+
+            <div class="cd-sec">
+              <span class="cd-sec-label">Contacto</span>
+              <dl class="cd-fields">
+                <div><dt>Teléfono principal</dt><dd>310 456 7890</dd></div>
+                <div><dt>Correo</dt><dd>marta.restrepo@gmail.com</dd></div>
+              </dl>
+            </div>
+
+            <div class="cd-sec">
+              <span class="cd-sec-label">Ubicación</span>
+              <dl class="cd-fields">
+                <div><dt>Departamento</dt><dd>Risaralda</dd></div>
+                <div><dt>Ciudad</dt><dd>Pereira</dd></div>
+                <div><dt>Barrio/Vereda</dt><dd>Álamos</dd></div>
+                <div><dt>Dirección</dt><dd>Cra 12 #34-56</dd></div>
+                <div><dt>Detalle</dt><dd class="cd-mut">—</dd></div>
+              </dl>
+            </div>
+
+            <div class="cd-sec">
+              <span class="cd-sec-label">Salud</span>
+              <dl class="cd-fields">
+                <div><dt>EPS</dt><dd>Nueva EPS</dd></div>
+                <div><dt>Régimen</dt><dd>Contributivo</dd></div>
+                <div><dt>Estado</dt><dd>Activo</dd></div>
+              </dl>
+            </div>
+
+            <div class="cd-sec">
+              <span class="cd-sec-label">Trabajo</span>
+              <dl class="cd-fields">
+                <div><dt>Empleador</dt><dd>Almacén La 14</dd></div>
+                <div><dt>Teléfono</dt><dd>606 340 0011</dd></div>
+                <div><dt>Salario</dt><dd>$1.650.000</dd></div>
+                <div><dt>Ciudad</dt><dd>Pereira</dd></div>
+                <div><dt>Dirección</dt><dd>Cra 8 #23-40</dd></div>
+              </dl>
+            </div>
+
+            <div class="cd-sec">
+              <span class="cd-sec-label">Bienes</span>
+              <div class="cd-colls">
+                <button type="button" class="cd-coll" data-open="vehicles">
+                  <span class="cd-coll-ic" data-i="car" data-s="18"></span>
+                  <span class="cd-coll-name">Vehículos</span>
+                  <span class="cd-badge">2</span>
+                </button>
+                <button type="button" class="cd-coll" data-open="properties">
+                  <span class="cd-coll-ic" data-i="home" data-s="18"></span>
+                  <span class="cd-coll-name">Propiedades</span>
+                  <span class="cd-badge">1</span>
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ===== Modal inferior (bottom sheet) por dominio ===== -->
+<div class="bs-scrim" id="bsScrim" hidden>
+  <div class="bs" role="dialog" aria-modal="true" aria-labelledby="bsTitle">
+    <div class="bs-grab" aria-hidden="true"></div>
+    <div class="bs-head">
+      <span class="bs-ic" id="bsIcon" aria-hidden="true"></span>
+      <div class="bs-titles">
+        <h2 class="bs-title" id="bsTitle"></h2>
+        <span class="bs-sub" id="bsSub"></span>
+      </div>
+      <div class="bs-head-r">
+        <button class="btn primary" id="bsAdd"><span data-i="plus" data-s="16"></span>Agregar</button>
+        <button class="bs-close" id="bsClose" aria-label="Cerrar"><span data-i="x" data-s="18"></span></button>
+      </div>
+    </div>
+    <div class="bs-body">
+      <form class="bs-form" id="bsForm"></form>
+      <table class="bs-table"><thead id="bsThead"></thead><tbody id="bsTbody"></tbody></table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const ICONS = {
+    "chevron-down":'<path d="m6 9 6 6 6-6"/>',
+    "bell":'<path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/>',
+    "message-square":'<path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/>',
+    "sun":'<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>',
+    "moon":'<path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>',
+    "layout-dashboard":'<rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/>',
+    "users":'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/>',
+    "folder":'<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>',
+    "file-text":'<path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+    "bar-chart-3":'<path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',
+    "list":'<path d="M3 5h.01"/><path d="M3 12h.01"/><path d="M3 19h.01"/><path d="M8 5h13"/><path d="M8 12h13"/><path d="M8 19h13"/>',
+    "log-out":'<path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>',
+    "arrow-left":'<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
+    "pencil":'<path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/>',
+    "phone":'<path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/>',
+    "mail":'<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/>',
+    "map-pin":'<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+    "briefcase":'<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/>',
+    "heart-pulse":'<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/>',
+    "car":'<path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/>',
+    "home":'<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+    "plus":'<path d="M5 12h14"/><path d="M12 5v14"/>',
+    "x":'<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+    "check":'<path d="M20 6 9 17l-5-5"/>'
+  };
+  function svg(n,s){ return '<svg xmlns="http://www.w3.org/2000/svg" width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+(ICONS[n]||'')+'</svg>'; }
+  document.querySelectorAll('[data-i]').forEach(el=>{ el.innerHTML=svg(el.dataset.i, el.dataset.s||22); el.style.display='inline-flex'; });
+
+  // switch de tema — un solo interruptor que alterna
+  const tt=document.getElementById('themeToggle');
+  tt.addEventListener('click',()=>{
+    const toLight = document.documentElement.getAttribute('data-theme') !== 'light';
+    document.documentElement.setAttribute('data-theme', toLight ? 'light' : 'dark');
+    tt.setAttribute('aria-checked', toLight ? 'false' : 'true');
+  });
+  // rail activo
+  document.getElementById('rail').addEventListener('click',e=>{ const it=e.target.closest('.rail-item'); if(!it)return;
+    if(it.classList.contains('rail-logout'))return;
+    document.querySelectorAll('#rail .rail-item').forEach(x=>{ x.classList.remove('active'); x.removeAttribute('aria-current'); });
+    it.classList.add('active'); it.setAttribute('aria-current','page'); });
+
+  // dropdowns (créditos / procesos jurídicos)
+  function closeDD(){ document.querySelectorAll('.cd-ddbtn').forEach(b=>{ b.setAttribute('aria-expanded','false'); b.parentElement.querySelector('.cd-ddmenu').hidden=true; }); }
+  document.querySelectorAll('.cd-ddbtn').forEach(btn=>{
+    btn.addEventListener('click', e=>{ e.stopPropagation();
+      const menu=btn.parentElement.querySelector('.cd-ddmenu'); const open=btn.getAttribute('aria-expanded')==='true';
+      closeDD(); if(!open){ btn.setAttribute('aria-expanded','true'); menu.hidden=false; } });
+  });
+  document.addEventListener('click', closeDD);
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeDD(); });
+
+  // ===== Modal inferior (bottom sheet) por dominio =====
+  const escx = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const DOMX = {
+    phones:{ title:'Teléfonos', icon:'phone', flag:'is_primary', flagLabel:'Principal', use:'in_use',
+      cols:[{k:'v',label:'Número',type:'tel'},{k:'d',label:'Descripción'}],
+      data:[{v:'310 456 7890',d:'Celular principal',in_use:true,is_primary:true},{v:'606 335 1122',d:'Fijo · casa',in_use:false,is_primary:false},{v:'311 900 4521',d:'Trabajo',in_use:true,is_primary:false}] },
+    emails:{ title:'Correos', icon:'mail', flag:'is_primary', flagLabel:'Principal', use:'in_use',
+      cols:[{k:'v',label:'Correo',type:'email'},{k:'d',label:'Descripción'}],
+      data:[{v:'marta.restrepo@gmail.com',d:'Personal',in_use:true,is_primary:true},{v:'mrestrepo@empresa.com.co',d:'Trabajo',in_use:true,is_primary:false}] },
+    residences:{ title:'Residencias', icon:'map-pin', flag:'is_current', flagLabel:'Actual',
+      cols:[{k:'dept',label:'Departamento'},{k:'city',label:'Ciudad'},{k:'neigh',label:'Barrio/Vereda'},{k:'addr',label:'Dirección'},{k:'detail',label:'Detalle'}],
+      data:[{dept:'Risaralda',city:'Pereira',neigh:'Álamos',addr:'Cra 12 #34-56',detail:'',is_current:true},{dept:'Risaralda',city:'Dosquebradas',neigh:'Los Naranjos',addr:'Cll 40 #19-22',detail:'2018–2021',is_current:false},{dept:'Exterior',city:'',neigh:'',addr:'',detail:'Madrid, España',is_current:false}] },
+    jobs:{ title:'Trabajos', icon:'briefcase', flag:'is_active', flagLabel:'Activo',
+      cols:[{k:'employer',label:'Empleador'},{k:'phone',label:'Teléfono',type:'tel'},{k:'city',label:'Ciudad'},{k:'addr',label:'Dirección'},{k:'salary',label:'Salario',num:true,inputmode:'numeric'}],
+      data:[{employer:'Almacén La 14',phone:'606 340 0011',city:'Pereira',addr:'Cra 8 #23-40',salary:'$1.650.000',is_active:true},{employer:'Confecciones Omega',phone:'606 322 9911',city:'Pereira',addr:'Av 30 de Agosto',salary:'$1.300.000',is_active:false}] },
+    health:{ title:'Salud (EPS)', icon:'heart-pulse', flag:'is_current', flagLabel:'Vigente',
+      cols:[{k:'entity',label:'EPS'},{k:'regime',label:'Régimen'},{k:'status',label:'Estado'}],
+      data:[{entity:'Nueva EPS',regime:'Contributivo',status:'Activo',is_current:true},{entity:'SURA EPS',regime:'Contributivo',status:'Inactivo',is_current:false}] },
+    vehicles:{ title:'Vehículos', icon:'car', flag:null,
+      cols:[{k:'type',label:'Tipo'},{k:'brand',label:'Marca'},{k:'model',label:'Modelo'},{k:'plate',label:'Placa'},{k:'desc',label:'Descripción'}],
+      data:[{type:'Motocicleta',brand:'Yamaha',model:'FZ 2.0',plate:'WXY12C',desc:'Color negro'},{type:'Automóvil',brand:'Chevrolet',model:'Spark GT',plate:'KLM88D',desc:''}] },
+    properties:{ title:'Propiedades', icon:'home', flag:null,
+      cols:[{k:'type',label:'Tipo'},{k:'dept',label:'Departamento'},{k:'city',label:'Ciudad'},{k:'neigh',label:'Barrio/Vereda'},{k:'addr',label:'Dirección'},{k:'desc',label:'Descripción'}],
+      data:[{type:'Casa',dept:'Risaralda',city:'Pereira',neigh:'Álamos',addr:'Cra 12 #34-56',desc:'Vivienda familiar'}] }
+  };
+  const HINTS = {
+    phones:'Un solo teléfono principal; varios pueden estar en uso.',
+    emails:'Un solo correo principal; varios pueden estar en uso.',
+    residences:'Marca cuál es la residencia actual.',
+    jobs:'Marca cuál es el trabajo activo.',
+    health:'Marca cuál es la EPS vigente.',
+    vehicles:'Registra los vehículos del cliente.',
+    properties:'Registra las propiedades del cliente.'
+  };
+  const bs = { key:null,
+    scrim:document.getElementById('bsScrim'), icon:document.getElementById('bsIcon'), title:document.getElementById('bsTitle'), sub:document.getElementById('bsSub'),
+    thead:document.getElementById('bsThead'), tbody:document.getElementById('bsTbody'), form:document.getElementById('bsForm'),
+    add:document.getElementById('bsAdd'), close:document.getElementById('bsClose') };
+
+  function headHTML(d){ let th='<tr>'+d.cols.map(c=>'<th>'+escx(c.label)+'</th>').join('');
+    if(d.use)  th+='<th class="bs-c bs-cf">En uso</th>';
+    if(d.flag) th+='<th class="bs-c'+(d.use?'':' bs-cf')+'">'+escx(d.flagLabel)+'</th>'; return th+'</tr>'; }
+
+  function renderBS(flashIdx){
+    const d = DOMX[bs.key]; if(!d) return;
+    bs.icon.innerHTML = svg(d.icon,20);
+    bs.title.textContent = d.title;
+    const cnt = d.data.length + (d.data.length===1 ? ' registro' : ' registros');
+    bs.sub.textContent = cnt + (HINTS[bs.key] ? ' · ' + HINTS[bs.key] : '');
+    if(!d.data.length){
+      bs.thead.innerHTML = '';
+      bs.tbody.innerHTML = '<tr><td><div class="bs-empty"><span class="bs-empty-ic">'+svg(d.icon,24)+'</span><b>Sin registros</b>Aún no hay '+escx(d.title.toLowerCase())+'. Use “Agregar” para registrar el primero.</div></td></tr>';
+    } else {
+      bs.thead.innerHTML = headHTML(d);
+      bs.tbody.innerHTML = d.data.map((r,i)=>{
+        let tds = d.cols.map(c=>{ const v=r[c.k]; const empty=(v===''||v==null);
+          return '<td data-label="'+escx(c.label)+'"'+(c.num?' class="bs-num"':'')+'>'+(empty?'<span class="bs-mut">—</span>':escx(v))+'</td>'; }).join('');
+        if(d.use){ const on=r[d.use];
+          tds += '<td class="bs-c bs-cf" data-label="En uso"><button class="bs-switch'+(on?' on':'')+'" role="switch" aria-checked="'+(on?'true':'false')+'" data-use="'+i+'" aria-label="En uso"></button></td>'; }
+        if(d.flag){ const on=r[d.flag];
+          tds += '<td class="bs-c'+(d.use?'':' bs-cf')+'" data-label="'+escx(d.flagLabel)+'"><button class="bs-mark'+(on?' on':'')+'" data-mark="'+i+'"'+(on?' disabled':'')+' aria-label="'+(on?escx(d.flagLabel):'Marcar como '+escx(d.flagLabel.toLowerCase()))+'"><span class="dot"></span>'+(on?escx(d.flagLabel):'Marcar')+'</button></td>'; }
+        const cls = (d.flag && r[d.flag] ? 'is-primary' : '') + (i===flashIdx ? ' bs-flash' : '');
+        return '<tr'+(cls.trim()?' class="'+cls.trim()+'"':'')+'>'+tds+'</tr>';
+      }).join('');
+    }
+    bs.form.innerHTML = d.cols.map((c,ix)=>'<div class="bs-fld"><label>'+escx(c.label)+'</label><input data-fk="'+c.k+'" type="'+(c.type||'text')+'"'+(c.inputmode?' inputmode="'+c.inputmode+'"':'')+' placeholder="'+escx(c.label)+'"'+(ix===0?' required':'')+'></div>').join('')
+      + '<p class="bs-err" id="bsErr" hidden></p>'
+      + '<div class="bs-form-actions"><button type="button" class="btn primary" id="bsSave">Guardar</button><button type="button" class="btn" id="bsCancel">Cancelar</button></div>';
+  }
+
+  function skeletonBS(d){
+    bs.thead.innerHTML = headHTML(d);
+    const w=['38%','24%','30%','20%','34%','26%']; const n=d.cols.length+(d.use?1:0)+(d.flag?1:0);
+    let rows='';
+    for(let i=0;i<Math.max(2,Math.min(d.data.length||2,4));i++){
+      rows += '<tr><td colspan="'+n+'" style="padding:0"><div class="bs-skel-row">'+d.cols.map((c,j)=>'<span style="width:'+w[j%w.length]+'"></span>').join('')+'</div></td></tr>';
+    }
+    bs.tbody.innerHTML = rows;
+  }
+
+  let bsTrigger=null;
+  function trapTab(e){ if(e.key!=='Tab') return;
+    const list=[...bs.scrim.querySelectorAll('button,input,[tabindex]:not([tabindex="-1"])')].filter(el=>el.offsetParent!==null && !el.disabled);
+    if(!list.length) return; const first=list[0], last=list[list.length-1];
+    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+  }
+  function closeForm(){ bs.form.classList.remove('open'); bs.add.style.display=''; }
+  function openBS(k){ const d=DOMX[k]; if(!d) return; bsTrigger=document.activeElement; bs.key=k; closeForm();
+    bs.icon.innerHTML=svg(d.icon,20); bs.title.textContent=d.title; bs.sub.textContent='';
+    bs.scrim.hidden=false; requestAnimationFrame(()=>bs.scrim.classList.add('open')); document.body.style.overflow='hidden';
+    bs.scrim.addEventListener('keydown', trapTab);
+    const done=()=>{ if(bs.key===k){ renderBS(); bs.close.focus(); } };
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches){ done(); }
+    else { skeletonBS(d); setTimeout(done, 360); }
+  }
+  function closeBS(){ bs.scrim.classList.remove('open'); bs.scrim.removeEventListener('keydown', trapTab);
+    document.body.style.overflow=''; setTimeout(()=>{ bs.scrim.hidden=true; }, 260);
+    if(bsTrigger && bsTrigger.focus){ bsTrigger.focus(); } }
+
+  document.querySelectorAll('[data-open]').forEach(b=> b.addEventListener('click', ()=> openBS(b.dataset.open)));
+  bs.close.addEventListener('click', closeBS);
+  bs.add.addEventListener('click', ()=>{ bs.form.classList.add('open'); bs.add.style.display='none'; const f=bs.form.querySelector('[data-fk]'); if(f) f.focus(); });
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && !bs.scrim.hidden) closeBS(); });
+  bs.scrim.addEventListener('click', e=>{
+    if(e.target===bs.scrim){ closeBS(); return; }
+    const d=DOMX[bs.key]; if(!d) return;
+    const mk=e.target.closest('[data-mark]'), us=e.target.closest('[data-use]'),
+          save=e.target.closest('#bsSave'), cancel=e.target.closest('#bsCancel');
+    if(mk && !mk.disabled){ const i=+mk.dataset.mark; d.data.forEach(r=>r[d.flag]=false); d.data[i][d.flag]=true; renderBS(); }
+    else if(us){ const i=+us.dataset.use; d.data[i][d.use]=!d.data[i][d.use]; renderBS(); }
+    else if(cancel){ closeForm(); }
+    else if(save){ const inputs=[...bs.form.querySelectorAll('[data-fk]')]; const err=document.getElementById('bsErr');
+      if(!inputs[0].value.trim()){ if(err){ err.textContent='Escriba '+d.cols[0].label.toLowerCase()+'.'; err.hidden=false; } inputs[0].focus(); return; }
+      const rec={}; inputs.forEach(inp=>{ rec[inp.dataset.fk]=inp.value.trim(); });
+      if(d.flag) rec[d.flag]=false; if(d.use) rec[d.use]=false; d.data.push(rec); closeForm(); renderBS(d.data.length-1); }
+  });
+</script>
+</body>
+</html>

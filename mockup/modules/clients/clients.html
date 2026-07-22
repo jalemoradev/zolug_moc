@@ -136,6 +136,87 @@
      Header (.topbar) y rail (.rail): SIN borde a propósito — se leen como un solo bloque.
      El borde vive solo en el main: border-top + border-left + esquina sup-izq redondeada 18px.
   */
+  /* ===== CABECERA DE PANTALLA 80px (base.md) ===== */
+  .screen-head{ min-height:80px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:16px 32px; border-bottom:1px solid var(--hair); position:sticky; top:0; z-index:5;
+    background:var(--bg-page); border-top-left-radius:18px; }
+  .sh-left{ display:flex; align-items:center; gap:16px; min-width:0; }
+  .sh-divider{ width:1px; height:34px; background:var(--border); flex:none; }
+  .sh-back{ width:40px; height:40px; flex:none; display:grid; place-items:center; border-radius:10px;
+    border:1px solid var(--border); background:var(--bg-surface); color:var(--text-muted); cursor:pointer; transition:.15s; }
+  .sh-back:hover{ background:var(--bg-elevated); color:var(--text-primary); }
+  .sh-back svg{ width:18px; height:18px; }
+  .sh-titles h1{ margin:0; font-size:var(--fs-display-l); font-weight:var(--fw-bold); letter-spacing:var(--ls-tight); line-height:var(--lh-tight); }
+  .sh-desc{ margin-top:3px; font-size:var(--fs-label); color:var(--text-muted); font-variant-numeric:tabular-nums; }
+  :where(a,button,[tabindex]):focus-visible{ outline:2px solid var(--accent-on-dark); outline-offset:2px; border-radius:10px; }
+
+  /* ===== Lista de clientes ===== */
+  .content{ display:flex; flex-direction:column; overflow:hidden; }
+  .cl-wrap{ flex:1; min-height:0; padding:20px 32px 24px; display:flex; }
+  .cl-panel{ flex:1; min-height:0; display:flex; flex-direction:column; border:1px solid var(--border);
+    border-radius:14px; background:var(--bg-surface); overflow:hidden; }
+  .cl-scroll{ flex:1; min-height:0; overflow:auto; }
+  .cl-table{ width:100%; border-collapse:collapse; }
+  .cl-table thead th{ position:sticky; top:0; background:var(--bg-surface); z-index:1; }
+  .cl-table th{ text-align:left; font-size:var(--fs-label); font-weight:var(--fw-semibold); letter-spacing:var(--ls-label);
+    text-transform:uppercase; color:var(--text-muted); padding:12px 16px; border-bottom:1px solid var(--border); white-space:nowrap; }
+  .cl-table td{ font-size:var(--fs-body); color:var(--text-primary); padding:14px 16px; border-bottom:1px solid var(--hair); vertical-align:middle; }
+  .cl-table tbody tr:last-child td{ border-bottom:0; }
+  .cl-table tbody tr{ cursor:pointer; transition:background .12s; }
+  .cl-table tbody tr:hover{ background:var(--hover); }
+  .cl-table tbody tr:focus-visible{ outline:2px solid var(--accent-on-dark); outline-offset:-2px; }
+  .cl-name{ font-weight:var(--fw-semibold); }
+  .cl-num{ font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .cl-doctype{ display:inline-flex; align-items:center; height:22px; padding:0 9px; border-radius:6px;
+    background:var(--hover); font-size:var(--fs-label); font-weight:var(--fw-semibold); }
+  .cl-chev{ width:1%; text-align:right; color:var(--text-muted); }
+  .cl-chev svg{ width:18px; height:18px; }
+  .cl-table tbody tr:hover .cl-chev{ color:var(--text-primary); }
+  /* paginador (dentro del contenedor, abajo) */
+  .cl-pager{ flex:none; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:12px 20px; border-top:1px solid var(--hair); font-size:var(--fs-label); color:var(--text-muted); font-variant-numeric:tabular-nums; }
+  .cl-pager-left{ display:flex; align-items:center; gap:18px; }
+  .cl-rpp{ display:inline-flex; align-items:center; gap:8px; color:var(--text-muted); white-space:nowrap; }
+  .cl-rpp select{ height:32px; border:1px solid var(--border); border-radius:8px; background:var(--bg-surface);
+    color:var(--text-primary); font:inherit; font-size:var(--fs-label); padding:0 8px; cursor:pointer; }
+  .cl-pager-ctrl{ display:flex; align-items:center; gap:4px; }
+  .cl-pgbtn{ min-width:34px; height:34px; padding:0 6px; display:inline-grid; place-items:center; border-radius:8px; border:1px solid var(--border);
+    background:var(--bg-surface); color:var(--text-primary); font:inherit; font-size:var(--fs-label); font-weight:var(--fw-medium);
+    font-variant-numeric:tabular-nums; cursor:pointer; transition:.15s; }
+  .cl-pgbtn:hover:not(:disabled):not(.on){ background:var(--bg-elevated); }
+  .cl-pgbtn:disabled{ opacity:.4; cursor:default; }
+  .cl-pgbtn.on{ background:var(--accent-solid); border-color:transparent; color:#fff; cursor:default; }
+  .cl-pgbtn svg{ width:16px; height:16px; }
+  .cl-pg-ell{ min-width:22px; text-align:center; color:var(--text-muted); }
+  /* buscador: selector (nombre/cédula/teléfono) + input */
+  .cl-search{ display:flex; align-items:center; height:40px; border:1px solid var(--border); border-radius:10px; background:var(--bg-surface); }
+  .cl-search:focus-within{ border-color:var(--accent-on-dark); }
+  .cl-search-sel{ height:100%; border:0; background:var(--bg-elevated); color:var(--text-primary); font:inherit; font-size:var(--fs-label);
+    font-weight:var(--fw-medium); padding:0 12px; cursor:pointer; border-right:1px solid var(--border); border-radius:9px 0 0 9px; }
+  .cl-search-ic{ display:inline-flex; color:var(--text-muted); padding-left:12px; }
+  .cl-search-ic svg{ width:16px; height:16px; }
+  .cl-search-inp{ height:100%; border:0; background:none; color:var(--text-primary); font:inherit; font-size:var(--fs-body); padding:0 14px 0 8px; min-width:220px; }
+  .cl-search-inp:focus-visible, .cl-search-sel:focus-visible{ outline:none; }
+  @media (max-width:760px){
+    .screen-head{ flex-wrap:wrap; align-items:flex-start; }
+    .sh-actions{ width:100%; } .cl-search{ width:100%; } .cl-search-inp{ flex:1; min-width:0; }
+    .cl-wrap{ padding:12px 16px 16px; }
+  }
+  .cl-skel span{ display:block; height:12px; border-radius:6px; background:var(--hover); animation:clShim 1.2s ease-in-out infinite; }
+  @keyframes clShim{ 0%,100%{opacity:.5} 50%{opacity:1} }
+  .cl-empty{ padding:56px 16px; text-align:center; color:var(--text-muted); font-size:var(--fs-body); }
+  .cl-empty b{ display:block; color:var(--text-primary); margin-bottom:4px; }
+  @media (prefers-reduced-motion:reduce){ .cl-skel span{ animation:none !important; } }
+  @media (max-width:640px){ .screen-head{ padding:16px 20px; } }
+  @media (max-width:820px){
+    .cl-wrap{ padding:16px; }
+    .cl-table thead{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+    .cl-table, .cl-table tbody, .cl-table tr, .cl-table td{ display:block; width:100%; }
+    .cl-table tbody tr{ padding:12px 6px; border-bottom:1px solid var(--border); }
+    .cl-table td{ display:grid; grid-template-columns:44% 1fr; gap:10px; padding:5px 0; border:0; align-items:center; }
+    .cl-table td::before{ content:attr(data-label); color:var(--text-muted); font-size:var(--fs-label); font-weight:var(--fw-medium); }
+    .cl-table td.cl-chev{ display:none; }
+  }
 </style>
 </head>
 <body>
@@ -183,15 +264,68 @@
       <!-- SC 4.1.2 (nivel A): todo control necesita nombre programático. Los módulos del
            negocio NO están definidos, así que los nombres son placeholders honestos.
            Reemplazar por los nombres reales cuando se definan los módulos. -->
-      <button class="rail-item active" aria-label="Opción 1" aria-current="page"><span data-i="layout-dashboard"></span></button>
-      <button class="rail-item" aria-label="Opción 2"><span data-i="users"></span></button>
+      <button class="rail-item" aria-label="Opción 1"><span data-i="layout-dashboard"></span></button>
+      <button class="rail-item active" aria-label="Clientes" aria-current="page"><span data-i="users"></span></button>
       <button class="rail-item" aria-label="Opción 3"><span data-i="folder"></span></button>
       <button class="rail-item" aria-label="Opción 4"><span data-i="file-text"></span></button>
       <button class="rail-item" aria-label="Opción 5"><span data-i="bar-chart-3"></span></button>
       <button class="rail-item" aria-label="Opción 6"><span data-i="list"></span></button>
       <button class="rail-item rail-logout" aria-label="Cerrar sesión" title="Cerrar sesión"><span data-i="log-out"></span></button>
     </nav>
-    <main class="content"></main>
+    <main class="content">
+      <header class="screen-head">
+        <div class="sh-left">
+          <button class="sh-back" aria-label="Volver" title="Volver"><span data-i="arrow-left" data-s="18"></span></button>
+          <span class="sh-divider" aria-hidden="true"></span>
+          <div class="sh-titles">
+            <h1>Clientes</h1>
+            <div class="sh-desc" id="clCount"></div>
+          </div>
+        </div>
+        <div class="sh-actions">
+          <div class="cl-search">
+            <select class="cl-search-sel" id="clField" aria-label="Buscar por">
+              <option value="name">Nombre</option>
+              <option value="dn">Cédula</option>
+              <option value="phone">Teléfono</option>
+            </select>
+            <span class="cl-search-ic" data-i="search" data-s="16"></span>
+            <input class="cl-search-inp" id="clQuery" type="search" placeholder="Buscar cliente…" aria-label="Texto de búsqueda">
+          </div>
+        </div>
+      </header>
+      <div class="cl-wrap">
+        <div class="cl-panel">
+          <div class="cl-scroll">
+            <table class="cl-table">
+              <thead>
+                <tr>
+                  <th>Tipo de documento</th>
+                  <th>Número de documento</th>
+                  <th>Nombre</th>
+                  <th>Teléfono principal</th>
+                  <th class="cl-chev" aria-hidden="true"></th>
+                </tr>
+              </thead>
+              <tbody id="clBody"></tbody>
+            </table>
+          </div>
+          <div class="cl-pager">
+            <div class="cl-pager-left">
+              <span id="clInfo"></span>
+              <label class="cl-rpp">Filas
+                <select id="clRpp" aria-label="Filas por página">
+                  <option value="8">8</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                </select>
+              </label>
+            </div>
+            <nav class="cl-pager-ctrl" id="clPages" aria-label="Paginación"></nav>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </div>
 
@@ -208,7 +342,11 @@
     "file-text":'<path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
     "bar-chart-3":'<path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',
     "list":'<path d="M3 5h.01"/><path d="M3 12h.01"/><path d="M3 19h.01"/><path d="M8 5h13"/><path d="M8 12h13"/><path d="M8 19h13"/>',
-    "log-out":'<path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>'
+    "log-out":'<path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>',
+    "arrow-left":'<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
+    "chevron-right":'<path d="m9 18 6-6-6-6"/>',
+    "chevron-left":'<path d="m15 18-6-6 6-6"/>',
+    "search":'<path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>'
   };
   function svg(n,s){ return '<svg xmlns="http://www.w3.org/2000/svg" width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+(ICONS[n]||'')+'</svg>'; }
   document.querySelectorAll('[data-i]').forEach(el=>{ el.innerHTML=svg(el.dataset.i, el.dataset.s||22); el.style.display='inline-flex'; });
@@ -225,6 +363,90 @@
     if(it.classList.contains('rail-logout'))return;
     document.querySelectorAll('#rail .rail-item').forEach(x=>{ x.classList.remove('active'); x.removeAttribute('aria-current'); });
     it.classList.add('active'); it.setAttribute('aria-current','page'); });
+
+  // ===== Lista de clientes =====
+  // Datos de MUESTRA (fixture del prototipo). Columnas fieles al pedido: tipo doc, número doc, nombre, teléfono principal.
+  const CLIENTS = [
+    { dt:'CC', dn:'43.256.789', name:'Marta Lucía Restrepo Ossa',   phone:'310 456 7890' },
+    { dt:'CC', dn:'71.234.567', name:'Carlos Andrés Mejía Vélez',   phone:'300 123 4567' },
+    { dt:'CC', dn:'24.876.543', name:'Luz Dary Ospina Cardona',     phone:'312 998 7766' },
+    { dt:'CE', dn:'345.221',    name:'Sandra Milena Cardona Ruiz',  phone:'318 002 3344' },
+    { dt:'CC', dn:'98.765.432', name:'Jorge Iván Betancur Ríos',    phone:'315 445 2211' },
+    { dt:'CC', dn:'52.119.884', name:'Diana Marcela Ríos Gómez',    phone:'320 776 5544' },
+    { dt:'PA', dn:'X1234567',   name:'Héctor Fabio Loaiza Muñoz',   phone:'311 234 9090' },
+    { dt:'CC', dn:'16.884.077', name:'Óscar Eduardo Marín Salazar', phone:'301 556 8899' },
+    { dt:'CC', dn:'12.345.678', name:'Ana María Gómez Restrepo',    phone:'300 111 2233' },
+    { dt:'CC', dn:'79.456.123', name:'Julián Ospina Ramírez',       phone:'311 222 3344' },
+    { dt:'CE', dn:'998.112',    name:'Paola Andrea Ruiz León',      phone:'320 333 4455' },
+    { dt:'CC', dn:'43.998.221', name:'Gloria Stella Mesa Álzate',   phone:'315 444 5566' },
+    { dt:'CC', dn:'10.223.998', name:'Fernando Quintero Álvarez',   phone:'301 555 6677' },
+    { dt:'PA', dn:'C0987654',   name:'Mónica Liliana Vargas Peña',  phone:'318 666 7788' },
+    { dt:'CC', dn:'66.112.554', name:'Andrés Felipe Cano Muñoz',    phone:'312 777 8899' },
+    { dt:'CC', dn:'24.665.331', name:'Beatriz Elena Duque Ríos',    phone:'300 888 9900' },
+    { dt:'CC', dn:'71.998.442', name:'Ricardo León Zapata Mora',    phone:'319 999 0011' },
+    { dt:'CE', dn:'552.339',    name:'Camilo Ernesto Salas Bedoya', phone:'316 121 2323' },
+    { dt:'CC', dn:'52.667.881', name:'Yolanda Patricia Cifuentes',  phone:'314 343 4545' },
+    { dt:'CC', dn:'16.223.774', name:'Sebastián Arango Villa',      phone:'302 565 6767' }
+  ];
+  const escc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const clBody=document.getElementById('clBody'), clCount=document.getElementById('clCount'),
+        clField=document.getElementById('clField'), clQuery=document.getElementById('clQuery'),
+        clInfo=document.getElementById('clInfo'), clPages=document.getElementById('clPages'), clRpp=document.getElementById('clRpp');
+  let clPage=1, clSize=8;
+  const norm=s=>String(s==null?'':s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const digits=s=>String(s==null?'':s).replace(/\D/g,'');
+  function clFiltered(){ const f=clField.value, q=clQuery.value.trim(); if(!q) return CLIENTS;
+    return CLIENTS.filter(c=> f==='name' ? norm(c.name).includes(norm(q))
+      : (digits(c[f]).includes(digits(q)) || norm(c[f]).includes(norm(q))) ); }
+
+  function pageWindow(cur,pages){ const out=[];
+    if(pages<=7){ for(let i=1;i<=pages;i++) out.push(i); return out; }
+    out.push(1); if(cur>4) out.push('…');
+    for(let i=Math.max(2,cur-1);i<=Math.min(pages-1,cur+1);i++) out.push(i);
+    if(cur<pages-3) out.push('…'); out.push(pages); return out; }
+
+  function renderPager(cur,pages){
+    let h='<button class="cl-pgbtn" data-pg="'+(cur-1)+'" aria-label="Anterior"'+(cur<=1?' disabled':'')+'><span data-i="chevron-left"></span></button>';
+    pageWindow(cur,pages).forEach(p=>{
+      if(p==='…') h+='<span class="cl-pg-ell">…</span>';
+      else if(p===cur) h+='<button class="cl-pgbtn on" aria-current="page">'+p+'</button>';
+      else h+='<button class="cl-pgbtn" data-pg="'+p+'" aria-label="Página '+p+'">'+p+'</button>';
+    });
+    h+='<button class="cl-pgbtn" data-pg="'+(cur+1)+'" aria-label="Siguiente"'+(cur>=pages?' disabled':'')+'><span data-i="chevron-right"></span></button>';
+    clPages.innerHTML=h;
+    clPages.querySelectorAll('[data-i]').forEach(el=>{ el.innerHTML=svg(el.dataset.i,16); el.style.display='inline-flex'; });
+  }
+
+  function clRender(){
+    const list=clFiltered(), total=list.length, pages=Math.max(1, Math.ceil(total/clSize));
+    if(clPage>pages) clPage=pages; if(clPage<1) clPage=1;
+    const start=(clPage-1)*clSize, slice=list.slice(start, start+clSize);
+    if(!total){
+      clBody.innerHTML='<tr><td colspan="5"><div class="cl-empty"><b>Sin resultados</b>Ningún cliente coincide con la búsqueda.</div></td></tr>';
+    } else {
+      clBody.innerHTML = slice.map(c=>'<tr tabindex="0" data-href="client_detali.html" aria-label="Abrir '+escc(c.name)+'">'
+        +'<td data-label="Tipo de documento"><span class="cl-doctype">'+escc(c.dt)+'</span></td>'
+        +'<td data-label="Número de documento" class="cl-num">'+escc(c.dn)+'</td>'
+        +'<td data-label="Nombre" class="cl-name">'+escc(c.name)+'</td>'
+        +'<td data-label="Teléfono principal" class="cl-num">'+escc(c.phone)+'</td>'
+        +'<td class="cl-chev"><span data-i="chevron-right"></span></td></tr>').join('');
+      clBody.querySelectorAll('[data-i]').forEach(el=>{ el.innerHTML=svg(el.dataset.i,18); el.style.display='inline-flex'; });
+    }
+    const nAll=CLIENTS.length; clCount.textContent=nAll+(nAll===1?' cliente':' clientes');
+    const a=total?start+1:0, b=Math.min(start+clSize,total);
+    clInfo.textContent='Mostrando '+a+'–'+b+' de '+total;
+    renderPager(clPage, pages);
+  }
+  function clSkeleton(){
+    clBody.innerHTML=Array.from({length:8}).map(()=>'<tr class="cl-skel"><td><span style="width:46px"></span></td><td><span style="width:60%"></span></td><td><span style="width:82%"></span></td><td><span style="width:55%"></span></td><td></td></tr>').join('');
+  }
+  clBody.addEventListener('click', e=>{ const tr=e.target.closest('tr[data-href]'); if(tr) location.href=tr.dataset.href; });
+  clBody.addEventListener('keydown', e=>{ if(e.key==='Enter'){ const tr=e.target.closest('tr[data-href]'); if(tr) location.href=tr.dataset.href; } });
+  clField.addEventListener('change', ()=>{ clPage=1; clRender(); });
+  clQuery.addEventListener('input', ()=>{ clPage=1; clRender(); });
+  clRpp.addEventListener('change', ()=>{ clSize=+clRpp.value; clPage=1; clRender(); });
+  clPages.addEventListener('click', e=>{ const b=e.target.closest('button[data-pg]'); if(!b||b.disabled) return; clPage=+b.dataset.pg; clRender(); });
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){ clRender(); } else { clSkeleton(); setTimeout(clRender, 400); }
 </script>
 </body>
 </html>
