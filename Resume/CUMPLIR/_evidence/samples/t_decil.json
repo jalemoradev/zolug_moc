@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "operacion": "0",
+        "decil": "DECIL"
+    },
+    {
+        "id": "2",
+        "operacion": "102499",
+        "decil": "6"
+    },
+    {
+        "id": "3",
+        "operacion": "102499",
+        "decil": "6"
+    },
+    {
+        "id": "4",
+        "operacion": "102499",
+        "decil": "6"
+    },
+    {
+        "id": "5",
+        "operacion": "431060",
+        "decil": "8"
+    }
+]

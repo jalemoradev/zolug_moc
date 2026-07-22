@@ -1,0 +1,14 @@
+{
+    "label": "CEGROUP",
+    "host": "p3plzcpnl489480.prod.phx3.secureserver.net",
+    "port": 3306,
+    "database": "data_cegroup",
+    "user": "user_cegroup",
+    "server_version": "10.11.16-MariaDB-cll-lve",
+    "version_comment": "MariaDB Server",
+    "server_now": "2026-06-21 01:51:46",
+    "server_time_zone": "SYSTEM",
+    "db_charset": "latin1",
+    "db_collation": "latin1_swedish_ci",
+    "introspected_at": "2026-06-21T03:51:46-05:00"
+}

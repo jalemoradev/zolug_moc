@@ -1,0 +1,57 @@
+[
+    {
+        "id": "2",
+        "operacion": "4369829802020",
+        "cliente": "TITULAR",
+        "nombre": "SIN NOMBRE",
+        "facuerdo": "2022-01-31",
+        "fregistro": "0000-00-00",
+        "asesor": "COORDINADOR",
+        "estado": "activo",
+        "valor": "127000"
+    },
+    {
+        "id": "3",
+        "operacion": "4369829802020",
+        "cliente": "TITULAR",
+        "nombre": "SIN NOMBRE",
+        "facuerdo": "2022-02-28",
+        "fregistro": "0000-00-00",
+        "asesor": "COORDINADOR",
+        "estado": "activo",
+        "valor": "127000"
+    },
+    {
+        "id": "4",
+        "operacion": "4369829802020",
+        "cliente": "TITULAR",
+        "nombre": "SIN NOMBRE",
+        "facuerdo": "2022-03-30",
+        "fregistro": "0000-00-00",
+        "asesor": "COORDINADOR",
+        "estado": "activo",
+        "valor": "127000"
+    },
+    {
+        "id": "5",
+        "operacion": "3390508",
+        "cliente": "TITULAR",
+        "nombre": "SIN NOMBRE",
+        "facuerdo": "2022-01-08",
+        "fregistro": "0000-00-00",
+        "asesor": "FARIDE.VERA",
+        "estado": "activo",
+        "valor": "148300"
+    },
+    {
+        "id": "6",
+        "operacion": "4999692802020",
+        "cliente": "TITULAR",
+        "nombre": "SIN NOMBRE",
+        "facuerdo": "2022-01-28",
+        "fregistro": "0000-00-00",
+        "asesor": "RUBI.CARDENAS",
+        "estado": "activo",
+        "valor": "1260000"
+    }
+]

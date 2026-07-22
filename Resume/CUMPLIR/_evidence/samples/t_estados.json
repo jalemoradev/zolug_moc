@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "estado": "ACUERDO"
+    },
+    {
+        "id": "2",
+        "estado": "ILOCALIZADO"
+    },
+    {
+        "id": "3",
+        "estado": "JURIDICO"
+    },
+    {
+        "id": "4",
+        "estado": "RENUENTE"
+    },
+    {
+        "id": "5",
+        "estado": "PAZ_Y_SALVO"
+    }
+]

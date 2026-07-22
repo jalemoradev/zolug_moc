@@ -1,0 +1,9 @@
+03:48:01  Connecting to CUMPLIR (srv450.hstgr.io:3306 / db=u815310395_data) as u815310395_data
+03:48:02  Connected OK
+03:48:02  Server: 11.8.6-MariaDB-log
+03:48:02  Tables: 23 -> l_campana, l_cartera, reporte_acuerdos, reporte_gestion, reporte_proyeccion, r_acuerdo, t_acuerdos, t_alertas, t_asignacion, t_base, t_campana, t_cartera, t_decil, t_estados, t_gestiones, t_mensaje, t_pagos, t_procesos, t_resumen, t_saldos, t_subs, t_telefonos, t_usuarios
+03:48:04  DDL dumped for 23 tables
+03:48:05  Samples dumped (LIMIT 5, secrets masked)
+03:49:38  Column profiles computed
+03:49:43  Quality checks done
+03:49:43  DONE in 101.7s

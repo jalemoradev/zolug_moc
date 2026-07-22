@@ -319,7 +319,7 @@
   <!-- Tokens -->
   <div class="section-label">Tokens — tema oscuro</div>
   <div class="grid" id="grid"></div>
-  <p class="note"><strong>Regla dura — estos son los colores del modo oscuro.</strong> Los tokens de arriba <strong>son</strong> la paleta oscura de zolug (medida de Plasma, WCAG AA verificado). <strong>Toda pantalla de módulo</strong> toma sus colores oscuros de estos tokens exactos, a través de las variables del shell <code>layout/dashboard.html</code> —<code>--bg-page</code> (#0d0c13), <code>--bg-surface</code> (#14121c), <code>--bg-elevated</code> (#1a1922), <code>--text-primary</code> (#ffffff), <code>--text-muted</code> (#a2a9ad), <code>--accent-solid</code> (#5a58c2), <code>--accent-on-dark</code> (#7474ef), <code>--logo</code> (#955dcd), <code>--error</code> (#df5158)— más <code>--border</code> y <code>--hair</code> (ver Bordes). <strong>Prohibido inventar, hardcodear o sustituir</strong> un color oscuro fuera de esta paleta.</p>
+  <p class="note"><strong>Regla dura — estos son los colores del modo oscuro.</strong> Los tokens de arriba <strong>son</strong> la paleta oscura de zolug (medida de Plasma, WCAG AA verificado). <strong>Toda pantalla de módulo</strong> toma sus colores oscuros de estos tokens exactos, a través de las variables del shell <code>layout/dashboard.html</code> —<code>--bg-page</code> (#0d0c13), <code>--bg-surface</code> (#14121c), <code>--bg-elevated</code> (#1a1922), <code>--text-primary</code> (#ffffff), <code>--text-muted</code> (#a2a9ad), <code>--accent-solid</code> (#5a58c2), <code>--accent-on-dark</code> (#7474ef), <code>--logo</code> (#955dcd), <code>--error</code> (#df5158)— más <code>--border</code> (contenedores + separador del header) y <code>--hair</code> (separaciones internas) — ver Bordes. <strong>Prohibido inventar, hardcodear o sustituir</strong> un color oscuro fuera de esta paleta.</p>
 
   <div class="section-label">Tokens — tema claro <span style="color:var(--color-text-muted);font-weight:400">· derivado, WCAG AA verificado</span></div>
   <div class="grid" id="gridLight"></div>
@@ -331,16 +331,16 @@
       <div class="swatch" style="background:transparent;border:2px solid var(--border)"></div>
       <div class="name">--border</div>
       <div class="hex">oscuro rgba(255,255,255,.22) · claro rgba(0,0,0,.32)</div>
-      <div class="meta">Borde de contenedores: panel, tarjetas, tablas, secciones — el que separa</div>
+      <div class="meta">Borde que encierra o separa bloques: contenedores (panel, tarjetas, tablas, buscador, dropdown, modal, input, botón-icono) Y el separador bajo la cabecera de 80px (.screen-head).</div>
     </div>
     <div class="swatch-card">
       <div class="swatch" style="background:transparent;border:2px solid var(--hair)"></div>
       <div class="name">--hair</div>
       <div class="hex">oscuro rgba(255,255,255,.06) · claro rgba(0,0,0,.08)</div>
-      <div class="meta">Divisores finos internos (líneas sutiles dentro de un bloque)</div>
+      <div class="meta">Separaciones internas dentro de un bloque: filas y cabecera de tabla, divisores entre secciones de una card, filas del modal, separador entre estadísticas.</div>
     </div>
   </div>
-  <p class="note"><strong>Regla dura:</strong> toda pantalla toma sus bordes de <code>--border</code> (contenedores) y <code>--hair</code> (divisores internos), en los dos temas. Prohibido inventar o hardcodear otro color de borde.</p>
+  <p class="note"><strong>Regla dura — dos tokens, cada uno con su función, prohibido intercambiarlos:</strong> <code>--border</code> encierra/separa bloques (contenedores + separador del header); <code>--hair</code> son las separaciones internas (filas de tabla, divisores de sección). En los dos temas. Prohibido inventar o hardcodear otro color de borde.</p>
 
   <!-- Estructura de pantalla -->
   <div class="section-label">Estructura de pantalla — ancho completo + cabecera 80px <span style="color:var(--color-text-muted);font-weight:400">· CRM · responsive hasta tablet</span></div>
@@ -546,8 +546,8 @@
     ["bg/page",         "#0D0C13", "Fondo de página",        "base"],
     ["bg/surface",      "#14121C", "Panel",                  "base"],
     ["bg/elevated",     "#1A1922", "Tarjeta / nodo",         "base"],
-    ["border/subtle",   "#201E2A", "Separador tenue",        "—"],
-    ["border/default",  "#2A2740", "Borde",                  "—"],
+    ["border/subtle",   "#201E2A", "DEPRECADO — usar --hair",   "—"],
+    ["border/default",  "#2A2740", "DEPRECADO — usar --border", "—"],
     ["text/primary",    "#FFFFFF", "Texto principal",        "17.41:1 · AA"],
     ["text/muted",      "#A2A9AD", "Texto secundario",       "7.31:1 · AA"],
     ["accent/solid",    "#5A58C2", "Acento · fondo botón",   "blanco 5.82:1 · AA"],

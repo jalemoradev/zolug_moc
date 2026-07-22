@@ -1,0 +1,47 @@
+[
+    {
+        "id": "3",
+        "operacion": "1038175",
+        "asesor": "TRINIDAD.BAOS",
+        "nombre": "MARIA TRINIDAD BAOS",
+        "fecha": "2020-10-08",
+        "hora": "12:23 p.?m.",
+        "gestion": "07\/10\/20 S.C.V"
+    },
+    {
+        "id": "4",
+        "operacion": "1038428",
+        "asesor": "TRINIDAD.BAOS",
+        "nombre": "MARIA TRINIDAD BAOS",
+        "fecha": "2020-10-08",
+        "hora": "12:26 p.?m.",
+        "gestion": "07\/10\/20 SE CONTACTA A EL CODEUDOR QUIEN EXPONE QUE EL TITULAR FALLECIA Y EXPRESA QUE SE PONDRA EN CONTACTO CON LA ESPOSA DE EL PARA PODER LLEGAR A UN ACUERDO VOLVER A LLAMAR "
+    },
+    {
+        "id": "5",
+        "operacion": "1038483",
+        "asesor": "TRINIDAD.BAOS",
+        "nombre": "MARIA TRINIDAD BAOS",
+        "fecha": "2020-10-08",
+        "hora": "12:29 p.?m.",
+        "gestion": "07\/10\/20 N.I "
+    },
+    {
+        "id": "6",
+        "operacion": "1038659",
+        "asesor": "TRINIDAD.BAOS",
+        "nombre": "MARIA TRINIDAD BAOS",
+        "fecha": "2020-10-08",
+        "hora": "12:35 p.?m.",
+        "gestion": "07\/10\/20 S.C.V"
+    },
+    {
+        "id": "7",
+        "operacion": "1038912",
+        "asesor": "TRINIDAD.BAOS",
+        "nombre": "MARIA TRINIDAD BAOS",
+        "fecha": "2020-10-08",
+        "hora": "12:36 p.?m.",
+        "gestion": "07\/10\/20 S.C.V"
+    }
+]

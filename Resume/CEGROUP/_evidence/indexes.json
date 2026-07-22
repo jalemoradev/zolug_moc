@@ -1,0 +1,182 @@
+[
+    {
+        "TABLE_NAME": "l_campana",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "3",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "l_cartera",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "38",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_acuerdos",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "741",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_alertas",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "20",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_asignacion",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "54953",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_base",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "operacion",
+        "CARDINALITY": "54485",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_campana",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "54121",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_cartera",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "54916",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_decil",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "55386",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_email",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "3689",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_estados",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "5",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_gestiones",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "745537",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_mensaje",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "0",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_pagos",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "0",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_procesos",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "51255",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_resumen",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "154263",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_saldos",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "54940",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_subs",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "39",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_telefonos",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "id",
+        "CARDINALITY": "117981",
+        "INDEX_TYPE": "BTREE"
+    },
+    {
+        "TABLE_NAME": "t_usuarios",
+        "INDEX_NAME": "PRIMARY",
+        "NON_UNIQUE": "0",
+        "SEQ_IN_INDEX": "1",
+        "COLUMN_NAME": "cedula",
+        "CARDINALITY": "58",
+        "INDEX_TYPE": "BTREE"
+    }
+]

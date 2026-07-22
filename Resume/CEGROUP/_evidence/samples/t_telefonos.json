@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "operacion": "49802030",
+        "asesor": "JENNYFER.PISCO",
+        "telefono": "3103878506",
+        "detalle": "POSIBLE CONTACTO"
+    },
+    {
+        "id": "2",
+        "operacion": "49802030",
+        "asesor": "PAULA.MEDINA",
+        "telefono": "3157180039",
+        "detalle": "INVES CAMP 4 TT"
+    },
+    {
+        "id": "3",
+        "operacion": "109802030",
+        "asesor": "JENNYFER.PISCO",
+        "telefono": "3045971218",
+        "detalle": "POSIBLE CONTACTO"
+    },
+    {
+        "id": "4",
+        "operacion": "109802030",
+        "asesor": "PAULA.MEDINA",
+        "telefono": "3116471841",
+        "detalle": "INVES CAMP 9 TT"
+    },
+    {
+        "id": "5",
+        "operacion": "117802030",
+        "asesor": "JENNYFER.PISCO",
+        "telefono": "3158634218",
+        "detalle": "POSIBLE CONTACTO"
+    }
+]

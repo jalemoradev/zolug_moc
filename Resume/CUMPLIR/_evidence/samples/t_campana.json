@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "operacion": "0",
+        "campana": "CAMPANA"
+    },
+    {
+        "id": "2",
+        "operacion": "102499",
+        "campana": "CARTERAS ANTIGUAS (75%)"
+    },
+    {
+        "id": "3",
+        "operacion": "102499",
+        "campana": "CARTERAS ANTIGUAS (75%)"
+    },
+    {
+        "id": "4",
+        "operacion": "102499",
+        "campana": "CARTERAS ANTIGUAS (75%)"
+    },
+    {
+        "id": "5",
+        "operacion": "431060",
+        "campana": "CARTERAS ANTIGUAS (75%)"
+    }
+]

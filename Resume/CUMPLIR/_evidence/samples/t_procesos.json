@@ -1,0 +1,42 @@
+[
+    {
+        "id": "2",
+        "operacion": "1722",
+        "estado": "RENUENTE",
+        "sub": "INSOLVENTE",
+        "fgestion": "2023-02-22",
+        "asesor": "ALEJA.MEN"
+    },
+    {
+        "id": "3",
+        "operacion": "2233",
+        "estado": "ACUERDO",
+        "sub": "ACUERDO DE PAGO",
+        "fgestion": "2022-12-12",
+        "asesor": "JOSE.PILAQUINGA"
+    },
+    {
+        "id": "4",
+        "operacion": "3119",
+        "estado": "RENUENTE",
+        "sub": "RECLAMACION",
+        "fgestion": "2022-06-07",
+        "asesor": "DIANA.MARTINEZ"
+    },
+    {
+        "id": "5",
+        "operacion": "3347",
+        "estado": "PAZ_Y_SALVO",
+        "sub": "PAZ_Y_SALVO",
+        "fgestion": "2022-10-20",
+        "asesor": "JOSE.PILAQUINGA"
+    },
+    {
+        "id": "6",
+        "operacion": "3434",
+        "estado": "ILOCALIZADO",
+        "sub": "ILOCALIZADO",
+        "fgestion": "2023-01-17",
+        "asesor": "DANIELA.ARIAS"
+    }
+]

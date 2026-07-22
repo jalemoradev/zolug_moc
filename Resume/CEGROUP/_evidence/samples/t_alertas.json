@@ -1,0 +1,47 @@
+[
+    {
+        "id": "9390",
+        "operacion": "132760802020",
+        "asesor": "JAIRO.VARGAS",
+        "fecha": "2024-10-24",
+        "hora": "09:00 AM",
+        "num": "09",
+        "alerta": "HACER EPS A SUPUESTO HIJO DE LA COD ROSA CASTRO NUMERO: 3106459225 - CEDULA: 50875714"
+    },
+    {
+        "id": "9496",
+        "operacion": "286103802030",
+        "asesor": "JAIRO.VARGAS",
+        "fecha": "2024-11-12",
+        "hora": "08:00 AM",
+        "num": "08",
+        "alerta": "LLAMAR POSIBLE SENORA TT "
+    },
+    {
+        "id": "9899",
+        "operacion": "5378311802020",
+        "asesor": "LAURA.VARGAS",
+        "fecha": "2025-01-27",
+        "hora": "09:00 AM",
+        "num": "09",
+        "alerta": "LLAMAR COBRAR"
+    },
+    {
+        "id": "9936",
+        "operacion": "4642756802020",
+        "asesor": "FERNANDA.RUGELES",
+        "fecha": "2025-01-29",
+        "hora": "11:00 AM",
+        "num": "11",
+        "alerta": "LLAMAR "
+    },
+    {
+        "id": "10146",
+        "operacion": "975060802020",
+        "asesor": "MARISOL.AREVALO",
+        "fecha": "2025-03-07",
+        "hora": "09:00 AM",
+        "num": "09",
+        "alerta": "COBRARLE AL TT "
+    }
+]

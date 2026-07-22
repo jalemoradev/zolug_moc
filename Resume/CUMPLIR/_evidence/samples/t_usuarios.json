@@ -1,0 +1,57 @@
+[
+    {
+        "cedula": "0",
+        "nombre": "JURIDICOS CUMPLIR",
+        "telefono": "0",
+        "avatar": "woman1",
+        "userpass": "***MASKED(len=32)***",
+        "username": "JURIDICOS.CUMPLIR",
+        "usertype": "0",
+        "posicion": "0",
+        "estado": "TRUE"
+    },
+    {
+        "cedula": "1",
+        "nombre": "YESMIN HOYOS",
+        "telefono": "0",
+        "avatar": "woman1",
+        "userpass": "***MASKED(len=32)***",
+        "username": "YESMIN.HOYOS",
+        "usertype": "1",
+        "posicion": "0",
+        "estado": "TRUE"
+    },
+    {
+        "cedula": "123456",
+        "nombre": "0",
+        "telefono": "0",
+        "avatar": "woman1",
+        "userpass": "***MASKED(len=32)***",
+        "username": "UBINEY.CERON",
+        "usertype": "0",
+        "posicion": "0",
+        "estado": "TRUE"
+    },
+    {
+        "cedula": "225544",
+        "nombre": "CUENTA CUMPLIR",
+        "telefono": "0",
+        "avatar": "women1",
+        "userpass": "***MASKED(len=32)***",
+        "username": "CUENTA.CUMPLIR",
+        "usertype": "0",
+        "posicion": "0",
+        "estado": "TRUE"
+    },
+    {
+        "cedula": "12121212",
+        "nombre": "DANIEL TROYANO",
+        "telefono": "0",
+        "avatar": "man4",
+        "userpass": "***MASKED(len=32)***",
+        "username": "DANIEL.TROYANO",
+        "usertype": "1",
+        "posicion": "0",
+        "estado": "TRUE"
+    }
+]

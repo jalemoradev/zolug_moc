@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "operacion": "0",
+        "capital": "SALDO CAPITAL",
+        "total": "SALDO TOTAL"
+    },
+    {
+        "id": "2",
+        "operacion": "102499",
+        "capital": "2226296,21",
+        "total": "2226296,21"
+    },
+    {
+        "id": "3",
+        "operacion": "102499",
+        "capital": "2226296,21",
+        "total": "2226296,21"
+    },
+    {
+        "id": "4",
+        "operacion": "102499",
+        "capital": "2226296,21",
+        "total": "2226296,21"
+    },
+    {
+        "id": "5",
+        "operacion": "431060",
+        "capital": "963557,99",
+        "total": "963557,99"
+    }
+]

@@ -1,0 +1,2863 @@
+{
+    "l_campana": {
+        "row_count": 3,
+        "columns": {
+            "id": {
+                "data_type": "int(10)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 3,
+                "nulls": 0,
+                "min": "1799702",
+                "max": "5449501",
+                "values": [
+                    {
+                        "val": "1799702",
+                        "n": "1"
+                    },
+                    {
+                        "val": "5449500",
+                        "n": "1"
+                    },
+                    {
+                        "val": "5449501",
+                        "n": "1"
+                    }
+                ]
+            },
+            "campana": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 3,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "5449500",
+                        "n": "1"
+                    },
+                    {
+                        "val": "CAMPANA 09 60",
+                        "n": "1"
+                    },
+                    {
+                        "val": "CAMPANA 10 60",
+                        "n": "1"
+                    }
+                ]
+            }
+        }
+    },
+    "l_cartera": {
+        "row_count": 43,
+        "columns": {
+            "id": {
+                "data_type": "int(10)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 43,
+                "nulls": 0,
+                "min": "1",
+                "max": "5449501",
+                "values": [
+                    {
+                        "val": "14",
+                        "n": "1"
+                    },
+                    {
+                        "val": "30",
+                        "n": "1"
+                    },
+                    {
+                        "val": "15",
+                        "n": "1"
+                    },
+                    {
+                        "val": "31",
+                        "n": "1"
+                    },
+                    {
+                        "val": "16",
+                        "n": "1"
+                    },
+                    {
+                        "val": "32",
+                        "n": "1"
+                    },
+                    {
+                        "val": "1",
+                        "n": "1"
+                    },
+                    {
+                        "val": "17",
+                        "n": "1"
+                    },
+                    {
+                        "val": "33",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2",
+                        "n": "1"
+                    },
+                    {
+                        "val": "18",
+                        "n": "1"
+                    },
+                    {
+                        "val": "34",
+                        "n": "1"
+                    },
+                    {
+                        "val": "3",
+                        "n": "1"
+                    },
+                    {
+                        "val": "19",
+                        "n": "1"
+                    },
+                    {
+                        "val": "35",
+                        "n": "1"
+                    },
+                    {
+                        "val": "4",
+                        "n": "1"
+                    },
+                    {
+                        "val": "20",
+                        "n": "1"
+                    },
+                    {
+                        "val": "36",
+                        "n": "1"
+                    },
+                    {
+                        "val": "5",
+                        "n": "1"
+                    },
+                    {
+                        "val": "21",
+                        "n": "1"
+                    },
+                    {
+                        "val": "37",
+                        "n": "1"
+                    },
+                    {
+                        "val": "6",
+                        "n": "1"
+                    },
+                    {
+                        "val": "22",
+                        "n": "1"
+                    },
+                    {
+                        "val": "38",
+                        "n": "1"
+                    },
+                    {
+                        "val": "7",
+                        "n": "1"
+                    },
+                    {
+                        "val": "23",
+                        "n": "1"
+                    },
+                    {
+                        "val": "62405",
+                        "n": "1"
+                    },
+                    {
+                        "val": "8",
+                        "n": "1"
+                    },
+                    {
+                        "val": "24",
+                        "n": "1"
+                    },
+                    {
+                        "val": "358963",
+                        "n": "1"
+                    },
+                    {
+                        "val": "9",
+                        "n": "1"
+                    },
+                    {
+                        "val": "25",
+                        "n": "1"
+                    },
+                    {
+                        "val": "358964",
+                        "n": "1"
+                    },
+                    {
+                        "val": "10",
+                        "n": "1"
+                    },
+                    {
+                        "val": "26",
+                        "n": "1"
+                    },
+                    {
+                        "val": "5449500",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11",
+                        "n": "1"
+                    },
+                    {
+                        "val": "27",
+                        "n": "1"
+                    },
+                    {
+                        "val": "5449501",
+                        "n": "1"
+                    },
+                    {
+                        "val": "12",
+                        "n": "1"
+                    },
+                    {
+                        "val": "28",
+                        "n": "1"
+                    },
+                    {
+                        "val": "13",
+                        "n": "1"
+                    },
+                    {
+                        "val": "29",
+                        "n": "1"
+                    }
+                ]
+            },
+            "cartera": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 40,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "nov-22",
+                        "n": "4"
+                    },
+                    {
+                        "val": "17 Cartera Oct 2018",
+                        "n": "1"
+                    },
+                    {
+                        "val": "8 Cartera Dic 2017",
+                        "n": "1"
+                    },
+                    {
+                        "val": "12 Cartera May 2018",
+                        "n": "1"
+                    },
+                    {
+                        "val": "37 Cartera Jun 2020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "303586",
+                        "n": "1"
+                    },
+                    {
+                        "val": "32 Cartera Ene 2020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "28 Cartera Spt 2019",
+                        "n": "1"
+                    },
+                    {
+                        "val": "23 Cartera Abr 2019",
+                        "n": "1"
+                    },
+                    {
+                        "val": "19 Cartera Dic 2018",
+                        "n": "1"
+                    },
+                    {
+                        "val": "FMM Ene 2017",
+                        "n": "1"
+                    },
+                    {
+                        "val": "14 Cartera Jul 2018",
+                        "n": "1"
+                    },
+                    {
+                        "val": "5 Cartera Dic 2016",
+                        "n": "1"
+                    },
+                    {
+                        "val": "1 Cartera Dic 2015",
+                        "n": "1"
+                    },
+                    {
+                        "val": "34 Cartera Mar 2020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "3 Cartera Jun 2016",
+                        "n": "1"
+                    },
+                    {
+                        "val": "25 Cartera Jun 2019",
+                        "n": "1"
+                    },
+                    {
+                        "val": "20 Cartera Ene 2019",
+                        "n": "1"
+                    },
+                    {
+                        "val": "16 Cartera May 2018",
+                        "n": "1"
+                    },
+                    {
+                        "val": "7 Cartera Jun 2017",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11 Cartera Mar 2018",
+                        "n": "1"
+                    },
+                    {
+                        "val": "36 Cartera May 2020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "31 Cartera Dic 2019",
+                        "n": "1"
+                    },
+                    {
+                        "val": "27 Cartera Agst 2019",
+                        "n": "1"
+                    },
+                    {
+                        "val": "22 Cartera Mar 2019",
+                        "n": "1"
+                    },
+                    {
+                        "val": "18 Cartera Nov 2018",
+                        "n": "1"
+                    },
+                    {
+                        "val": "9 Cartera Dic 2017",
+                        "n": "1"
+                    },
+                    {
+                        "val": "13 Cartera Jun 2018",
+                        "n": "1"
+                    },
+                    {
+                        "val": "4 Cartera Spt 2016",
+                        "n": "1"
+                    },
+                    {
+                        "val": "33 Cartera Feb 2020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "29 Cartera Oct 2019",
+                        "n": "1"
+                    },
+                    {
+                        "val": "24 Cartera May 2019",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2 Cartera Mar 2016",
+                        "n": "1"
+                    },
+                    {
+                        "val": "15 Cartera May 2018",
+                        "n": "1"
+                    },
+                    {
+                        "val": "6 Cartera Mar 2017",
+                        "n": "1"
+                    },
+                    {
+                        "val": "10 Cartera Mar 2018",
+                        "n": "1"
+                    },
+                    {
+                        "val": "35 Cartera Abr 2020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "30 Cartera Nov 2019",
+                        "n": "1"
+                    },
+                    {
+                        "val": "26 Cartera Jul 2019",
+                        "n": "1"
+                    },
+                    {
+                        "val": "21 Cartera Feb 2019",
+                        "n": "1"
+                    }
+                ]
+            }
+        }
+    },
+    "t_acuerdos": {
+        "row_count": 10902,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 10902,
+                "nulls": 0,
+                "min": "2",
+                "max": "10931"
+            },
+            "operacion": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 8734,
+                "nulls": 0,
+                "min": "0",
+                "max": "82391850802020"
+            },
+            "cliente": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 5,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "TITULAR",
+                        "n": "9975"
+                    },
+                    {
+                        "val": "CODEUDOR_1",
+                        "n": "540"
+                    },
+                    {
+                        "val": "CODEUDOR_2",
+                        "n": "305"
+                    },
+                    {
+                        "val": "TERCERO",
+                        "n": "49"
+                    },
+                    {
+                        "val": "CODEUDOR 1",
+                        "n": "33"
+                    }
+                ]
+            },
+            "nombre": {
+                "data_type": "varchar(60)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 8292,
+                "nulls": 0,
+                "empties": 0
+            },
+            "facuerdo": {
+                "data_type": "date",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 1390,
+                "nulls": 0,
+                "min": "0000-00-00",
+                "max": "2027-04-18"
+            },
+            "fregistro": {
+                "data_type": "date",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 1190,
+                "nulls": 0,
+                "min": "0000-00-00",
+                "max": "2026-06-19"
+            },
+            "asesor": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 72,
+                "nulls": 0,
+                "empties": 1
+            },
+            "estado": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 1,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "activo",
+                        "n": "10902"
+                    }
+                ]
+            },
+            "valor": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 2295,
+                "nulls": 0,
+                "empties": 0
+            }
+        }
+    },
+    "t_alertas": {
+        "row_count": 22,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 22,
+                "nulls": 0,
+                "min": "9390",
+                "max": "11417",
+                "values": [
+                    {
+                        "val": "11264",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11268",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11269",
+                        "n": "1"
+                    },
+                    {
+                        "val": "9390",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11286",
+                        "n": "1"
+                    },
+                    {
+                        "val": "9496",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11408",
+                        "n": "1"
+                    },
+                    {
+                        "val": "9899",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11411",
+                        "n": "1"
+                    },
+                    {
+                        "val": "9936",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11412",
+                        "n": "1"
+                    },
+                    {
+                        "val": "10146",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11416",
+                        "n": "1"
+                    },
+                    {
+                        "val": "10172",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11417",
+                        "n": "1"
+                    },
+                    {
+                        "val": "10209",
+                        "n": "1"
+                    },
+                    {
+                        "val": "10993",
+                        "n": "1"
+                    },
+                    {
+                        "val": "10994",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11008",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11074",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11235",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11243",
+                        "n": "1"
+                    }
+                ]
+            },
+            "operacion": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 22,
+                "nulls": 0,
+                "min": "8466802030",
+                "max": "7232674802020",
+                "values": [
+                    {
+                        "val": "6850263802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "1853715802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "5789947802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "8466802030",
+                        "n": "1"
+                    },
+                    {
+                        "val": "7232674802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "132760802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2490244802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "286103802030",
+                        "n": "1"
+                    },
+                    {
+                        "val": "5814070802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "5378311802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "6915211802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "4642756802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "6195082802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "975060802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "6487047802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "3328897802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "6193635802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "4213203802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "5806492802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "174537802020",
+                        "n": "1"
+                    },
+                    {
+                        "val": "361216802030",
+                        "n": "1"
+                    },
+                    {
+                        "val": "133573802020",
+                        "n": "1"
+                    }
+                ]
+            },
+            "asesor": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 11,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "JULIETH.PINEDA",
+                        "n": "5"
+                    },
+                    {
+                        "val": "ALYSSON.VEGA",
+                        "n": "3"
+                    },
+                    {
+                        "val": "MARIA.PERDOMO",
+                        "n": "3"
+                    },
+                    {
+                        "val": "JAIRO.VARGAS",
+                        "n": "2"
+                    },
+                    {
+                        "val": "PAULA.MEDINA",
+                        "n": "2"
+                    },
+                    {
+                        "val": "JESSICA.JIMENEZ",
+                        "n": "2"
+                    },
+                    {
+                        "val": "FERNANDA.RUGELES",
+                        "n": "1"
+                    },
+                    {
+                        "val": "MARISOL.AREVALO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "TATIANA.OVALLE",
+                        "n": "1"
+                    },
+                    {
+                        "val": "LAURA.VARGAS",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DAVID.QUEVEDO",
+                        "n": "1"
+                    }
+                ]
+            },
+            "fecha": {
+                "data_type": "date",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 20,
+                "nulls": 0,
+                "min": "2024-10-24",
+                "max": "2026-06-28",
+                "values": [
+                    {
+                        "val": "2025-11-28",
+                        "n": "3"
+                    },
+                    {
+                        "val": "2025-12-10",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2026-06-18",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2024-10-24",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2026-06-28",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2024-11-12",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2026-06-20",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2025-01-27",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2026-06-25",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2025-01-29",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2026-06-22",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2025-03-07",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2025-03-18",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2025-03-17",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2025-09-26",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2025-09-29",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2025-09-30",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2025-10-08",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2025-11-14",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2025-11-20",
+                        "n": "1"
+                    }
+                ]
+            },
+            "hora": {
+                "data_type": "varchar(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 8,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "09:00 AM",
+                        "n": "4"
+                    },
+                    {
+                        "val": "08:00 AM",
+                        "n": "4"
+                    },
+                    {
+                        "val": "02:00 PM",
+                        "n": "4"
+                    },
+                    {
+                        "val": "10:00 AM",
+                        "n": "3"
+                    },
+                    {
+                        "val": "03:00 PM",
+                        "n": "2"
+                    },
+                    {
+                        "val": "04:00 PM",
+                        "n": "2"
+                    },
+                    {
+                        "val": "11:00 AM",
+                        "n": "2"
+                    },
+                    {
+                        "val": "12:00 MM",
+                        "n": "1"
+                    }
+                ]
+            },
+            "num": {
+                "data_type": "varchar(5)",
+                "nullable": "NO",
+                "default": null,
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 8,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "09",
+                        "n": "4"
+                    },
+                    {
+                        "val": "08",
+                        "n": "4"
+                    },
+                    {
+                        "val": "14",
+                        "n": "4"
+                    },
+                    {
+                        "val": "10",
+                        "n": "3"
+                    },
+                    {
+                        "val": "11",
+                        "n": "2"
+                    },
+                    {
+                        "val": "15",
+                        "n": "2"
+                    },
+                    {
+                        "val": "16",
+                        "n": "2"
+                    },
+                    {
+                        "val": "12",
+                        "n": "1"
+                    }
+                ]
+            },
+            "alerta": {
+                "data_type": "varchar(1000)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 18,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "LLAMAR ",
+                        "n": "4"
+                    },
+                    {
+                        "val": "POSIBLE ACUERDO ",
+                        "n": "2"
+                    },
+                    {
+                        "val": "HACER EPS A SUPUESTO HIJO DE LA COD ROSA CASTRO NUMERO: 3106459225 - CEDULA: 50875714",
+                        "n": "1"
+                    },
+                    {
+                        "val": "LLAMAR POSIBLE SENORA TT ",
+                        "n": "1"
+                    },
+                    {
+                        "val": "LLAMAR COBRAR",
+                        "n": "1"
+                    },
+                    {
+                        "val": "COBRARLE AL TT ",
+                        "n": "1"
+                    },
+                    {
+                        "val": "LLAMAR AFIJAR CUOTAS ",
+                        "n": "1"
+                    },
+                    {
+                        "val": "LLAMAR PARA ACUERDO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "LLAMAR 8 AM",
+                        "n": "1"
+                    },
+                    {
+                        "val": "LLAMAR 29",
+                        "n": "1"
+                    },
+                    {
+                        "val": "PAGA EL 30 CONDONACION 50",
+                        "n": "1"
+                    },
+                    {
+                        "val": "CIOMUNICACION TT",
+                        "n": "1"
+                    },
+                    {
+                        "val": "4 MILL\r\n",
+                        "n": "1"
+                    },
+                    {
+                        "val": "POSIBLE ACUERDO}",
+                        "n": "1"
+                    },
+                    {
+                        "val": "GENERAR INFORMACION ",
+                        "n": "1"
+                    },
+                    {
+                        "val": "LLAMAR ES URG ",
+                        "n": "1"
+                    },
+                    {
+                        "val": "VER CHAT Y CONFIRMAR ",
+                        "n": "1"
+                    },
+                    {
+                        "val": "VERC CHAT ",
+                        "n": "1"
+                    }
+                ]
+            }
+        }
+    },
+    "t_asignacion": {
+        "row_count": 54931,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 54931,
+                "nulls": 0,
+                "min": "1",
+                "max": "54931"
+            },
+            "operacion": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 54931,
+                "nulls": 0,
+                "min": "1000001",
+                "max": "83537721802020"
+            },
+            "asesor": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 24,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "CEGROUP.RENUENTESDIC2025",
+                        "n": "23439"
+                    },
+                    {
+                        "val": "DANIELA.SALAMANCA",
+                        "n": "3621"
+                    },
+                    {
+                        "val": "PAULA.MEDINA",
+                        "n": "3604"
+                    },
+                    {
+                        "val": "MARIA.PERDOMO",
+                        "n": "3581"
+                    },
+                    {
+                        "val": "SOFIA.LOPEZ",
+                        "n": "3549"
+                    },
+                    {
+                        "val": "ASESORNUEVO1",
+                        "n": "3536"
+                    },
+                    {
+                        "val": "JUAN.RINCON",
+                        "n": "3478"
+                    },
+                    {
+                        "val": "ASESORNUEVO2",
+                        "n": "3419"
+                    },
+                    {
+                        "val": "CEGROUP.RENUENTESFEB2026",
+                        "n": "1269"
+                    },
+                    {
+                        "val": "CARTERA NUEVA JUNIO 2026",
+                        "n": "964"
+                    },
+                    {
+                        "val": "CEGROUP.RENUENTESMAY2026",
+                        "n": "883"
+                    },
+                    {
+                        "val": "CEGROUP.RENUENTESJUN2026",
+                        "n": "800"
+                    },
+                    {
+                        "val": "CEGROUP.RENUESTESABR2026",
+                        "n": "792"
+                    },
+                    {
+                        "val": "CEGROUP.RENUENTESMAR2026",
+                        "n": "494"
+                    },
+                    {
+                        "val": "CEGROUP.FALLECIDOS",
+                        "n": "398"
+                    },
+                    {
+                        "val": "JURIDICO",
+                        "n": "368"
+                    },
+                    {
+                        "val": "CEGROUP.RENUENTESENE2026",
+                        "n": "263"
+                    },
+                    {
+                        "val": "INMOBILIARIA",
+                        "n": "171"
+                    },
+                    {
+                        "val": "CEGROUP.INVESTIGACIONJUN2026",
+                        "n": "131"
+                    },
+                    {
+                        "val": "CEGROUP.PAZ_Y_SALVO",
+                        "n": "61"
+                    },
+                    {
+                        "val": "0",
+                        "n": "54"
+                    },
+                    {
+                        "val": "CARTERA NUEVA MAYO 2026",
+                        "n": "38"
+                    },
+                    {
+                        "val": "CEGROUP.INVESTIGACIONMAY2026",
+                        "n": "12"
+                    },
+                    {
+                        "val": "MAYRA.RUIZ",
+                        "n": "6"
+                    }
+                ]
+            }
+        }
+    },
+    "t_base": {
+        "row_count": 54931,
+        "columns": {
+            "operacion": {
+                "data_type": "bigint(30)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 54931,
+                "nulls": 0,
+                "min": "1000001",
+                "max": "83537721802020"
+            },
+            "cuenta": {
+                "data_type": "int(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 51531,
+                "nulls": 0,
+                "min": "218101",
+                "max": "150033953"
+            },
+            "tcedula": {
+                "data_type": "int(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 51178,
+                "nulls": 0,
+                "min": "0",
+                "max": "2000012941"
+            },
+            "tnombre": {
+                "data_type": "varchar(60)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 51349,
+                "nulls": 0,
+                "empties": 0
+            },
+            "ttel1": {
+                "data_type": "varchar(40)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 50259,
+                "nulls": 0,
+                "empties": 0
+            },
+            "ttel2": {
+                "data_type": "varchar(40)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 44597,
+                "nulls": 0,
+                "empties": 0
+            },
+            "ccedula": {
+                "data_type": "int(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 5938,
+                "nulls": 0,
+                "min": "0",
+                "max": "2147483647"
+            },
+            "cnombre": {
+                "data_type": "varchar(60)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 6054,
+                "nulls": 0,
+                "empties": 0
+            },
+            "ctel1": {
+                "data_type": "varchar(40)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 5768,
+                "nulls": 0,
+                "empties": 0
+            },
+            "ctel2": {
+                "data_type": "varchar(40)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 4250,
+                "nulls": 0,
+                "empties": 0
+            },
+            "gcedula": {
+                "data_type": "int(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 6631,
+                "nulls": 0,
+                "min": "0",
+                "max": "1238341317"
+            },
+            "gnombre": {
+                "data_type": "varchar(60)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 6821,
+                "nulls": 0,
+                "empties": 0
+            },
+            "gtel1": {
+                "data_type": "varchar(40)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 6387,
+                "nulls": 0,
+                "empties": 0
+            },
+            "gtel2": {
+                "data_type": "varchar(40)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 4837,
+                "nulls": 0,
+                "empties": 0
+            },
+            "fvencimiento": {
+                "data_type": "date",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 2834,
+                "nulls": 0,
+                "min": "0000-00-00",
+                "max": "2030-05-06"
+            },
+            "fingreso": {
+                "data_type": "date",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 2891,
+                "nulls": 0,
+                "min": "0000-00-00",
+                "max": "2026-06-17"
+            },
+            "sucursal": {
+                "data_type": "varchar(40)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 397,
+                "nulls": 0,
+                "empties": 0
+            },
+            "dependencia": {
+                "data_type": "varchar(40)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 281,
+                "nulls": 0,
+                "empties": 0
+            },
+            "condicion": {
+                "data_type": "varchar(200)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 7,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "ACTIVO",
+                        "n": "54751"
+                    },
+                    {
+                        "val": "ARRENDAMIENTO",
+                        "n": "106"
+                    },
+                    {
+                        "val": "VENTA",
+                        "n": "61"
+                    },
+                    {
+                        "val": "0",
+                        "n": "7"
+                    },
+                    {
+                        "val": "SIN DATOS",
+                        "n": "4"
+                    },
+                    {
+                        "val": "INACTIVO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "ARCHIVO",
+                        "n": "1"
+                    }
+                ]
+            },
+            "banco": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 98,
+                "nulls": 0,
+                "empties": 0
+            }
+        }
+    },
+    "t_campana": {
+        "row_count": 54931,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 54931,
+                "nulls": 0,
+                "min": "1",
+                "max": "54931"
+            },
+            "operacion": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 54931,
+                "nulls": 0,
+                "min": "1000001",
+                "max": "83537721802020"
+            },
+            "campana": {
+                "data_type": "varchar(100)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 53,
+                "nulls": 0,
+                "empties": 0
+            }
+        }
+    },
+    "t_cartera": {
+        "row_count": 54930,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 54930,
+                "nulls": 0,
+                "min": "1",
+                "max": "54930"
+            },
+            "operacion": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 54930,
+                "nulls": 0,
+                "min": "1000001",
+                "max": "83537721802020"
+            },
+            "cartera": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 292,
+                "nulls": 0,
+                "empties": 0
+            }
+        }
+    },
+    "t_decil": {
+        "row_count": 54931,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 54931,
+                "nulls": 0,
+                "min": "1",
+                "max": "54931"
+            },
+            "operacion": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 54931,
+                "nulls": 0,
+                "min": "1000001",
+                "max": "83537721802020"
+            },
+            "decil": {
+                "data_type": "varchar(10)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 79,
+                "nulls": 0,
+                "empties": 0
+            }
+        }
+    },
+    "t_email": {
+        "row_count": 11728,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 11728,
+                "nulls": 0,
+                "min": "2",
+                "max": "11747"
+            },
+            "operacion": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 9762,
+                "nulls": 0,
+                "min": "0",
+                "max": "20877431802040"
+            },
+            "email": {
+                "data_type": "varchar(200)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "latin1",
+                "distinct": 10738,
+                "nulls": 0,
+                "empties": 0
+            }
+        }
+    },
+    "t_estados": {
+        "row_count": 5,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 5,
+                "nulls": 0,
+                "min": "1",
+                "max": "5",
+                "values": [
+                    {
+                        "val": "1",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2",
+                        "n": "1"
+                    },
+                    {
+                        "val": "3",
+                        "n": "1"
+                    },
+                    {
+                        "val": "4",
+                        "n": "1"
+                    },
+                    {
+                        "val": "5",
+                        "n": "1"
+                    }
+                ]
+            },
+            "estado": {
+                "data_type": "varchar(60)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 5,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "ACUERDO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "PAZ_Y_SALVO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "RENUENTE",
+                        "n": "1"
+                    },
+                    {
+                        "val": "INVESTIGACION",
+                        "n": "1"
+                    },
+                    {
+                        "val": "ILOCALIZADO",
+                        "n": "1"
+                    }
+                ]
+            }
+        }
+    },
+    "t_gestiones": {
+        "row_count": 1838261,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 1838261,
+                "nulls": 0,
+                "min": "1",
+                "max": "1839396"
+            },
+            "operacion": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 124604,
+                "nulls": 0,
+                "min": "0",
+                "max": "83537721802020"
+            },
+            "asesor": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 188,
+                "nulls": 1,
+                "empties": 382
+            },
+            "nombre": {
+                "data_type": "varchar(40)",
+                "nullable": "NO",
+                "default": null,
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 190,
+                "nulls": 0,
+                "empties": 38206
+            },
+            "fecha": {
+                "data_type": "date",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 1890,
+                "nulls": 1,
+                "min": "2020-01-02",
+                "max": "2026-06-20"
+            },
+            "hora": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 42247,
+                "nulls": 1,
+                "empties": 0
+            },
+            "gestion": {
+                "data_type": "varchar(3000)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": null,
+                "nulls": null,
+                "empties": 20
+            }
+        }
+    },
+    "t_mensaje": {
+        "row_count": 0,
+        "columns": {
+            "id": {
+                "data_type": "bigint(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null
+            },
+            "asesor": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3"
+            },
+            "mensaje": {
+                "data_type": "varchar(3000)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3"
+            }
+        }
+    },
+    "t_pagos": {
+        "row_count": 0,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null
+            },
+            "operacion": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null
+            },
+            "asesor": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3"
+            },
+            "fecha": {
+                "data_type": "date",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null
+            },
+            "pago": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3"
+            }
+        }
+    },
+    "t_procesos": {
+        "row_count": 57590,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 57590,
+                "nulls": 0,
+                "min": "2",
+                "max": "58054"
+            },
+            "operacion": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 57590,
+                "nulls": 0,
+                "min": "1000001",
+                "max": "83537721802020"
+            },
+            "estado": {
+                "data_type": "varchar(60)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 23,
+                "nulls": 46,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "RENUENTE",
+                        "n": "29419"
+                    },
+                    {
+                        "val": "INVESTIGACION",
+                        "n": "25407"
+                    },
+                    {
+                        "val": "0",
+                        "n": "1036"
+                    },
+                    {
+                        "val": "ACUERDO",
+                        "n": "758"
+                    },
+                    {
+                        "val": "PAZ_Y_SALVO",
+                        "n": "449"
+                    },
+                    {
+                        "val": "CIVIL",
+                        "n": "200"
+                    },
+                    {
+                        "val": "ARRENDAMIENTO",
+                        "n": "78"
+                    },
+                    {
+                        "val": "SIN DATO",
+                        "n": "76"
+                    },
+                    {
+                        "val": "VENTA",
+                        "n": "48"
+                    },
+                    {
+                        "val": null,
+                        "n": "46"
+                    },
+                    {
+                        "val": "PENAL",
+                        "n": "16"
+                    },
+                    {
+                        "val": "CASTIGADA",
+                        "n": "14"
+                    },
+                    {
+                        "val": "FAMILIA",
+                        "n": "12"
+                    },
+                    {
+                        "val": "LABORAL",
+                        "n": "11"
+                    },
+                    {
+                        "val": "ADMINISTRATIVO",
+                        "n": "8"
+                    },
+                    {
+                        "val": "SIN DATOS",
+                        "n": "4"
+                    },
+                    {
+                        "val": "POLICIVO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "SUCESION",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DOC CARLOS",
+                        "n": "1"
+                    },
+                    {
+                        "val": "CIVIL-PENAL",
+                        "n": "1"
+                    },
+                    {
+                        "val": "NO APLICA",
+                        "n": "1"
+                    },
+                    {
+                        "val": "EJECUTIVO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "PENDIENTE",
+                        "n": "1"
+                    },
+                    {
+                        "val": "QUERRELLA",
+                        "n": "1"
+                    }
+                ]
+            },
+            "sub": {
+                "data_type": "varchar(60)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 92,
+                "nulls": 46,
+                "empties": 0
+            },
+            "fgestion": {
+                "data_type": "date",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 650,
+                "nulls": 33,
+                "min": "0000-00-00",
+                "max": "2026-10-27"
+            },
+            "asesor": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 54,
+                "nulls": 33,
+                "empties": 7
+            }
+        }
+    },
+    "t_resumen": {
+        "row_count": 493254,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 493254,
+                "nulls": 0,
+                "min": "13",
+                "max": "595447"
+            },
+            "fingreso": {
+                "data_type": "date",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 4007,
+                "nulls": 0,
+                "min": "0000-00-00",
+                "max": "2045-09-00"
+            },
+            "cedula": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 92073,
+                "nulls": 0,
+                "empties": 23
+            },
+            "nombre": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 94890,
+                "nulls": 0,
+                "empties": 24
+            },
+            "operacion": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 90617,
+                "nulls": 0,
+                "empties": 0
+            },
+            "tipo": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 6,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "Titular",
+                        "n": "471881"
+                    },
+                    {
+                        "val": "CODEUDOR_1",
+                        "n": "10515"
+                    },
+                    {
+                        "val": "Codeudor",
+                        "n": "6495"
+                    },
+                    {
+                        "val": "CODEUDOR_2",
+                        "n": "4313"
+                    },
+                    {
+                        "val": "TERCERO",
+                        "n": "49"
+                    },
+                    {
+                        "val": "tipo",
+                        "n": "1"
+                    }
+                ]
+            },
+            "canal": {
+                "data_type": "varchar(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 7,
+                "nulls": 0,
+                "empties": 155099,
+                "values": [
+                    {
+                        "val": "TELEFONO CELULAR",
+                        "n": "336633"
+                    },
+                    {
+                        "val": "",
+                        "n": "155099"
+                    },
+                    {
+                        "val": "TELEFONO FIJO",
+                        "n": "905"
+                    },
+                    {
+                        "val": "CELULAR",
+                        "n": "453"
+                    },
+                    {
+                        "val": "WHATSAPP",
+                        "n": "160"
+                    },
+                    {
+                        "val": "MSN",
+                        "n": "3"
+                    },
+                    {
+                        "val": "CANAL",
+                        "n": "1"
+                    }
+                ]
+            },
+            "telefono": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 126037,
+                "nulls": 0,
+                "empties": 0
+            },
+            "contacto": {
+                "data_type": "varchar(5)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 3,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "NO",
+                        "n": "396036"
+                    },
+                    {
+                        "val": "SI",
+                        "n": "97217"
+                    },
+                    {
+                        "val": "conta",
+                        "n": "1"
+                    }
+                ]
+            },
+            "acuerdo": {
+                "data_type": "varchar(5)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 3,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "NO",
+                        "n": "465845"
+                    },
+                    {
+                        "val": "SI",
+                        "n": "27408"
+                    },
+                    {
+                        "val": "acuer",
+                        "n": "1"
+                    }
+                ]
+            },
+            "ncuotas": {
+                "data_type": "varchar(5)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 289,
+                "nulls": 0,
+                "empties": 1
+            },
+            "vcredito": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 20384,
+                "nulls": 0,
+                "empties": 0
+            },
+            "vnegociado": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 10531,
+                "nulls": 0,
+                "empties": 0
+            },
+            "condonado": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 4894,
+                "nulls": 0,
+                "empties": 0
+            },
+            "asesor": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 119,
+                "nulls": 0,
+                "empties": 522
+            },
+            "fregistro": {
+                "data_type": "date",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 833,
+                "nulls": 0,
+                "min": "0000-00-00",
+                "max": "2026-06-03"
+            }
+        }
+    },
+    "t_saldos": {
+        "row_count": 54931,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 54931,
+                "nulls": 0,
+                "min": "1",
+                "max": "54931"
+            },
+            "operacion": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 54931,
+                "nulls": 0,
+                "min": "1000001",
+                "max": "83537721802020"
+            },
+            "capital": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "latin1",
+                "distinct": 53012,
+                "nulls": 0,
+                "empties": 0
+            },
+            "total": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "latin1",
+                "distinct": 54272,
+                "nulls": 0,
+                "empties": 0
+            }
+        }
+    },
+    "t_subs": {
+        "row_count": 37,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 37,
+                "nulls": 0,
+                "min": "1",
+                "max": "77",
+                "values": [
+                    {
+                        "val": "4",
+                        "n": "1"
+                    },
+                    {
+                        "val": "46",
+                        "n": "1"
+                    },
+                    {
+                        "val": "75",
+                        "n": "1"
+                    },
+                    {
+                        "val": "6",
+                        "n": "1"
+                    },
+                    {
+                        "val": "49",
+                        "n": "1"
+                    },
+                    {
+                        "val": "77",
+                        "n": "1"
+                    },
+                    {
+                        "val": "9",
+                        "n": "1"
+                    },
+                    {
+                        "val": "50",
+                        "n": "1"
+                    },
+                    {
+                        "val": "11",
+                        "n": "1"
+                    },
+                    {
+                        "val": "52",
+                        "n": "1"
+                    },
+                    {
+                        "val": "13",
+                        "n": "1"
+                    },
+                    {
+                        "val": "55",
+                        "n": "1"
+                    },
+                    {
+                        "val": "15",
+                        "n": "1"
+                    },
+                    {
+                        "val": "56",
+                        "n": "1"
+                    },
+                    {
+                        "val": "17",
+                        "n": "1"
+                    },
+                    {
+                        "val": "58",
+                        "n": "1"
+                    },
+                    {
+                        "val": "19",
+                        "n": "1"
+                    },
+                    {
+                        "val": "59",
+                        "n": "1"
+                    },
+                    {
+                        "val": "25",
+                        "n": "1"
+                    },
+                    {
+                        "val": "61",
+                        "n": "1"
+                    },
+                    {
+                        "val": "27",
+                        "n": "1"
+                    },
+                    {
+                        "val": "62",
+                        "n": "1"
+                    },
+                    {
+                        "val": "32",
+                        "n": "1"
+                    },
+                    {
+                        "val": "65",
+                        "n": "1"
+                    },
+                    {
+                        "val": "34",
+                        "n": "1"
+                    },
+                    {
+                        "val": "68",
+                        "n": "1"
+                    },
+                    {
+                        "val": "38",
+                        "n": "1"
+                    },
+                    {
+                        "val": "70",
+                        "n": "1"
+                    },
+                    {
+                        "val": "1",
+                        "n": "1"
+                    },
+                    {
+                        "val": "40",
+                        "n": "1"
+                    },
+                    {
+                        "val": "72",
+                        "n": "1"
+                    },
+                    {
+                        "val": "2",
+                        "n": "1"
+                    },
+                    {
+                        "val": "42",
+                        "n": "1"
+                    },
+                    {
+                        "val": "73",
+                        "n": "1"
+                    },
+                    {
+                        "val": "3",
+                        "n": "1"
+                    },
+                    {
+                        "val": "44",
+                        "n": "1"
+                    },
+                    {
+                        "val": "74",
+                        "n": "1"
+                    }
+                ]
+            },
+            "estado": {
+                "data_type": "varchar(60)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 5,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "INVESTIGACION",
+                        "n": "19"
+                    },
+                    {
+                        "val": "RENUENTE",
+                        "n": "8"
+                    },
+                    {
+                        "val": "ACUERDO",
+                        "n": "8"
+                    },
+                    {
+                        "val": "PAZ_Y_SALVO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "ILOCALIZADO",
+                        "n": "1"
+                    }
+                ]
+            },
+            "sub": {
+                "data_type": "varchar(60)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 37,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "CUOTAS PARCIALES",
+                        "n": "1"
+                    },
+                    {
+                        "val": "INSOLVENTE",
+                        "n": "1"
+                    },
+                    {
+                        "val": "INCUMPLIDO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "SEGUNDO BARRIDO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 4",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 10",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 12",
+                        "n": "1"
+                    },
+                    {
+                        "val": "NUMERO CONTESTA \/ NO RESPONDE",
+                        "n": "1"
+                    },
+                    {
+                        "val": "AGENDADO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "CONDONACION CAMPANA",
+                        "n": "1"
+                    },
+                    {
+                        "val": "MENSAJE EXTERNO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "PAZ_Y_SALVO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "CONDONACION NORMAL",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 3",
+                        "n": "1"
+                    },
+                    {
+                        "val": "ILOCALIZADO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 7",
+                        "n": "1"
+                    },
+                    {
+                        "val": "NUMERO FUERA DE SERVCIO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "TIMBRA \/ NO CONTESTA",
+                        "n": "1"
+                    },
+                    {
+                        "val": "CUOTAS FIJAS",
+                        "n": "1"
+                    },
+                    {
+                        "val": "FALLECIDO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "INTENSION DE PAGO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "CONDONACION CAPITAL",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 2",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 6",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 8",
+                        "n": "1"
+                    },
+                    {
+                        "val": "NUMERO APAGADO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "SIN CONTACTO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "PAGO TOTAL",
+                        "n": "1"
+                    },
+                    {
+                        "val": "SIN INTENSION DE PAGO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "RECLAMACION",
+                        "n": "1"
+                    },
+                    {
+                        "val": "POR TERCEROS",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 1",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 5",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 9",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 13",
+                        "n": "1"
+                    },
+                    {
+                        "val": "NUMERO EQUIVOCADO",
+                        "n": "1"
+                    },
+                    {
+                        "val": "DATOS EXTERNOS CAMPANA 14",
+                        "n": "1"
+                    }
+                ]
+            }
+        }
+    },
+    "t_telefonos": {
+        "row_count": 119431,
+        "columns": {
+            "id": {
+                "data_type": "int(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 119431,
+                "nulls": 0,
+                "min": "1",
+                "max": "119436"
+            },
+            "operacion": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 63602,
+                "nulls": 0,
+                "min": "5802030",
+                "max": "83314650802020"
+            },
+            "asesor": {
+                "data_type": "varchar(30)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 83,
+                "nulls": 0,
+                "empties": 0
+            },
+            "telefono": {
+                "data_type": "varchar(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 86188,
+                "nulls": 0,
+                "empties": 0
+            },
+            "detalle": {
+                "data_type": "varchar(100)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 3709,
+                "nulls": 0,
+                "empties": 0
+            }
+        }
+    },
+    "t_usuarios": {
+        "row_count": 65,
+        "columns": {
+            "cedula": {
+                "data_type": "bigint(20)",
+                "nullable": "NO",
+                "default": null,
+                "key": "PRI",
+                "charset": null,
+                "distinct": 65,
+                "nulls": 0,
+                "min": "0",
+                "max": "1192775410"
+            },
+            "nombre": {
+                "data_type": "varchar(40)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 65,
+                "nulls": 0,
+                "empties": 0
+            },
+            "telefono": {
+                "data_type": "bigint(20)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 61,
+                "nulls": 0,
+                "min": "0",
+                "max": "3508434157"
+            },
+            "avatar": {
+                "data_type": "varchar(6)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 12,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "woman1",
+                        "n": "32"
+                    },
+                    {
+                        "val": "man1",
+                        "n": "10"
+                    },
+                    {
+                        "val": "woman8",
+                        "n": "5"
+                    },
+                    {
+                        "val": "woman2",
+                        "n": "4"
+                    },
+                    {
+                        "val": "woman7",
+                        "n": "4"
+                    },
+                    {
+                        "val": "woman6",
+                        "n": "2"
+                    },
+                    {
+                        "val": "woman5",
+                        "n": "2"
+                    },
+                    {
+                        "val": "woman3",
+                        "n": "2"
+                    },
+                    {
+                        "val": "man3",
+                        "n": "1"
+                    },
+                    {
+                        "val": "man7",
+                        "n": "1"
+                    },
+                    {
+                        "val": "man2",
+                        "n": "1"
+                    },
+                    {
+                        "val": "man6",
+                        "n": "1"
+                    }
+                ]
+            },
+            "userpass": {
+                "data_type": "varchar(100)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": "utf8mb3"
+            },
+            "username": {
+                "data_type": "varchar(30)",
+                "nullable": "NO",
+                "default": null,
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 65,
+                "nulls": 0,
+                "empties": 0
+            },
+            "usertype": {
+                "data_type": "int(1)",
+                "nullable": "YES",
+                "default": "NULL",
+                "key": "",
+                "charset": null,
+                "distinct": 2,
+                "nulls": 0,
+                "min": "0",
+                "max": "1",
+                "values": [
+                    {
+                        "val": "1",
+                        "n": "62"
+                    },
+                    {
+                        "val": "0",
+                        "n": "3"
+                    }
+                ]
+            },
+            "posicion": {
+                "data_type": "varchar(10)",
+                "nullable": "NO",
+                "default": "'0'",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 1,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "0",
+                        "n": "65"
+                    }
+                ]
+            },
+            "estado": {
+                "data_type": "varchar(10)",
+                "nullable": "NO",
+                "default": "'FALSE'",
+                "key": "",
+                "charset": "utf8mb3",
+                "distinct": 2,
+                "nulls": 0,
+                "empties": 0,
+                "values": [
+                    {
+                        "val": "TRUE",
+                        "n": "64"
+                    },
+                    {
+                        "val": "FALSE",
+                        "n": "1"
+                    }
+                ]
+            }
+        }
+    }
+}

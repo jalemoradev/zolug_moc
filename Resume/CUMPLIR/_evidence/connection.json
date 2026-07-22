@@ -1,0 +1,14 @@
+{
+    "label": "CUMPLIR",
+    "host": "srv450.hstgr.io",
+    "port": 3306,
+    "database": "u815310395_data",
+    "user": "u815310395_data",
+    "server_version": "11.8.6-MariaDB-log",
+    "version_comment": "MariaDB Server",
+    "server_now": "2026-06-21 08:48:02",
+    "server_time_zone": "SYSTEM",
+    "db_charset": "utf8mb4",
+    "db_collation": "utf8mb4_unicode_ci",
+    "introspected_at": "2026-06-21T03:48:02-05:00"
+}

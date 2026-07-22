@@ -1,0 +1,42 @@
+[
+    {
+        "id": "2",
+        "operacion": "102238802020",
+        "estado": "RENUENTE",
+        "sub": "TIMBRA \/ NO CONTESTA",
+        "fgestion": "2026-05-04",
+        "asesor": "MARIA.PERDOMO"
+    },
+    {
+        "id": "3",
+        "operacion": "109298802020",
+        "estado": "RENUENTE",
+        "sub": "TIMBRA \/ NO CONTESTA",
+        "fgestion": "2026-05-04",
+        "asesor": "MAYRA.RUIZ"
+    },
+    {
+        "id": "4",
+        "operacion": "118585802020",
+        "estado": "PAZ_Y_SALVO",
+        "sub": "PAZ_Y_SALVO",
+        "fgestion": "2026-03-13",
+        "asesor": "MARIA.PERDOMO"
+    },
+    {
+        "id": "5",
+        "operacion": "196590802020",
+        "estado": "ACUERDO",
+        "sub": "CUOTAS FIJAS",
+        "fgestion": "2026-06-01",
+        "asesor": "DANIELA.SALAMANCA"
+    },
+    {
+        "id": "6",
+        "operacion": "468835802020",
+        "estado": "ACUERDO",
+        "sub": "CUOTAS PARCIALES",
+        "fgestion": "2026-06-01",
+        "asesor": "MARIA.PERDOMO"
+    }
+]

@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "estado": "ACUERDO",
+        "sub": "PAGO TOTAL"
+    },
+    {
+        "id": "2",
+        "estado": "ACUERDO",
+        "sub": "CUOTAS FIJAS"
+    },
+    {
+        "id": "3",
+        "estado": "ACUERDO",
+        "sub": "CONDONACION CAMPANA"
+    },
+    {
+        "id": "4",
+        "estado": "ACUERDO",
+        "sub": "CUOTAS PARCIALES"
+    },
+    {
+        "id": "6",
+        "estado": "RENUENTE",
+        "sub": "SIN INTENSION DE PAGO"
+    }
+]

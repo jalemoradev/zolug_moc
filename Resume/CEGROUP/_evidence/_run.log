@@ -1,0 +1,12 @@
+03:51:45  Connecting to CEGROUP (p3plzcpnl489480.prod.phx3.secureserver.net:3306 / db=data_cegroup) as user_cegroup
+03:51:46  Connected OK (max_statement_time=120s)
+03:51:46  Server: 10.11.16-MariaDB-cll-lve
+03:51:46  Tables: 20 -> l_campana, l_cartera, t_acuerdos, t_alertas, t_asignacion, t_base, t_campana, t_cartera, t_decil, t_email, t_estados, t_gestiones, t_mensaje, t_pagos, t_procesos, t_resumen, t_saldos, t_subs, t_telefonos, t_usuarios
+03:51:49  DDL dumped for 20 tables
+03:51:51  Samples dumped (LIMIT 5, secrets masked)
+03:53:07  RECONNECT after errno=2006 on: SELECT COUNT(DISTINCT `gestion`) AS d, SUM(`gestion` IS NULL) AS nulls FROM `t_gestiones`
+03:53:52  QUERY ERR: MySQL server has gone away | SQL: SELECT COUNT(DISTINCT `gestion`) AS d, SUM(`gestion` IS NULL) AS nulls FROM `t_gestiones`
+03:53:52  RECONNECT after errno=2006 on: SELECT SUM(`gestion`='') AS e FROM `t_gestiones`
+03:54:19  Column profiles computed
+03:54:28  Quality checks done
+03:54:28  DONE in 163.5s

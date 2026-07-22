@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "operacion": "102238802020",
+        "asesor": "CEGROUP.RENUESTESABR2026"
+    },
+    {
+        "id": "2",
+        "operacion": "109298802020",
+        "asesor": "CEGROUP.RENUENTESMAY2026"
+    },
+    {
+        "id": "3",
+        "operacion": "196590802020",
+        "asesor": "DANIELA.SALAMANCA"
+    },
+    {
+        "id": "4",
+        "operacion": "468835802020",
+        "asesor": "MARIA.PERDOMO"
+    },
+    {
+        "id": "5",
+        "operacion": "594928802020",
+        "asesor": "JUAN.RINCON"
+    }
+]

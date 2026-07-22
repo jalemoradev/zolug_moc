@@ -1,0 +1,57 @@
+[
+    {
+        "id": "541",
+        "operacion": "4475817",
+        "cliente": "TITULAR",
+        "nombre": "SIN DATO",
+        "facuerdo": "2022-11-26",
+        "fregistro": "2022-05-01",
+        "asesor": "LUISA.RIVERA",
+        "estado": "activo",
+        "valor": "160000"
+    },
+    {
+        "id": "542",
+        "operacion": "4475817",
+        "cliente": "TITULAR",
+        "nombre": "SIN DATO",
+        "facuerdo": "2022-12-23",
+        "fregistro": "2022-05-01",
+        "asesor": "LUISA.RIVERA",
+        "estado": "activo",
+        "valor": "160000"
+    },
+    {
+        "id": "2396",
+        "operacion": "5238254",
+        "cliente": "TITULAR",
+        "nombre": "PARRADO QUINTERO LUZ ELENA                                  ",
+        "facuerdo": "2022-09-30",
+        "fregistro": "2022-06-06",
+        "asesor": "MARCELA.BURBANO",
+        "estado": "activo",
+        "valor": "4000000"
+    },
+    {
+        "id": "2777",
+        "operacion": "3995285",
+        "cliente": "TITULAR",
+        "nombre": "CHACON GALARZA CLAUDIA MARCELA                              ",
+        "facuerdo": "2022-10-31",
+        "fregistro": "2022-07-18",
+        "asesor": "MARCELA.BURBANO",
+        "estado": "activo",
+        "valor": "303000"
+    },
+    {
+        "id": "2985",
+        "operacion": "63156",
+        "cliente": "TITULAR",
+        "nombre": "QUINONES PEDROZA FREDY                                      ",
+        "facuerdo": "2022-09-25",
+        "fregistro": "2022-08-05",
+        "asesor": "TRINIDAD.BAOS",
+        "estado": "activo",
+        "valor": "400000"
+    }
+]

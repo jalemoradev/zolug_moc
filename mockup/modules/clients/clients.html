@@ -138,7 +138,7 @@
   */
   /* ===== CABECERA DE PANTALLA 80px (base.md) ===== */
   .screen-head{ min-height:80px; display:flex; align-items:center; justify-content:space-between; gap:16px;
-    padding:16px 32px; border-bottom:1px solid var(--hair); position:sticky; top:0; z-index:5;
+    padding:16px 32px; border-bottom:1px solid var(--border); position:sticky; top:0; z-index:5;
     background:var(--bg-page); border-top-left-radius:18px; }
   .sh-left{ display:flex; align-items:center; gap:16px; min-width:0; }
   .sh-divider{ width:1px; height:34px; background:var(--border); flex:none; }
@@ -159,7 +159,7 @@
   .cl-table{ width:100%; border-collapse:collapse; }
   .cl-table thead th{ position:sticky; top:0; background:var(--bg-surface); z-index:1; }
   .cl-table th{ text-align:left; font-size:var(--fs-label); font-weight:var(--fw-semibold); letter-spacing:var(--ls-label);
-    text-transform:uppercase; color:var(--text-muted); padding:12px 16px; border-bottom:1px solid var(--border); white-space:nowrap; }
+    text-transform:uppercase; color:var(--text-muted); padding:12px 16px; border-bottom:1px solid var(--hair); white-space:nowrap; }
   .cl-table td{ font-size:var(--fs-body); color:var(--text-primary); padding:14px 16px; border-bottom:1px solid var(--hair); vertical-align:middle; }
   .cl-table tbody tr:last-child td{ border-bottom:0; }
   .cl-table tbody tr{ cursor:pointer; transition:background .12s; }
@@ -175,10 +175,8 @@
   /* paginador (dentro del contenedor, abajo) */
   .cl-pager{ flex:none; display:flex; align-items:center; justify-content:space-between; gap:16px;
     padding:12px 20px; border-top:1px solid var(--hair); font-size:var(--fs-label); color:var(--text-muted); font-variant-numeric:tabular-nums; }
-  .cl-pager-left{ display:flex; align-items:center; gap:18px; }
+  .cl-pager-left{ display:flex; align-items:center; gap:20px; }
   .cl-rpp{ display:inline-flex; align-items:center; gap:8px; color:var(--text-muted); white-space:nowrap; }
-  .cl-rpp select{ height:32px; border:1px solid var(--border); border-radius:8px; background:var(--bg-surface);
-    color:var(--text-primary); font:inherit; font-size:var(--fs-label); padding:0 8px; cursor:pointer; }
   .cl-pager-ctrl{ display:flex; align-items:center; gap:4px; }
   .cl-pgbtn{ min-width:34px; height:34px; padding:0 6px; display:inline-grid; place-items:center; border-radius:8px; border:1px solid var(--border);
     background:var(--bg-surface); color:var(--text-primary); font:inherit; font-size:var(--fs-label); font-weight:var(--fw-medium);
@@ -188,15 +186,41 @@
   .cl-pgbtn.on{ background:var(--accent-solid); border-color:transparent; color:#fff; cursor:default; }
   .cl-pgbtn svg{ width:16px; height:16px; }
   .cl-pg-ell{ min-width:22px; text-align:center; color:var(--text-muted); }
-  /* buscador: selector (nombre/cédula/teléfono) + input */
+  /* buscador: dropdown del sistema (nombre/cédula/teléfono) + input */
   .cl-search{ display:flex; align-items:center; height:40px; border:1px solid var(--border); border-radius:10px; background:var(--bg-surface); }
   .cl-search:focus-within{ border-color:var(--accent-on-dark); }
-  .cl-search-sel{ height:100%; border:0; background:var(--bg-elevated); color:var(--text-primary); font:inherit; font-size:var(--fs-label);
-    font-weight:var(--fw-medium); padding:0 12px; cursor:pointer; border-right:1px solid var(--border); border-radius:9px 0 0 9px; }
   .cl-search-ic{ display:inline-flex; color:var(--text-muted); padding-left:12px; }
   .cl-search-ic svg{ width:16px; height:16px; }
   .cl-search-inp{ height:100%; border:0; background:none; color:var(--text-primary); font:inherit; font-size:var(--fs-body); padding:0 14px 0 8px; min-width:220px; }
-  .cl-search-inp:focus-visible, .cl-search-sel:focus-visible{ outline:none; }
+  .cl-search-inp:focus-visible{ outline:none; }
+  /* ── Dropdown del sistema — reutilizado por el filtro y por "Filas" ── */
+  .cl-dd{ position:relative; }
+  .cl-ddbtn{ display:inline-flex; align-items:center; gap:8px; border:0; background:var(--bg-elevated); color:var(--text-primary);
+    font:inherit; cursor:pointer; white-space:nowrap; transition:background .15s; }
+  .cl-ddbtn:hover{ background:var(--bg-surface); }
+  .cl-ddbtn:focus-visible{ outline:2px solid var(--accent-on-dark); outline-offset:-2px; }
+  .cl-ddchev{ display:inline-flex; color:var(--text-muted); transition:transform .18s ease; }
+  .cl-ddbtn[aria-expanded="true"] .cl-ddchev{ transform:rotate(180deg); }
+  .cl-ddmenu{ position:absolute; z-index:30; background:var(--bg-elevated); border:1px solid var(--border);
+    border-radius:12px; padding:6px; display:flex; flex-direction:column; gap:2px; }
+  .cl-ddmenu[hidden]{ display:none; }
+  .cl-ddopt{ display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:8px; border:0; background:none;
+    color:var(--text-primary); font:inherit; font-size:var(--fs-body); cursor:pointer; text-align:left; white-space:nowrap; }
+  .cl-ddopt:hover{ background:var(--hover); }
+  .cl-ddopt:focus-visible{ outline:2px solid var(--accent-on-dark); outline-offset:-2px; }
+  .cl-ddopt.on{ color:var(--accent-on-dark); font-weight:var(--fw-semibold); }
+  .cl-ddopt .chk{ display:none !important; margin-left:auto; color:var(--accent-on-dark); }
+  .cl-ddopt.on .chk{ display:inline-flex !important; }
+  /* variante filtro (dentro del buscador) */
+  .cl-search .cl-dd{ height:100%; }
+  .cl-fbtn{ height:100%; width:132px; justify-content:space-between; padding:0 12px; font-size:var(--fs-label); font-weight:var(--fw-medium);
+    border-right:1px solid var(--border); border-radius:9px 0 0 9px; }
+  .cl-fmenu{ top:calc(100% + 8px); left:0; min-width:180px; }
+  /* variante "Filas" (pastilla; abre hacia arriba, dentro del contenedor) */
+  .cl-rppbtn{ height:32px; padding:0 8px 0 12px; gap:6px; border:1px solid var(--border); border-radius:8px; background:var(--bg-surface);
+    color:var(--text-primary); font-size:var(--fs-label); font-variant-numeric:tabular-nums; }
+  .cl-rppbtn:hover{ background:var(--bg-elevated); }
+  .cl-rppmenu{ bottom:calc(100% + 8px); left:0; min-width:100%; }
   @media (max-width:760px){
     .screen-head{ flex-wrap:wrap; align-items:flex-start; }
     .sh-actions{ width:100%; } .cl-search{ width:100%; } .cl-search-inp{ flex:1; min-width:0; }
@@ -212,7 +236,7 @@
     .cl-wrap{ padding:16px; }
     .cl-table thead{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
     .cl-table, .cl-table tbody, .cl-table tr, .cl-table td{ display:block; width:100%; }
-    .cl-table tbody tr{ padding:12px 6px; border-bottom:1px solid var(--border); }
+    .cl-table tbody tr{ padding:12px 6px; border-bottom:1px solid var(--hair); }
     .cl-table td{ display:grid; grid-template-columns:44% 1fr; gap:10px; padding:5px 0; border:0; align-items:center; }
     .cl-table td::before{ content:attr(data-label); color:var(--text-muted); font-size:var(--fs-label); font-weight:var(--fw-medium); }
     .cl-table td.cl-chev{ display:none; }
@@ -284,11 +308,17 @@
         </div>
         <div class="sh-actions">
           <div class="cl-search">
-            <select class="cl-search-sel" id="clField" aria-label="Buscar por">
-              <option value="name">Nombre</option>
-              <option value="dn">Cédula</option>
-              <option value="phone">Teléfono</option>
-            </select>
+            <div class="cl-dd">
+              <button class="cl-ddbtn cl-fbtn" id="clFieldBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Buscar por">
+                <span id="clFieldLbl">Nombre</span>
+                <span class="cl-ddchev" data-i="chevron-down" data-s="16"></span>
+              </button>
+              <div class="cl-ddmenu cl-fmenu" id="clFieldMenu" role="listbox" hidden>
+                <button class="cl-ddopt on" type="button" role="option" data-val="name">Nombre<span class="chk" data-i="check" data-s="16"></span></button>
+                <button class="cl-ddopt" type="button" role="option" data-val="dn">Cédula<span class="chk" data-i="check" data-s="16"></span></button>
+                <button class="cl-ddopt" type="button" role="option" data-val="phone">Teléfono<span class="chk" data-i="check" data-s="16"></span></button>
+              </div>
+            </div>
             <span class="cl-search-ic" data-i="search" data-s="16"></span>
             <input class="cl-search-inp" id="clQuery" type="search" placeholder="Buscar cliente…" aria-label="Texto de búsqueda">
           </div>
@@ -313,13 +343,19 @@
           <div class="cl-pager">
             <div class="cl-pager-left">
               <span id="clInfo"></span>
-              <label class="cl-rpp">Filas
-                <select id="clRpp" aria-label="Filas por página">
-                  <option value="8">8</option>
-                  <option value="25">25</option>
-                  <option value="50">50</option>
-                </select>
-              </label>
+              <span class="cl-rpp">Filas
+                <span class="cl-dd">
+                  <button class="cl-ddbtn cl-rppbtn" id="clRppBtn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Filas por página">
+                    <span id="clRppLbl">8</span>
+                    <span class="cl-ddchev" data-i="chevron-down" data-s="16"></span>
+                  </button>
+                  <div class="cl-ddmenu cl-rppmenu" id="clRppMenu" role="listbox" hidden>
+                    <button class="cl-ddopt on" type="button" role="option" data-val="8">8<span class="chk" data-i="check" data-s="16"></span></button>
+                    <button class="cl-ddopt" type="button" role="option" data-val="25">25<span class="chk" data-i="check" data-s="16"></span></button>
+                    <button class="cl-ddopt" type="button" role="option" data-val="50">50<span class="chk" data-i="check" data-s="16"></span></button>
+                  </div>
+                </span>
+              </span>
             </div>
             <nav class="cl-pager-ctrl" id="clPages" aria-label="Paginación"></nav>
           </div>
@@ -346,7 +382,8 @@
     "arrow-left":'<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
     "chevron-right":'<path d="m9 18 6-6-6-6"/>',
     "chevron-left":'<path d="m15 18-6-6 6-6"/>',
-    "search":'<path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>'
+    "search":'<path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>',
+    "check":'<path d="M20 6 9 17l-5-5"/>'
   };
   function svg(n,s){ return '<svg xmlns="http://www.w3.org/2000/svg" width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+(ICONS[n]||'')+'</svg>'; }
   document.querySelectorAll('[data-i]').forEach(el=>{ el.innerHTML=svg(el.dataset.i, el.dataset.s||22); el.style.display='inline-flex'; });
@@ -390,12 +427,12 @@
   ];
   const escc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const clBody=document.getElementById('clBody'), clCount=document.getElementById('clCount'),
-        clField=document.getElementById('clField'), clQuery=document.getElementById('clQuery'),
-        clInfo=document.getElementById('clInfo'), clPages=document.getElementById('clPages'), clRpp=document.getElementById('clRpp');
-  let clPage=1, clSize=8;
+        clQuery=document.getElementById('clQuery'),
+        clInfo=document.getElementById('clInfo'), clPages=document.getElementById('clPages');
+  let clPage=1, clSize=8, clField='name';
   const norm=s=>String(s==null?'':s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
   const digits=s=>String(s==null?'':s).replace(/\D/g,'');
-  function clFiltered(){ const f=clField.value, q=clQuery.value.trim(); if(!q) return CLIENTS;
+  function clFiltered(){ const f=clField, q=clQuery.value.trim(); if(!q) return CLIENTS;
     return CLIENTS.filter(c=> f==='name' ? norm(c.name).includes(norm(q))
       : (digits(c[f]).includes(digits(q)) || norm(c[f]).includes(norm(q))) ); }
 
@@ -442,9 +479,23 @@
   }
   clBody.addEventListener('click', e=>{ const tr=e.target.closest('tr[data-href]'); if(tr) location.href=tr.dataset.href; });
   clBody.addEventListener('keydown', e=>{ if(e.key==='Enter'){ const tr=e.target.closest('tr[data-href]'); if(tr) location.href=tr.dataset.href; } });
-  clField.addEventListener('change', ()=>{ clPage=1; clRender(); });
   clQuery.addEventListener('input', ()=>{ clPage=1; clRender(); });
-  clRpp.addEventListener('change', ()=>{ clSize=+clRpp.value; clPage=1; clRender(); });
+  // ── dropdowns del sistema (filtro y filas) ──
+  function ddCloseAll(){ document.querySelectorAll('.cl-ddmenu').forEach(m=> m.hidden=true);
+    document.querySelectorAll('.cl-ddbtn').forEach(b=> b.setAttribute('aria-expanded','false')); }
+  function ddInit(btn, menu, onPick){
+    btn.addEventListener('click', e=>{ e.stopPropagation(); const open=menu.hidden; ddCloseAll();
+      menu.hidden=!open; btn.setAttribute('aria-expanded', String(open)); });
+    menu.addEventListener('click', e=>{ const o=e.target.closest('[data-val]'); if(!o) return;
+      menu.querySelectorAll('.cl-ddopt').forEach(x=> x.classList.toggle('on', x===o));
+      ddCloseAll(); onPick(o.dataset.val, o.textContent.trim()); });
+  }
+  ddInit(document.getElementById('clFieldBtn'), document.getElementById('clFieldMenu'),
+    (val,txt)=>{ clField=val; document.getElementById('clFieldLbl').textContent=txt; clPage=1; clRender(); });
+  ddInit(document.getElementById('clRppBtn'), document.getElementById('clRppMenu'),
+    (val,txt)=>{ clSize=+val; document.getElementById('clRppLbl').textContent=txt; clPage=1; clRender(); });
+  document.addEventListener('click', ddCloseAll);
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape') ddCloseAll(); });
   clPages.addEventListener('click', e=>{ const b=e.target.closest('button[data-pg]'); if(!b||b.disabled) return; clPage=+b.dataset.pg; clRender(); });
   if(matchMedia('(prefers-reduced-motion:reduce)').matches){ clRender(); } else { clSkeleton(); setTimeout(clRender, 400); }
 </script>

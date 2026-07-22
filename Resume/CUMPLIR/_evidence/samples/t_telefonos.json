@@ -1,0 +1,42 @@
+[
+    {
+        "id": "3",
+        "operacion": "362884",
+        "asesor": "0",
+        "telefono": "32446856",
+        "detalle": "ES TIA",
+        "status": ""
+    },
+    {
+        "id": "4",
+        "operacion": "753441",
+        "asesor": "0",
+        "telefono": "3214569874",
+        "detalle": "SUPER GIROS ",
+        "status": ""
+    },
+    {
+        "id": "5",
+        "operacion": "756234",
+        "asesor": "0",
+        "telefono": "3225438980",
+        "detalle": "SUPER GIROS",
+        "status": ""
+    },
+    {
+        "id": "6",
+        "operacion": "767443",
+        "asesor": "0",
+        "telefono": "3046062866",
+        "detalle": "SUPER GIROS ",
+        "status": ""
+    },
+    {
+        "id": "7",
+        "operacion": "767542",
+        "asesor": "0",
+        "telefono": "3152700968",
+        "detalle": "SUPER GIROS ",
+        "status": ""
+    }
+]

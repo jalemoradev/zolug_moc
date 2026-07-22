@@ -10,10 +10,9 @@
 <style>
   :root{
     --bg-page:#0d0c13; --bg-surface:#14121c; --bg-elevated:#1a1922;
-    --border-subtle:#201e2a; --border-default:#2a2740;
-    /* BORDES: divisor entre secciones (formulario | panel de marca) = .pane-brand border-left
-       1px rgba(255,255,255,.16), subido para que se distinga. Inputs/tarjetas/barras usan
-       --border-default (#2a2740). Tema oscuro únicamente. */
+    --border:rgba(255,255,255,.22); --hair:rgba(255,255,255,.06);
+    /* BORDES: único color de borde de contenedor = --border (rgba(255,255,255,.22)); divisor interno = --hair.
+       Mismos tokens que base.html / layout/dashboard.html. Tema oscuro únicamente. */
     --text-primary:#ffffff; --text-muted:#a2a9ad;
     --accent-solid:#5a58c2; --accent-on-dark:#7474ef; --error:#df5158; --ok:#4ea36f;
     --btn-light:#ededf0;
@@ -32,12 +31,12 @@
   .pane-form{ background:#0b0a10; }
   .pane-brand{ flex:1; position:relative; display:grid; place-items:center; padding:48px 32px;
     background:linear-gradient(155deg, #1c1a29 0%, #16142201 45%, #131120 100%), #14121c;
-    border-left:1px solid rgba(255,255,255,.16); }
+    border-left:1px solid var(--border); }
   .pane-brand::before{ content:""; position:absolute; inset:0;
     background:radial-gradient(80% 55% at 72% 22%, rgba(116,116,239,.10), transparent 60%); pointer-events:none; }
   /* sección 1 — rail izquierdo: isotipo arriba + "ZOLUG" vertical abajo */
   .pane-rail{ flex:none; width:64px; display:flex; flex-direction:column; align-items:center;
-    justify-content:space-between; padding:22px 0; background:#0b0a10; border-right:1px solid rgba(255,255,255,.16); }
+    justify-content:space-between; padding:22px 0; background:#0b0a10; border-right:1px solid var(--border); }
   .pane-rail .rail-logo{ color:#ffffff; display:flex; }   /* logo arriba, en blanco */
   .pane-rail .rail-logo svg{ height:30px; width:auto; }
   /* #797787 = 4.51:1 sobre #0b0a10. Antes #4b4a54 (2.26:1) — era texto ilegible. */
@@ -59,10 +58,10 @@
   .control .lead-ic{ position:absolute; left:13px; top:50%; transform:translateY(-50%); color:var(--text-muted); pointer-events:none; }
   input[type=text],input[type=password],input[type=email]{
     width:100%; height:46px; background:var(--bg-elevated); color:var(--text-primary);
-    border:1px solid var(--border-default); border-radius:10px; padding:0 14px;
+    border:1px solid var(--border); border-radius:10px; padding:0 14px;
     font-family:inherit; font-size:var(--fs-body); outline:none; transition:border-color .15s, box-shadow .15s; }
   input::placeholder{ color:#82818d; } /* 4.54:1 sobre bg/elevated. Antes #5f5e68 (2.73:1) */
-  input:focus{ border-color:var(--accent-on-dark); box-shadow:0 0 0 3px rgba(116,116,239,.18); }
+  input:focus{ border-color:var(--accent-on-dark); box-shadow:0 0 0 3px color-mix(in srgb, var(--accent-on-dark) 18%, transparent); }
   /* FOCO — SC 2.4.7 (AA) */
   :where(a,button,[tabindex]):focus-visible{ outline:2px solid var(--accent-on-dark); outline-offset:2px; border-radius:6px; }
   input:focus-visible{ outline:none; } /* el input ya marca el foco con borde + halo */
@@ -93,7 +92,7 @@
   .social{ margin-top:30px; display:flex; flex-direction:column; align-items:center; gap:20px; }
   .avatars{ display:flex; }
   .avatars .av{ width:42px; height:42px; border-radius:50%; margin-left:-13px; overflow:hidden;
-    border:2px solid #17152a; background:#1a1922; box-shadow:0 2px 8px rgba(0,0,0,.4); }
+    border:2px solid var(--bg-elevated); background:var(--bg-elevated); }
   .avatars .av:first-child{ margin-left:0; }
   .avatars .av img{ width:100%; height:100%; display:block; }
   .avatars .more{ width:42px; height:42px; border-radius:50%; margin-left:-13px; display:grid; place-items:center;
@@ -102,7 +101,7 @@
   .stat{ display:flex; flex-direction:column; align-items:center; }
   .stat .num{ font-size:var(--fs-display-xl); font-weight:700; color:var(--text-primary); line-height:1; letter-spacing:-.01em; font-variant-numeric:tabular-nums; }
   .stat .lbl{ font-size:var(--fs-caption); color:var(--text-muted); margin-top:5px; }
-  .stat-sep{ width:1px; height:36px; background:var(--border-default); }
+  .stat-sep{ width:1px; height:36px; background:var(--hair); }
   .proof-cap{ margin:0; color:var(--text-muted); font-size:var(--fs-caption); line-height:1.5; max-width:250px; text-align:center; }
   .proof-cap b{ color:var(--text-primary); font-weight:600; }
   /* stepper */

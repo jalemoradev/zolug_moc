@@ -129,7 +129,7 @@
   /* ===== CABECERA DE PANTALLA — 80px, ancho completo (base.md · Estructura de pantalla) =====
      Título + descripción a la IZQUIERDA · botones de acción a la DERECHA · hairline inferior · sticky. */
   .screen-head{ min-height:80px; display:flex; align-items:center; justify-content:space-between;
-    gap:16px; padding:16px 32px; border-bottom:1px solid var(--hair);
+    gap:16px; padding:16px 32px; border-bottom:1px solid var(--border);
     position:sticky; top:0; z-index:5; background:var(--bg-page); border-top-left-radius:18px; }
   .sh-titles{ min-width:0; }
   .sh-titles h1{ margin:0; font-size:var(--fs-display-l); font-weight:var(--fw-bold);
@@ -201,7 +201,7 @@
   .cd-ddbtn[aria-expanded="true"] .cd-ddchev{ transform:rotate(180deg); }
   .cd-ddmenu{ position:absolute; top:calc(100% + 6px); right:0; min-width:280px; z-index:30;
     background:var(--bg-elevated); border:1px solid var(--border); border-radius:12px; padding:6px;
-    display:flex; flex-direction:column; gap:2px; box-shadow:0 10px 28px rgba(0,0,0,.38); }
+    display:flex; flex-direction:column; gap:2px; }
   .cd-ddmenu[hidden]{ display:none; }
   .cd-dditem{ display:flex; align-items:baseline; gap:12px; padding:10px 12px; border-radius:8px; }
   .cd-dditem:hover{ background:var(--hover); }
@@ -238,7 +238,7 @@
   .bs-body{ padding:16px 28px 28px; overflow:auto; flex:1; }
   .bs-table{ width:100%; border-collapse:collapse; }
   .bs-table th{ text-align:left; font-size:var(--fs-label); font-weight:var(--fw-semibold); letter-spacing:var(--ls-label);
-    text-transform:uppercase; color:var(--text-muted); padding:10px 14px; border-bottom:1px solid var(--border); white-space:nowrap; }
+    text-transform:uppercase; color:var(--text-muted); padding:10px 14px; border-bottom:1px solid var(--hair); white-space:nowrap; }
   .bs-table td{ font-size:var(--fs-body); color:var(--text-primary); padding:11px 14px; border-bottom:1px solid var(--hair); vertical-align:middle; }
   .bs-table tbody tr:last-child td{ border-bottom:0; }
   .bs-table tbody tr{ transition:background .12s; }
@@ -296,7 +296,7 @@
     .bs-body{ padding:14px 16px 20px; }
     .bs-table thead{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
     .bs-table, .bs-table tbody, .bs-table tr, .bs-table td{ display:block; width:100%; }
-    .bs-table tbody tr{ padding:12px 4px; border-bottom:1px solid var(--border); }
+    .bs-table tbody tr{ padding:12px 4px; border-bottom:1px solid var(--hair); }
     .bs-table td{ display:grid; grid-template-columns:42% 1fr; gap:10px; padding:6px 0; border:0; align-items:center; }
     .bs-table td::before{ content:attr(data-label); color:var(--text-muted); font-size:var(--fs-label); font-weight:var(--fw-medium); }
     .bs-table td.bs-c{ text-align:left; width:auto; }

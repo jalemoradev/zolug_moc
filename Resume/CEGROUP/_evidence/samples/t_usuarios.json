@@ -1,0 +1,57 @@
+[
+    {
+        "cedula": "0",
+        "nombre": "GRUPO.INVESTIGACION",
+        "telefono": "0",
+        "avatar": "man1",
+        "userpass": "***MASKED(len=32)***",
+        "username": "GRUPO.INVESTIGACION",
+        "usertype": "1",
+        "posicion": "0",
+        "estado": "TRUE"
+    },
+    {
+        "cedula": "2",
+        "nombre": "CEGROUP PAZYSALVO",
+        "telefono": "0",
+        "avatar": "woman1",
+        "userpass": "***MASKED(len=32)***",
+        "username": "CEGROUP.PAZYSALVO",
+        "usertype": "1",
+        "posicion": "0",
+        "estado": "TRUE"
+    },
+    {
+        "cedula": "3",
+        "nombre": "CEGROUP FALLECIDOS",
+        "telefono": "0",
+        "avatar": "woman1",
+        "userpass": "***MASKED(len=32)***",
+        "username": "CEGROUP.FALLECIDOS",
+        "usertype": "1",
+        "posicion": "0",
+        "estado": "TRUE"
+    },
+    {
+        "cedula": "33677272",
+        "nombre": "NAYIVER GORDILLO",
+        "telefono": "3112228244",
+        "avatar": "woman1",
+        "userpass": "***MASKED(len=32)***",
+        "username": "NAYIVER.GORDILLO",
+        "usertype": "1",
+        "posicion": "0",
+        "estado": "TRUE"
+    },
+    {
+        "cedula": "39950605",
+        "nombre": "MARIA PAULINA MEDINA",
+        "telefono": "3134476288",
+        "avatar": "woman1",
+        "userpass": "***MASKED(len=32)***",
+        "username": "PAULA.MEDINA",
+        "usertype": "1",
+        "posicion": "0",
+        "estado": "TRUE"
+    }
+]

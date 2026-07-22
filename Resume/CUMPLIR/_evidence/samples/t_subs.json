@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "estado": "ACUERDO",
+        "sub": "ACUERDO DE PAGO"
+    },
+    {
+        "id": "8",
+        "estado": "ACUERDO",
+        "sub": "ACUERDO INCUMPLIDO"
+    },
+    {
+        "id": "9",
+        "estado": "ILOCALIZADO",
+        "sub": "ILOCALIZADO"
+    },
+    {
+        "id": "19",
+        "estado": "RENUENTE",
+        "sub": "FALLECIDO"
+    },
+    {
+        "id": "23",
+        "estado": "RENUENTE",
+        "sub": "NO CONTESTA"
+    }
+]

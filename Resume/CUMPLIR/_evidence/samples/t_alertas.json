@@ -1,0 +1,47 @@
+[
+    {
+        "id": "6262",
+        "operacion": "2193363",
+        "asesor": "ANGELA.GALINDEZ",
+        "fecha": "2022-11-08",
+        "hora": "08:00 AM",
+        "num": "08",
+        "alerta": "LLAMADA PENDIENTE "
+    },
+    {
+        "id": "6276",
+        "operacion": "2662601",
+        "asesor": "ANGELA.GALINDEZ",
+        "fecha": "2022-11-07",
+        "hora": "08:00 AM",
+        "num": "08",
+        "alerta": "LLAMADA PENDIENTE"
+    },
+    {
+        "id": "6359",
+        "operacion": "3139241",
+        "asesor": "ANGELA.GALINDEZ",
+        "fecha": "2022-10-04",
+        "hora": "08:00 AM",
+        "num": "08",
+        "alerta": "LLAMADA PENDIENTE "
+    },
+    {
+        "id": "6564",
+        "operacion": "2602828",
+        "asesor": "ANGELA.GALINDEZ",
+        "fecha": "2022-11-10",
+        "hora": "08:00 AM",
+        "num": "08",
+        "alerta": "LLAMADA PENDIENTE "
+    },
+    {
+        "id": "7574",
+        "operacion": "5137417",
+        "asesor": "ANGELA.GALINDEZ",
+        "fecha": "2022-10-06",
+        "hora": "08:00 AM",
+        "num": "08",
+        "alerta": "LLAMADA PENDIENTE "
+    }
+]

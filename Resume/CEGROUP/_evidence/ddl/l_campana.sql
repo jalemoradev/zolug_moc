@@ -1,0 +1,5 @@
+CREATE TABLE `l_campana` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `campana` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5449502 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci

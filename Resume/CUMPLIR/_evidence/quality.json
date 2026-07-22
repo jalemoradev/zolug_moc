@@ -1,0 +1,94 @@
+{
+    "garbage_operacion_zero": {
+        "t_acuerdos": 1,
+        "t_alertas": 0,
+        "t_asignacion": 12,
+        "t_base": 1,
+        "t_campana": 1,
+        "t_cartera": 7,
+        "t_decil": 1,
+        "t_gestiones": 21,
+        "t_pagos": 0,
+        "t_procesos": 47,
+        "t_resumen": 17,
+        "t_saldos": 1,
+        "t_telefonos": 10
+    },
+    "zero_dates": {
+        "t_acuerdos.facuerdo": 2,
+        "t_base.fvencimiento": 44,
+        "t_base.fingreso": 44,
+        "t_procesos.fgestion": 5838,
+        "t_resumen.fingreso": 1088,
+        "t_resumen.fregistro": 1
+    },
+    "password_md5_zero": {
+        "t_usuarios.userpass": {
+            "total": 13,
+            "md5_of_zero": 10
+        }
+    },
+    "duplicate_ratio_vs_t_base": {
+        "t_acuerdos": {
+            "rows_total": 11322,
+            "distinct_operacion": 6321,
+            "rows_per_distinct": 1.791
+        },
+        "t_alertas": {
+            "rows_total": 304,
+            "distinct_operacion": 278,
+            "rows_per_distinct": 1.094
+        },
+        "t_asignacion": {
+            "rows_total": 58648,
+            "distinct_operacion": 47955,
+            "rows_per_distinct": 1.223
+        },
+        "t_campana": {
+            "rows_total": 55154,
+            "distinct_operacion": 45328,
+            "rows_per_distinct": 1.217
+        },
+        "t_cartera": {
+            "rows_total": 56444,
+            "distinct_operacion": 46249,
+            "rows_per_distinct": 1.22
+        },
+        "t_decil": {
+            "rows_total": 55154,
+            "distinct_operacion": 45328,
+            "rows_per_distinct": 1.217
+        },
+        "t_gestiones": {
+            "rows_total": 801051,
+            "distinct_operacion": 96599,
+            "rows_per_distinct": 8.293
+        },
+        "t_pagos": {
+            "rows_total": 0,
+            "distinct_operacion": 0,
+            "rows_per_distinct": null
+        },
+        "t_procesos": {
+            "rows_total": 109865,
+            "distinct_operacion": 97109,
+            "rows_per_distinct": 1.131
+        },
+        "t_resumen": {
+            "rows_total": 488584,
+            "distinct_operacion": 80595,
+            "rows_per_distinct": 6.062
+        },
+        "t_saldos": {
+            "rows_total": 55154,
+            "distinct_operacion": 45328,
+            "rows_per_distinct": 1.217
+        },
+        "t_telefonos": {
+            "rows_total": 133934,
+            "distinct_operacion": 63342,
+            "rows_per_distinct": 2.114
+        }
+    },
+    "t_base_distinct_operacion": 50381
+}

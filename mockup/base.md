@@ -43,11 +43,13 @@ Referencia visual del proyecto zolug. Fuente de verdad de tokens, tipografía, i
 | `--border` | Borde de contenedores: panel de contenido, tarjetas, bloques, tablas, secciones — **el que separa** | `rgba(255,255,255,.22)` | `rgba(0,0,0,.32)` |
 | `--hair` | Divisores finos internos (líneas sutiles dentro de un bloque) | `rgba(255,255,255,.06)` | `rgba(0,0,0,.08)` |
 
-**Regla dura:** toda pantalla toma sus bordes de **`--border`** (contenedores) y **`--hair`** (divisores internos), en ambos temas. **Prohibido inventar otro color de borde** o hardcodearlo. Son los mismos tokens que define el shell `dashboard.html`.
+**Regla dura — dos colores de borde, cada uno con su función. Prohibido intercambiarlos.**
+- **`--border`** = el borde que **encierra o separa bloques**: contenedores (panel de contenido, tarjeta, tabla, buscador, dropdown, modal, input, botón-icono) **y el separador bajo la cabecera de 80px** (`.screen-head`). Oscuro `rgba(255,255,255,.22)` · claro `rgba(0,0,0,.32)`. Referencia canónica: el contenedor de la tabla del listado (`modules/clients/clients.html`, `.cl-panel`) y su `.screen-head`.
+- **`--hair`** = las **separaciones internas** dentro de un bloque: filas de tabla, cabecera de tabla, divisores entre secciones de una card, filas del modal, separador entre estadísticas. Oscuro `rgba(255,255,255,.06)` · claro `rgba(0,0,0,.08)`.
 
-**Tokens hex heredados (inputs/tarjetas estilo Plasma), ambos temas:**
-- **`border/subtle`** — separador tenue. Oscuro `#201E2A` · Claro `#E5E1EC`.
-- **`border/default`** — borde estándar de inputs. Oscuro `#2A2740` · Claro `#D8D3E2`.
+**Prohibido hardcodear un borde** (ni hex ni rgba sueltos) o usar otro color. `--border` es el token del shell `layout/dashboard.html`.
+
+**DEPRECADOS — no usar.** Los tokens hex `border/subtle` (`#201E2A`/`#E5E1EC` — usar `--hair`) y `border/default` (`#2A2740`/`#D8D3E2` — usar `--border`) del estilo Plasma antiguo. Quedan solo como referencia histórica.
 
 ## Estructura de pantalla (CRM de call center)
 
