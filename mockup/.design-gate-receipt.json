@@ -1,8 +1,0 @@
-{
-  "task": "Consistencia de bordes: documentar --border como borde de contenedor y migrar auth",
-  "timestamp": "2026-07-22T12:30:00.000Z",
-  "skills": ["ui-ux-pro-max", "impeccable"],
-  "references": ["craft.md", "product.md", "layout.md", "typeset.md"],
-  "design_system": "design-system/zolug/MASTER.md",
-  "notas": "El borde de contenedor es --border (oscuro rgba(255,255,255,.22) / claro rgba(0,0,0,.32)), igual que .cl-panel en clients.html. Divisores internos = --hair. Se documenta sin ambiguedad en base.md/base.html (tokens hex heredados = deprecados) y se migran los divisores de panel de auth.html al token. NO se inventan datos (REGLA 0)."
-}
